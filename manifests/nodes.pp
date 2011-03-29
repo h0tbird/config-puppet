@@ -1,15 +1,15 @@
 node 'basenode' {
 
-    file {'/tmp/shared':
+    include ntp
+
+    file {'/tmp/base':
         ensure  => present,
         mode    => '640',
-        content => "test 01",
+        content => "base",
     }
 }
 
 node 'node1' inherits basenode {
-
-    include ntp
 
     file {'/tmp/node1':
         ensure  => present,
