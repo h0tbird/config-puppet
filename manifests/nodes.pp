@@ -1,9 +1,9 @@
 node 'basenode' {
 
-    file {'/tmp/node':
+    file {'/tmp/shared':
         ensure  => present,
         mode    => '640',
-        content => "test 05",
+        content => "test 01",
     }
 }
 
