@@ -2,7 +2,7 @@ class base {
 
     class { 'ntp':
         ensure  => 'running',
-        version => 'latest',
+        version => 'present',
     }
 
     class { 'user::marc': }
