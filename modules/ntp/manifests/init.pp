@@ -1,34 +1,29 @@
-class ntp::install {
-    package{"ntp":
-        ensure => latest
-    }
-}
+#------------------------------------------------------------------------------
+# ntp
+#------------------------------------------------------------------------------
 
-class ntp::config {
-    File{
-        require => Class["ntp::install"],
-        notify  => Class["ntp::service"],
-        owner   => "root",
-        group   => "root",
-        mode    => 644
+class ntp ( $ensure = 'running' ) {
+
+    # Check for valid values:
+    if ! ( $ensure in [ 'running', 'stopped', 'absent' ] ) {
+        fail("${module_name} 'ensure' must be one of: 'running', 'stopped' or 'absent'")
     }
 
-    file{"/etc/ntp.conf":
-        source => "puppet:///ntp/ntp.conf";
- 
-        "/etc/ntp/step-tickers":
-        source => "puppet:///ntp/step-tickers";
-    }
-}
+    # Set the appropriate requirements:
+    case $ensure {
 
-class ntp::service {
-    service{"ntpd":
-        ensure  => running,
-        enable  => true,
-        require => Class["ntp::config"],
-    }
-}
+        'running', 'stopped': {
+            class { 'ntp::params' : } ->
+            class { 'ntp::install': ensure => 'present' } ->
+            class { 'ntp::config': ensure => 'present' } ~>
+            class { 'ntp::service': ensure => $ensure }
+        }
 
-class ntp {
-    include ntp::install, ntp::config, ntp::service
+        'absent': {
+            class { 'ntp::params' : } ->
+            class { 'ntp::service': ensure => 'stopped' } ->
+            class { 'ntp::config': ensure => 'absent' } ->
+            class { 'ntp::install': ensure => 'absent' }
+        }
+    }
 }
