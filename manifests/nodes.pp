@@ -1,7 +1,7 @@
 class base {
 
     class { 'ntp':
-        ensure => 'running',
+        ensure  => 'running',
         version => 'latest',
     }
 
