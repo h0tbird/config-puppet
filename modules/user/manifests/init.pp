@@ -4,7 +4,6 @@
 
 class user::virtual {
 
-    # Unprivileged user 'marc':
     @user { 'marc':
         ensure  => present,
         uid     => 501,
@@ -20,7 +19,6 @@ class user::virtual {
         gid     => 501,
     }
 
-    # Unprivileged user 'debo':
     @user { 'debo':
         ensure  => present,
         uid     => 502,
