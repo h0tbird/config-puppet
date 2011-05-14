@@ -1,28 +1,17 @@
-node 'basenode' {
+class base {
 
     include ntp
 
-    file {'/tmp/base':
-        ensure  => present,
-        mode    => '640',
-        content => "base",
-    }
+    class { 'user::marc': }
+    class { 'user::debo': }
 }
 
-node 'node1' inherits basenode {
+node 'node1' {
 
-    file {'/tmp/node1':
-        ensure  => present,
-        mode    => '640',
-        content => "node1",
-    }
+    include base
 }
 
-node 'node2' inherits basenode {
+node 'node2' {
 
-    file {'/tmp/node2':
-        ensure  => present,
-        mode    => '640',
-        content => "node2",
-    }
+    include base
 }
