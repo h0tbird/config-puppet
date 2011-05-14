@@ -1,6 +1,9 @@
 class base {
 
-    include ntp
+    class { 'ntp':
+        ensure => 'running',
+        version => 'latest',
+    }
 
     class { 'user::marc': }
     class { 'user::debo': }
