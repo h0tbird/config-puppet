@@ -1,7 +1,44 @@
 #------------------------------------------------------------------------------
-# ntp
+# Class: ntp
+#
+#   This module manages the ntp service.
+#
+#   Marc Villacorta <marc.villacorta@gmail.com>
+#   2011-05-15
+#
+#   Tested platforms:
+#       - CentOS 5.6
+#
+# Parameters:
+#
+#   ensure:  [ running|stopped|absent ]
+#   version: [ present|latest ]
+#   servers: [ '0.centos.pool.ntp.org iburst',
+#              '1.centos.pool.ntp.org iburst',
+#              '2.centos.pool.ntp.org iburst', ]
+#
+# Actions:
+#
+#   Installs, configures, manages and removes the ntp service.
+#
+# Sample Usage:
+#
+#   include ntp
+#
+#   or
+#
+#   clas { 'ntp': }
+#
+#   or
+#
+#   class { 'ntp':
+#       ensure  => 'running'
+#       version => 'present'
+#       servers => [ '0.centos.pool.ntp.org iburst',
+#                    '1.centos.pool.ntp.org iburst',
+#                    '2.centos.pool.ntp.org iburst', ]
+#   }
 #------------------------------------------------------------------------------
-
 class ntp (
     $ensure     = 'running',
     $version    = 'present'

@@ -1,7 +1,12 @@
 #------------------------------------------------------------------------------
-# ntp::params
+# Class: ntp::params
+#
+#   This class is part of the ntp module.
+#
+#   Marc Villacorta <marc.villacorta@gmail.com>
+#   2011-05-15
+#
 #------------------------------------------------------------------------------
-
 class ntp::params {
 
     # Require the delegated class:

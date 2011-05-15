@@ -1,7 +1,12 @@
 #------------------------------------------------------------------------------
-# ntp::config
+# Class: ntp::config
+#
+#   This class is part of the ntp module.
+#
+#   Marc Villacorta <marc.villacorta@gmail.com>
+#   2011-05-15
+#
 #------------------------------------------------------------------------------
-
 class ntp::config ( $ensure ) {
 
     # Require the delegated class:

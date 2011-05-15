@@ -1,7 +1,12 @@
 #------------------------------------------------------------------------------
-# ntp::install
+# Class: ntp::install
+#
+#   This class is part of the ntp module.
+#
+#   Marc Villacorta <marc.villacorta@gmail.com>
+#   2011-05-15
+#
 #------------------------------------------------------------------------------
-
 class ntp::install ( $ensure ) {
 
     # Require the delegated class:
