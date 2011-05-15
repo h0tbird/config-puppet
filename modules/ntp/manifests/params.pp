@@ -26,8 +26,8 @@ class ntp::params {
             $service_name   = 'ntpd'
         }
 
-        /(Debian|Ubuntu)/: {
-            fail ( "${module_name}::params Debian|Ubuntu not supported yet." )
+        default: {
+            fail ( "${module_name}::params ${operatingsystem} is not supported yet." )
         }
     }
 }
