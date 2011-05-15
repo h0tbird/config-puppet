@@ -1,7 +1,12 @@
 #------------------------------------------------------------------------------
-# ntp::service
+# Class: ntp::service
+#
+#   This class is part of the ntp module.
+#
+#   Marc Villacorta <marc.villacorta@gmail.com>
+#   2011-05-15
+#
 #------------------------------------------------------------------------------
-
 class ntp::service ( $ensure ) {
 
     # Require the delegated class:
