@@ -1,11 +1,11 @@
 name    'h0tbird-ntp'
-version '0.0.1'
+version '1.0.0'
 source 'https://github.com/h0tbird/puppet'
 author 'Marc Villacorta'
 license 'GPL'
-summary 'UNKNOWN'
-description 'UNKNOWN'
-project_page 'UNKNOWN'
+summary 'NTP Module'
+description 'NTP Module for CentOS.'
+project_page 'https://github.com/h0tbird/puppet'
 
 ## Add dependencies, if any:
 # dependency 'username/name', '>= 1.2.0'
