@@ -17,6 +17,9 @@ class ntp::config ( $ensure ) {
         fail ( "${module_name}::config 'ensure' must be one of: 'present' or 'absent'" )
     }
 
+    # Get the configuration parameters:
+    $servers = $ntp::servers
+
     # Install or remove the configuration files:
     file {
 
