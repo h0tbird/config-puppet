@@ -41,7 +41,10 @@
 #------------------------------------------------------------------------------
 class ntp (
     $ensure     = 'running',
-    $version    = 'present'
+    $version    = 'present',
+    $servers    = [ '0.centos.pool.ntp.org iburst',
+                    '1.centos.pool.ntp.org iburst',
+                    '2.centos.pool.ntp.org iburst', ]
 ) {
 
     # Check for valid values:
@@ -57,7 +60,6 @@ class ntp (
     case $ensure {
 
         'running', 'stopped': {
-
             class { 'ntp::params' : } ->
             class { 'ntp::install': ensure => $version } ->
             class { 'ntp::config': ensure => 'present' } ~>
