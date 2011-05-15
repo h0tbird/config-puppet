@@ -12,12 +12,17 @@ class ntp::params {
     $templates = "${module_name}/${operatingsystem}/${operatingsystemrelease}"
 
     case $operatingsystem {
+
         /(RedHat|CentOS|Fedora)/: {
             $package_name   = 'ntp'
             $service_config = '/etc/ntp.conf'
             $step_tickers   = '/etc/ntp/step-tickers'
             $keys           = '/etc/ntp/keys'
             $service_name   = 'ntpd'
+        }
+
+        /(Debian|Ubuntu)/: {
+            fail ( "${module_name}::params Debian|Ubuntu not supported yet." )
         }
     }
 }
