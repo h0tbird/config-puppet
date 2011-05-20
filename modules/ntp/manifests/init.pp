@@ -16,6 +16,9 @@
 #   servers: [ '0.centos.pool.ntp.org iburst',
 #              '1.centos.pool.ntp.org iburst',
 #              '2.centos.pool.ntp.org iburst', ]
+#   tickers: [ '0.centos.pool.ntp.org',
+#              '1.centos.pool.ntp.org',
+#              '2.centos.pool.ntp.org', ]
 #
 # Actions:
 #
@@ -27,24 +30,31 @@
 #
 #   or
 #
-#   clas { 'ntp': }
+#   class { 'ntp': }
 #
 #   or
 #
 #   class { 'ntp':
-#       ensure  => 'running'
-#       version => 'present'
+#       ensure  => 'running',
+#       version => 'present',
 #       servers => [ '0.centos.pool.ntp.org iburst',
 #                    '1.centos.pool.ntp.org iburst',
-#                    '2.centos.pool.ntp.org iburst', ]
+#                    '2.centos.pool.ntp.org iburst', ],
+#       tickers => [ '0.centos.pool.ntp.org',
+#                    '1.centos.pool.ntp.org',
+#                    '2.centos.pool.ntp.org', ],
 #   }
 #------------------------------------------------------------------------------
 class ntp (
     $ensure     = 'running',
     $version    = 'present',
+    $tickers    = 'true',
     $servers    = [ '0.centos.pool.ntp.org iburst',
                     '1.centos.pool.ntp.org iburst',
-                    '2.centos.pool.ntp.org iburst', ]
+                    '2.centos.pool.ntp.org iburst', ],
+    $tickers    = [ '0.centos.pool.ntp.org',
+                    '1.centos.pool.ntp.org',
+                    '2.centos.pool.ntp.org', ]
 ) {
 
     # Check for valid values:

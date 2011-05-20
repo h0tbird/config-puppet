@@ -19,6 +19,7 @@ class ntp::config ( $ensure ) {
 
     # Get the configuration parameters:
     $servers = $ntp::servers
+    $tickers = $ntp::tickers
 
     # Install or remove the configuration files:
     file {
