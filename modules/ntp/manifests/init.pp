@@ -48,7 +48,6 @@
 class ntp (
     $ensure     = 'running',
     $version    = 'present',
-    $tickers    = 'true',
     $servers    = [ '0.centos.pool.ntp.org iburst',
                     '1.centos.pool.ntp.org iburst',
                     '2.centos.pool.ntp.org iburst', ],
