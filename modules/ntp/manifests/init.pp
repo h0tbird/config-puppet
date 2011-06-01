@@ -11,14 +11,14 @@
 #
 # Parameters:
 #
-#   ensure:  [ running|stopped|absent ]
-#   version: [ present|latest ]
+#   ensure:  [ running | stopped | absent ]
+#   version: [ present | latest ]
 #   servers: [ '0.centos.pool.ntp.org iburst',
 #              '1.centos.pool.ntp.org iburst',
-#              '2.centos.pool.ntp.org iburst', ]
+#              '2.centos.pool.ntp.org iburst' ]
 #   tickers: [ '0.centos.pool.ntp.org',
 #              '1.centos.pool.ntp.org',
-#              '2.centos.pool.ntp.org', ]
+#              '2.centos.pool.ntp.org' ]
 #
 # Actions:
 #
@@ -39,10 +39,10 @@
 #       version => 'present',
 #       servers => [ '0.centos.pool.ntp.org iburst',
 #                    '1.centos.pool.ntp.org iburst',
-#                    '2.centos.pool.ntp.org iburst', ],
+#                    '2.centos.pool.ntp.org iburst' ],
 #       tickers => [ '0.centos.pool.ntp.org',
 #                    '1.centos.pool.ntp.org',
-#                    '2.centos.pool.ntp.org', ],
+#                    '2.centos.pool.ntp.org' ],
 #   }
 #------------------------------------------------------------------------------
 class ntp (
@@ -69,17 +69,17 @@ class ntp (
     case $ensure {
 
         'running', 'stopped': {
-            class { 'ntp::params' : } ->
-            class { 'ntp::install': ensure => $version } ->
-            class { 'ntp::config': ensure => 'present' } ~>
-            class { 'ntp::service': ensure => $ensure }
+            class { 'ntp::params': } ->
+            class { 'ntp::install': ensure => $version  } ->
+            class { 'ntp::config':  ensure => 'present' } ~>
+            class { 'ntp::service': ensure => $ensure   }
         }
 
         'absent': {
-            class { 'ntp::params' : } ->
+            class { 'ntp::params': } ->
             class { 'ntp::service': ensure => 'stopped' } ->
-            class { 'ntp::config': ensure => 'absent' } ->
-            class { 'ntp::install': ensure => 'absent' }
+            class { 'ntp::config':  ensure => 'absent'  } ->
+            class { 'ntp::install': ensure => 'absent'  }
         }
     }
 }
