@@ -19,7 +19,7 @@ class ntp::params {
     case $operatingsystem {
 
         /(RedHat|CentOS|Fedora)/: {
-            $package_name   = 'ntp'
+            $packages       = [ 'ntp' ]
             $service_config = '/etc/ntp.conf'
             $step_tickers   = '/etc/ntp/step-tickers'
             $keys           = '/etc/ntp/keys'
