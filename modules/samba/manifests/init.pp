@@ -1,17 +1,55 @@
+#------------------------------------------------------------------------------
 # Class: samba
 #
-# This module manages samba
+#   This module manages the samba service.
+#
+#   Marc Villacorta <marc.villacorta@gmail.com>
+#   2011-06-10
+#
+#   Tested platforms:
+#       - CentOS 5.6
 #
 # Parameters:
 #
+#   ensure:  [ running | stopped | absent ]
+#   version: [ present | latest ]
+#
 # Actions:
 #
-# Requires:
+#   Installs, configures, manages and removes the samba service.
 #
 # Sample Usage:
 #
-# [Remember: No empty lines between comments and class definition]
-class samba {
+#------------------------------------------------------------------------------
+class samba (
+    $ensure     = 'running',
+    $version    = 'present'
+) {
 
+    # Check for valid values:
+    if ! ( $ensure in [ 'running', 'stopped', 'absent' ] ) {
+        fail("${module_name} 'ensure' must be one of: 'running', 'stopped' or 'absent'")
+    }
 
+    if ! ( $version in [ 'present', 'latest' ] ) {
+        fail("${module_name} 'version' must be one of: 'present' or 'latest'")
+    }
+
+    # Set the appropriate requirements:
+    case $ensure {
+
+        'running', 'stopped': {
+            class { "${module_name}::params": } ->
+            class { "${module_name}::install": ensure => $version  } ->
+            class { "${module_name}::config":  ensure => 'present' } ~>
+            class { "${module_name}::service": ensure => $ensure   }
+        }
+
+        'absent': {
+            class { "${module_name}::params": } ->
+            class { "${module_name}::service": ensure => 'stopped' } ->
+            class { "${module_name}::config":  ensure => 'absent'  } ->
+            class { "${module_name}::install": ensure => 'absent'  }
+        }
+    }
 }
