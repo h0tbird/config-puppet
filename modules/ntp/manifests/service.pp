@@ -10,7 +10,7 @@
 class ntp::service ( $ensure ) {
 
     # Require the delegated class:
-    Class['ntp'] -> Class['ntp::service']
+    Class["${module_name}"] -> Class["${module_name}::service"]
 
     # Check for valid values:
     if ! ( $ensure in [ 'running', 'stopped' ] ) {

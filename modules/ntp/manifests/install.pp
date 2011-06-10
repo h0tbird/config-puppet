@@ -10,7 +10,7 @@
 class ntp::install ( $ensure ) {
 
     # Require the delegated class:
-    Class['ntp'] -> Class['ntp::install']
+    Class["${module_name}"] -> Class["${module_name}::install"]
 
     # Check for valid values:
     if ! ( $ensure in [ 'present', 'latest', 'absent' ] ) {

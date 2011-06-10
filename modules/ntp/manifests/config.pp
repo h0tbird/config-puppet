@@ -10,7 +10,7 @@
 class ntp::config ( $ensure ) {
 
     # Require the delegated class:
-    Class['ntp'] -> Class['ntp::config']
+    Class["${module_name}"] -> Class["${module_name}::config"]
 
     # Check for valid values:
     if ! ( $ensure in [ 'present', 'absent' ] ) {

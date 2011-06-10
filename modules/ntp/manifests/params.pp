@@ -10,7 +10,7 @@
 class ntp::params {
 
     # Require the delegated class:
-    Class['ntp'] -> Class['ntp::params']
+    Class["${module_name}"] -> Class["${module_name}::params"]
 
     # Set values unique to particular platforms:
     $files = "puppet:///modules/${module_name}/${operatingsystem}/${operatingsystemrelease}"
