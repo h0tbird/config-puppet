@@ -69,17 +69,17 @@ class ntp (
     case $ensure {
 
         'running', 'stopped': {
-            class { 'ntp::params': } ->
-            class { 'ntp::install': ensure => $version  } ->
-            class { 'ntp::config':  ensure => 'present' } ~>
-            class { 'ntp::service': ensure => $ensure   }
+            class { "${module_name}::params": } ->
+            class { "${module_name}::install": ensure => $version  } ->
+            class { "${module_name}::config":  ensure => 'present' } ~>
+            class { "${module_name}::service": ensure => $ensure   }
         }
 
         'absent': {
-            class { 'ntp::params': } ->
-            class { 'ntp::service': ensure => 'stopped' } ->
-            class { 'ntp::config':  ensure => 'absent'  } ->
-            class { 'ntp::install': ensure => 'absent'  }
+            class { "${module_name}::params": } ->
+            class { "${module_name}::service": ensure => 'stopped' } ->
+            class { "${module_name}::config":  ensure => 'absent'  } ->
+            class { "${module_name}::install": ensure => 'absent'  }
         }
     }
 }
