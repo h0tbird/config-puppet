@@ -2,6 +2,8 @@
 # Class: ntp::config
 #
 #   This class is part of the ntp module.
+#   You should not be calling this class.
+#   The delegated class is Class['ntp'].
 #
 #   Marc Villacorta <marc.villacorta@gmail.com>
 #   2011-05-15
@@ -9,8 +11,8 @@
 #------------------------------------------------------------------------------
 class ntp::config ( $ensure ) {
 
-    # Require the delegated class:
-    Class["${module_name}"] -> Class["${module_name}::config"]
+    # Deliberate cyclical dependency:
+    require "${module_name}"
 
     # Check for valid values:
     if ! ( $ensure in [ 'present', 'absent' ] ) {

@@ -2,6 +2,8 @@
 # Class: samba::install
 #
 #   This class is part of the samba module.
+#   You should not be calling this class.
+#   The delegated class is Class['samba'].
 #
 #   Marc Villacorta <marc.villacorta@gmail.com>
 #   2011-06-10
@@ -9,8 +11,8 @@
 #------------------------------------------------------------------------------
 class samba::install ( $ensure ) {
 
-    # Require the delegated class:
-    Class["${module_name}"] -> Class["${module_name}::install"]
+    # Deliberate cyclical dependency:
+    require "${module_name}"
 
     # Check for valid values:
     if ! ( $ensure in [ 'present', 'latest', 'absent' ] ) {
