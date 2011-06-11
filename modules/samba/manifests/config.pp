@@ -20,4 +20,13 @@ class samba::config ( $ensure ) {
     # Get the configuration parameters:
 
     # Install or remove the configuration files:
+    file {
+
+        $samba::params::service_config:
+            ensure  => $ensure,
+            content => template("${samba::params::templates}/smb.conf.erb"),
+            owner   => 'root',
+            group   => 'root',
+            mode    => '0644',
+    }
 }

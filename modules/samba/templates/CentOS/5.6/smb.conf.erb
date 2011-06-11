@@ -1,0 +1,48 @@
+#------------------------------------------------------------------------------
+# Global Settings:
+#------------------------------------------------------------------------------
+
+[global]
+
+    # Network Options:
+<% if workgroup != '' -%>    workgroup = <%= workgroup %>
+<% end -%>
+<% if server_string != '' -%>    server string = <%= server_string %>
+<% end -%>
+<% if netbios_name != '' -%>    netbios name = <%= netbios_name %>
+<% end -%>
+<% if interfaces != '' -%>    interfaces = <%= interfaces %>
+<% end -%>
+<% if hosts_allow != '' -%>    hosts allow = <%= hosts_allow %>
+<% end -%>
+
+    # Logging Options:
+<% if log_file != "NONE" -%>    log file = <%= log_file %>
+<% end -%>
+<% if max_log_size != '' -%>    max log size = <%= max_log_size %>
+<% end -%>
+
+    # Server Options:
+<% if security != '' -%>    security = <%= security %>
+<% end -%>
+<% if passdb_backend != '' -%>    passdb backend = <%= passdb_backend %>
+<% end -%>
+<% if realm != '' -%>    realm = <%= realm %>
+<% end -%>
+<% if password_server != '' -%>    password server = <%= password_server %>
+<% end -%>
+
+    # Printing Options:
+<% if load_printers != '' -%>    load printers = <%= load_printers %>
+<% end -%>
+<% if cups_options != '' -%>    cups options = <%= cups_options %>
+<% end -%>
+
+#------------------------------------------------------------------------------
+# Share Definitions:
+#------------------------------------------------------------------------------
+
+[homes]
+	comment = Home Directories
+	browseable = no
+	writable = yes
