@@ -12,20 +12,25 @@
 #
 # Parameters:
 #
-#   owner: 
-#   group: 
-#   mode: 
+#   owner: User who will own the file.
+#   group: Group which will own the file.
+#   mode: The mode of the final file.
+#
+# Actions:
+#
+#   Ensamble a target file using fragments from other files or templates.
 #
 # Sample Usage:
 #
-#   concat { '/etc/motd': }
+#   concat { '/etc/named.conf': }
 #
 #   or
 #
-#   concat { '/etc/motd':
-#       owner => 'root',
-#       group => 'root',
-#       mode  => '0644',
+#   concat { '/etc/named.conf':
+#       owner  => 'root',
+#       group  => 'root',
+#       mode   => '0644',
+#       notify => Service[ 'named' ],
 #   }
 #------------------------------------------------------------------------------
 define concat (

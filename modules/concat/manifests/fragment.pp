@@ -22,7 +22,7 @@
 #
 # Actions:
 #
-#   Blah, blah ...
+#   Creates one fragment and ties it to the target file.
 #
 # Sample Usage:
 #
@@ -34,6 +34,11 @@
 #
 #   or
 #
+#   concat::fragment { 'motd_local':
+#       target  => '/etc/motd',
+#       order   => 11,
+#       ensure  => '/etc/motd.local',
+#   }
 #------------------------------------------------------------------------------
 define concat::fragment(
     $target,
