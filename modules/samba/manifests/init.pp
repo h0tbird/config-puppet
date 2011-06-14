@@ -39,6 +39,9 @@ class samba (
     $cups_options    = ''
 ) {
 
+    # Register this module:
+    motd::register { "${module_name}": }
+
     # Check for valid values:
     if ! ( $ensure in [ 'running', 'stopped', 'absent' ] ) {
         fail("${module_name} 'ensure' must be one of: 'running', 'stopped' or 'absent'")

@@ -56,6 +56,9 @@ class ntp (
                     '2.centos.pool.ntp.org', ]
 ) {
 
+    # Register this module:
+    motd::register { "${module_name}": }
+
     # Check for valid values:
     if ! ( $ensure in [ 'running', 'stopped', 'absent' ] ) {
         fail("${module_name} 'ensure' must be one of: 'running', 'stopped' or 'absent'")
