@@ -18,7 +18,7 @@
 #
 # Actions:
 #
-#   Ensamble a target file using fragments from other files or templates.
+#   Assemble a target file using fragments from other files or templates.
 #
 # Sample Usage:
 #
