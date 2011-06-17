@@ -19,14 +19,13 @@ class samba::config ( $ensure ) {
         fail ( "${module_name}::config 'ensure' must be one of: 'present' or 'absent'" )
     }
 
-    # Install or remove the configuration files:
-    file {
+    # Define the target file:
+    concat { $samba::params::service_config: }
 
-        $samba::params::service_config:
-            ensure  => $ensure,
-            content => template("${samba::params::templates}/smb.conf.erb"),
-            owner   => 'root',
-            group   => 'root',
-            mode    => '0644',
+    # Config file header:
+    concat::fragment { 'smb_header':
+        target  => $samba::params::service_config,
+        content => template("${samba::params::templates}/smb.conf_header.erb"),
+        order   => '01',
     }
 }
