@@ -83,7 +83,6 @@ define concat (
         user        => 'root',
         group       => 'root',
         refreshonly => true,
-        subscribe   => File[ "${fragdir}/fragments" ],
         notify      => File[ "${name}" ],
         command     => "/bin/cat ${fragdir}/fragments/* > ${fragdir}/fragments.concat"
     }
