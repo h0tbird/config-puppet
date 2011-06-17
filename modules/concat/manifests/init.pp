@@ -46,12 +46,6 @@ define concat (
     # Files and directories:
     file {
 
-         '/var/lib/puppet/concat':
-            ensure  => directory,
-            owner   => 'root',
-            group   => 'root',
-            mode    => '0755';
-
          "${fragdir}":
             ensure  => directory,
             owner   => 'root',
@@ -76,6 +70,15 @@ define concat (
             group   => $group,
             mode    => $mode,
             source  => "${fragdir}/fragments.concat";
+    }
+
+    # Create the basedir:
+    exec { "base_${name}":
+        user    => 'root',
+        group   => 'root',
+        before  => File[ "${fragdir}" ],
+        command => '/bin/mkdir /var/lib/puppet/concat',
+        creates => '/var/lib/puppet/concat',
     }
 
     # Concatenate on refresh only:
