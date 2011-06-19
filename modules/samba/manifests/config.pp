@@ -20,12 +20,13 @@ class samba::config ( $ensure ) {
     }
 
     # Define the target file:
-    concat { $samba::params::service_config: }
+    concat { $samba::params::service_config: ensure => $ensure }
 
     # Config file header:
     concat::fragment { 'smb_header':
+        ensure  => $ensure,
         target  => $samba::params::service_config,
         content => template("${samba::params::templates}/smb.conf_header.erb"),
-        order   => '01',
+        order   => '00',
     }
 }
