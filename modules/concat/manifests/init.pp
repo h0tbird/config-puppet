@@ -2,7 +2,6 @@
 # Define: concat
 #
 #   This module provides a simplified file fragments concatenation method.
-#   Based on R.I. Pienaar concat module.
 #
 #   Marc Villacorta <marc.villacorta@gmail.com>
 #   2011-06-13
@@ -12,6 +11,7 @@
 #
 # Parameters:
 #
+#   ensure: [ present | absent ]
 #   owner: User who will own the file.
 #   group: Group which will own the file.
 #   mode: The mode of the final file.
@@ -34,6 +34,7 @@
 #   }
 #------------------------------------------------------------------------------
 define concat (
+    $ensure = 'present',
     $owner  = 'root',
     $group  = 'root',
     $mode   = '0644'
@@ -47,29 +48,19 @@ define concat (
     file {
 
          "${fragdir}":
-            ensure  => directory,
-            owner   => 'root',
-            group   => 'root',
-            mode    => '0755';
-
-         "${fragdir}/fragments":
-            ensure  => directory,
-            owner   => 'root',
-            group   => 'root',
-            mode    => '0755';
-
-         "${fragdir}/fragments.concat":
-            ensure  => present,
-            owner   => 'root',
-            group   => 'root',
-            mode    => '0644';
+            ensure    => $ensure ? {
+            'present' => 'directory',
+            'absent'  => 'absent' },
+            force     => true,
+            owner     => 'root',
+            group     => 'root',
+            mode      => '0755';
 
          "${name}":
-            ensure  => present,
-            owner   => $owner,
-            group   => $group,
-            mode    => $mode,
-            source  => "${fragdir}/fragments.concat";
+            ensure    => $ensure,
+            owner     => $owner,
+            group     => $group,
+            mode      => $mode,
     }
 
     # Create the basedir:
@@ -86,7 +77,8 @@ define concat (
         user        => 'root',
         group       => 'root',
         refreshonly => true,
-        notify      => File[ "${name}" ],
-        command     => "/bin/cat ${fragdir}/fragments/* > ${fragdir}/fragments.concat"
+        path        => [ '/bin', '/usr/bin' ],
+        command     => "cat ${fragdir}/* > ${name}",
+        unless      => "test -z \"$(ls -A ${fragdir})\" && cat /dev/null > ${name}",
     }
 }
