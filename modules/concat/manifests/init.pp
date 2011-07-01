@@ -32,6 +32,12 @@
 #       mode   => '0644',
 #       notify => Service[ 'named' ],
 #   }
+#
+#   or
+#
+#   concat { '/etc/named.conf':
+#       ensure => 'absent',
+#   }
 #------------------------------------------------------------------------------
 define concat (
     $ensure = 'present',
@@ -48,19 +54,16 @@ define concat (
     file {
 
          "${fragdir}":
-            ensure    => $ensure ? {
-            'present' => 'directory',
-            'absent'  => 'absent' },
-            force     => true,
-            owner     => 'root',
-            group     => 'root',
-            mode      => '0755';
+            ensure  => 'directory',
+            owner   => 'root',
+            group   => 'root',
+            mode    => '0755';
 
          "${name}":
-            ensure    => $ensure,
-            owner     => $owner,
-            group     => $group,
-            mode      => $mode,
+            ensure  => $ensure,
+            owner   => $owner,
+            group   => $group,
+            mode    => $mode,
     }
 
     # Create the basedir:
@@ -77,8 +80,11 @@ define concat (
         user        => 'root',
         group       => 'root',
         refreshonly => true,
+        subscribe   => File[ "${name}" ],
         path        => [ '/bin', '/usr/bin' ],
         command     => "cat ${fragdir}/* > ${name}",
-        unless      => "test -z \"$(ls -A ${fragdir})\" && cat /dev/null > ${name}",
+        unless      => $ensure ? {
+        'present'   => "test -z \"$(ls -A ${fragdir})\" && cat /dev/null > ${name}",
+        'absent'    => "rm ${name} || true" },
     }
 }
