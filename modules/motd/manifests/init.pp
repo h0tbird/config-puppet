@@ -8,6 +8,7 @@
 #
 #   Tested platforms:
 #       - CentOS 5.6
+#	- CentOS 6.0
 #
 # Actions:
 #
@@ -30,13 +31,13 @@ class motd {
     concat::fragment { 'motd_header':
         target  => '/etc/motd',
         content => template("${module_name}/motd_header.erb"),
-        order   => 01,
+        order   => '01'
     }
 
     # Set the file footer:
     concat::fragment { 'motd_footer':
         target  => '/etc/motd',
         content => template("${module_name}/motd_footer.erb"),
-        order   => 99,
+        order   => '99'
     }
 }
