@@ -48,6 +48,10 @@ class samba (
         fail("${module_name} 'version' must be one of: 'present' or 'latest'")
     }
 
+    if ! ( $security in [ 'user', 'share' ] ) {
+        fai("${module_name} 'security' must be one of: 'user' or 'share'")
+    }
+
     # Register this module:
     motd::register { "${module_name}": }
 
