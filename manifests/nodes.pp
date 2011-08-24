@@ -5,8 +5,8 @@
 class base {
 
     # System users:
-    class { 'user::marc': }
-    class { 'user::debo': }
+    user::real { 'marc': }
+    user::real { 'debo': }
 
     # Motd module:
     class { 'motd': }
