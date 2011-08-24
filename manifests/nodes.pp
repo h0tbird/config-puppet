@@ -29,6 +29,9 @@ node 'puppet.popapp.com' {
 
     require base
 
+    samba::user { 'marc': }
+    samba::user { 'debo': }
+
     samba::share { 'tmp':
         path        => '/tmp',
         valid_users => 'marc',
