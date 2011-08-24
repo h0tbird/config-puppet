@@ -8,6 +8,7 @@
 #
 #   Tested platforms:
 #       - CentOS 5.6
+#	- CentOS 6.0
 #
 # Parameters:
 #
@@ -48,8 +49,8 @@ class samba (
         fail("${module_name} 'version' must be one of: 'present' or 'latest'")
     }
 
-    if ! ( $security in [ 'user', 'domain', 'ADS', 'server', 'share' ] ) {
-        fai("${module_name} 'security' must be one of: 'user', 'domain', 'ADS', 'server' or 'share'")
+    if ! ( $security in [ 'user', 'domain', 'ads', 'server', 'share' ] ) {
+        fai("${module_name} 'security' must be one of: 'user', 'domain', 'ads', 'server' or 'share'")
     }
 
     # Register this module:
