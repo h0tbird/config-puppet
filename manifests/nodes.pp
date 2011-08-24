@@ -28,4 +28,9 @@ class base {
 node 'puppet.popapp.com' {
 
     require base
+
+    samba::share { 'tmp':
+        path        => '/tmp',
+        valid_users => 'marc',
+    }
 }
