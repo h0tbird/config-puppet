@@ -4,10 +4,6 @@
 
 class base {
 
-    # System users:
-    user::real { 'marc': }
-    user::real { 'debo': }
-
     # Motd module:
     class { 'motd': }
 
@@ -29,8 +25,8 @@ node 'puppet.popapp.com' {
 
     require base
 
-    samba::user { 'marc': }
-    samba::user { 'debo': }
+    user::real { 'marc': samba => 'yes' }
+    user::real { 'debo': samba => 'yes' }
 
     samba::share { 'tmp':
         path        => '/tmp',
