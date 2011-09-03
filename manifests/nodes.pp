@@ -16,8 +16,8 @@ class base {
 
     # Samba service:
     class { 'samba':
-        workgroup   => 'POPAPP',
-        hosts_allow => '127. 192.168.1.',
+        workgroup   => extlookup('samba_workgroup'),
+        hosts_allow => extlookup('samba_hosts_allow'),
     }
 }
 
