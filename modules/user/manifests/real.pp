@@ -9,17 +9,12 @@
 #------------------------------------------------------------------------------
 define user::real (
 
-    $unix  = 'yes',
     $samba = 'no',
     $ftp   = 'no'
 
 ) {
 
     # Check for valid values:
-    if ! ( $unix in [ 'yes', 'no' ] ) {
-        fail("${module_name} 'unix' must be one of: 'yes' or 'no'")
-    }
-
     if ! ( $samba in [ 'yes', 'no' ] ) {
         fail("${module_name} 'samba' must be one of: 'yes' or 'no'")
     }
@@ -31,7 +26,9 @@ define user::real (
     # Includes:
     include user::virtual
 
-    # Create the user:
-    if $unix == 'yes' { realize (User["${name}"], Group["${name}"]) }
-    if $samba == 'yes' { samba::user { "${name}": } }
+    # Linux user is mandatory:
+    realize (User["${name}"], Group["${name}"])
+
+    # Samba and FTP users:
+    if $samba == 'yes' { samba::user { "${name}": require => User["${name}"] } }
 }
