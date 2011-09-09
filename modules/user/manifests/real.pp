@@ -9,26 +9,23 @@
 #------------------------------------------------------------------------------
 define user::real (
 
+    $pass  = '',
     $samba = 'no',
     $ftp   = 'no'
 
 ) {
 
     # Check for valid values:
-    if ! ( $samba in [ 'yes', 'no' ] ) {
-        fail("${module_name} 'samba' must be one of: 'yes' or 'no'")
-    }
-
-    if ! ( $ftp in [ 'yes', 'no' ] ) {
-        fail("${module_name} 'ftp' must be one of: 'yes' or 'no'")
-    }
+    if ! ( $samba in [ 'yes', 'no' ] ) { fail("${module_name} 'samba' must be one of: 'yes' or 'no'") }
+    if ! ( $ftp in [ 'yes', 'no' ] ) { fail("${module_name} 'ftp' must be one of: 'yes' or 'no'") }
 
     # Includes:
     include user::virtual
 
     # Linux user is mandatory:
-    realize (User["${name}"], Group["${name}"])
+    realize ( User[ $name ], Group[ $name ] )
+    User <| title == $name |> { password => $pass }
 
-    # Samba and FTP users:
-    if $samba == 'yes' { samba::user { "${name}": require => User["${name}"] } }
+    # Samba user:
+    if $samba == 'yes' { samba::user { "${name}": require => User[ $name ] } }
 }
