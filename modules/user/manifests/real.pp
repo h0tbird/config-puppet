@@ -24,7 +24,7 @@ define user::real (
 
     # Linux user is mandatory:
     realize ( User[ $name ], Group[ $name ] )
-    User <| title == $name |> { password => $pass }
+    User <| title == $name |> { password => mkpasswd( $pass, $name ) }
 
     # Samba user:
     if $samba == 'yes' { samba::user { "${name}": require => User[ $name ] } }
