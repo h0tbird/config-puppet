@@ -27,5 +27,5 @@ define user::real (
     User <| title == $name |> { password => mkpasswd( $pass, $name ) }
 
     # Samba user:
-    if $samba == 'yes' { samba::user { "${name}": require => User[ $name ] } }
+    if $samba == 'yes' { samba::user { "${name}": pass => $pass } }
 }

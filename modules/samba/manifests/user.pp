@@ -7,9 +7,10 @@
 #   2011-06-10
 #
 #------------------------------------------------------------------------------
-define samba::user ( $pass = 'secret' ) {
+define samba::user ( $pass = '' ) {
 
     Class['samba'] -> Samba::User["${name}"]
+    User[ $name ] -> Samba::User["${name}"]
 
     exec { "smbpasswd-${name}":
         user    => 'root',
