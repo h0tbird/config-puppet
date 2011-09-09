@@ -1,0 +1,11 @@
+name            'h0tbird-user'
+version         '1.0.0'
+source          'https://github.com/h0tbird/puppet'
+author          'Marc Villacorta'
+license         'GPL'
+summary         'User Module'
+description     'User Module'
+project_page    'https://github.com/h0tbird/puppet'
+
+## Add dependencies, if any:
+# dependency 'username/name', '>= 1.2.0'
