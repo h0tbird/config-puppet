@@ -12,8 +12,8 @@
 #
 # Parameters:
 #
-#   ensure:  [ running | stopped | absent ]
-#   version: [ present | latest ]
+#   ensure:  [ 'running' | 'stopped' | 'absent' ]
+#   version: [ 'present' | 'latest' ]
 #   servers: [ '0.centos.pool.ntp.org iburst',
 #              '1.centos.pool.ntp.org iburst',
 #              '2.centos.pool.ntp.org iburst' ]
