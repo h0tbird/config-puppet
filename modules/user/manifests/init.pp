@@ -4,6 +4,7 @@
 
 class user::virtual {
 
+    # Marc
     @user { 'marc':
         ensure  => present,
         uid     => '501',
@@ -19,6 +20,7 @@ class user::virtual {
         gid     => '501',
     }
 
+    # Debo
     @user { 'debo':
         ensure  => present,
         uid     => '502',

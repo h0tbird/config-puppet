@@ -20,8 +20,17 @@ node 'puppet.popapp.com' {
     require base
 
     # Users:
-    user::real { 'marc': pass => extlookup('linux_pass_marc'), samba => 'yes' }
-    user::real { 'debo': pass => extlookup('linux_pass_debo'), samba => 'yes' }
+    user::real { 'marc':
+        pass   => extlookup('linux_pass_marc'),
+        groups => 'puppet',
+        samba  => 'yes'
+    }
+
+    user::real { 'debo':
+        pass   => extlookup('linux_pass_debo'),
+        groups => 'puppet',
+        samba  => 'yes'
+    }
 
     # Samba service:
     class { 'samba':

@@ -9,9 +9,10 @@
 #------------------------------------------------------------------------------
 define user::real (
 
-    $pass  = '',
-    $samba = 'no',
-    $ftp   = 'no'
+    $pass   = '',
+    $groups = undef,
+    $samba  = 'no',
+    $ftp    = 'no'
 
 ) {
 
@@ -25,6 +26,7 @@ define user::real (
     # Linux user is mandatory:
     realize ( User[ $name ], Group[ $name ] )
     User <| title == $name |> { password => mkpasswd( $pass, $name ) }
+    if $groups { User <| title == $name |> { groups +> $groups } }
 
     # Samba user:
     if $samba == 'yes' { samba::user { "${name}": pass => $pass } }
