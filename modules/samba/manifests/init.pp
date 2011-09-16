@@ -12,14 +12,49 @@
 #
 # Parameters:
 #
-#   ensure:  [ running | stopped | absent ]
-#   version: [ present | latest ]
+#   ensure:          [ 'running' | 'stopped' | 'absent' ]
+#   version:         [ 'present' | 'latest' ]
+#   workgroup:       [ string ]
+#   server_string:   [ string ]
+#   netbios_name:    [ string ]
+#   interfaces:      [ string ]
+#   hosts_allow:     [ string ]
+#   log_file:        [ string ]
+#   max_log_size:    [ number ]
+#   security:        [ 'user' | 'domain' | 'ads' | 'server' | 'share' ]
+#   passdb_backend:  [ string ]
+#   realm:           [ string ]
+#   password_server: [ string ]
+#   load_printers:   [ string ]
+#   cups_options:    [ string ]
 #
 # Actions:
 #
 #   Installs, configures, manages and removes the samba service.
 #
 # Sample Usage:
+#
+#   include samba
+#
+#   or
+#
+#   class { 'samba': }
+#
+#   or
+#
+#   class { 'samba':
+#       ensure          => 'running',
+#       version         => 'present',
+#       workgroup       => 'MYGROUP',
+#       server_string   => 'Samba Server Version %v',
+#       netbios_name    => 'MYPCNAME',
+#       interfaces      => 'lo eth0',
+#       hosts_allow     => '127.',
+#       log_file        => '/var/log/samba/%m.log',
+#       max_log_size    => '50',
+#       security        => 'user',
+#       passdb_backend  => 'tdbsam'
+#   }
 #
 #------------------------------------------------------------------------------
 class samba (
