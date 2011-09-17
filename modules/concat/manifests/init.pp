@@ -8,14 +8,14 @@
 #
 #   Tested platforms:
 #       - CentOS 5.6
-#	- CentOS 6.0
+#       - CentOS 6.0
 #
 # Parameters:
 #
-#   ensure: [ present | absent ]
-#   owner: User who will own the file.
-#   group: Group which will own the file.
-#   mode: The mode of the final file.
+#   ensure: [ 'present' | 'absent' ]
+#   owner:  User who will own the file.
+#   group:  Group which will own the file.
+#   mode:  The mode of the final file.
 #
 # Actions:
 #
@@ -86,6 +86,6 @@ define concat (
         command     => "cat ${fragdir}/* > ${name}",
         unless      => $ensure ? {
         'present'   => "test -z \"$(ls -A ${fragdir})\" && cat /dev/null > ${name}",
-        'absent'    => "rm ${name} || true" },
+        'absent'    => "rm -f ${name} || true" },
     }
 }
