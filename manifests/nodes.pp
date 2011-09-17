@@ -43,4 +43,13 @@ node 'puppet.popapp.com' {
         path        => '/etc/puppet',
         valid_users => 'marc',
     }
+
+    # Recursive mode and ownership:
+    file { '/etc/puppet':
+        owner   => 'root',
+        group   => 'puppet',
+        mode    => '0664',
+        recurse => 'true',
+        ignore  => '.git',
+    }
 }
