@@ -1,23 +1,24 @@
 
 [<%= name %>]
 
-<% if comment != '' -%>    comment = <%= comment %>
+<% if comment -%>    comment = <%= comment %>
 <% end -%>
-<% if path != '' -%>    path = <%= path %>
+<% if path -%>    path = <%= path %>
 <% end -%>
-<% if writeable != '' -%>    writeable = <%= writeable %>
+<% if writeable -%>    writeable = <%= writeable %>
 <% end -%>
-<% if browseable != '' -%>    browseable = <%= browseable %>
+<% if browseable -%>    browseable = <%= browseable %>
 <% end -%>
-<% if directory_mode != '' -%>    directory mode = <%= directory_mode %>
+<% if directory_mode -%>    directory mode = <%= directory_mode %>
 <% end -%>
-<% if force_directory_mode != '' -%>    force directory mode = <%= force_directory_mode %>
+<% if force_directory_mode -%>    force directory mode = <%= force_directory_mode %>
 <% end -%>
-<% if create_mode != '' -%>    create mode = <%= create_mode %>
+<% if create_mode -%>    create mode = <%= create_mode %>
 <% end -%>
-<% if force_create_mode != '' -%>    force create mode = <%= force_create_mode %>
+<% if force_create_mode -%>    force create mode = <%= force_create_mode %>
 <% end -%>
-<% if force_group != '' -%>    force group = <%= force_group %>
+<% if force_group -%>    force group = <%= force_group %>
 <% end -%>
-<% if valid_users != '' -%>    valid users = <%= valid_users %>
+<% if valid_users -%>    valid users = <% valid_users.each do |i| -%><%= i %>,<% end -%>
 <% end -%>
+

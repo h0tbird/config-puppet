@@ -4,11 +4,8 @@
 
 class base {
 
-    # Motd module:
-    class { 'motd': }
-
-    # Ntp service:
-    class { 'ntp': }
+    include motd  # Motd module.
+    include ntp   # NTP module.
 }
 
 #------------------------------------------------------------------------------
@@ -17,39 +14,14 @@ class base {
 
 node 'puppet.popapp.com' {
 
-    require base
+    include base
 
-    # Users:
-    user::real { 'marc':
-        pass   => extlookup('linux_pass_marc'),
-        groups => 'puppet',
-        samba  => 'yes'
-    }
+    class { 'r_puppetmaster':
 
-    user::real { 'debo':
-        pass   => extlookup('linux_pass_debo'),
-        groups => 'puppet',
-        samba  => 'yes'
-    }
-
-    # Samba service:
-    class { 'samba':
-        workgroup   => extlookup('samba_workgroup'),
-        hosts_allow => extlookup('samba_hosts_allow'),
-    }
-
-    # Samba shares:
-    samba::share { 'puppet':
-        path        => '/etc/puppet',
-        valid_users => 'marc',
-    }
-
-    # Recursive mode and ownership:
-    file { '/etc/puppet':
-        owner   => 'root',
-        group   => 'puppet',
-        mode    => '0664',
-        recurse => 'true',
-        ignore  => '.git',
+        # Samba service:
+        samba_workgroup   => extlookup('samba_workgroup'),
+        samba_hosts_allow => extlookup('samba_hosts_allow'),
+        samba_share_path  => '/etc/puppet',
+        samba_valid_users => [ 'marc', 'debo' ],
     }
 }

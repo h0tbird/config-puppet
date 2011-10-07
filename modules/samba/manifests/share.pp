@@ -18,8 +18,8 @@ define samba::share (
     $force_directory_mode = '0770',
     $create_mode          = '0660',
     $force_create_mode    = '0660',
-    $force_group          = '', 
-    $valid_users          = ''
+    $force_group          = undef, 
+    $valid_users          = undef
 
 ) {
 

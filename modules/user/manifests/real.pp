@@ -9,7 +9,7 @@
 #------------------------------------------------------------------------------
 define user::real (
 
-    $pass   = '',
+    $pass   = extlookup("linux_pass_${name}"),
     $groups = undef,
     $samba  = 'no',
     $ftp    = 'no'
