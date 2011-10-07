@@ -15,9 +15,7 @@ class ntp::config ( $ensure ) {
     require "${module_name}"
 
     # Check for valid values:
-    if ! ( $ensure in [ 'present', 'absent' ] ) {
-        fail ( "${module_name}::config 'ensure' must be one of: 'present' or 'absent'" )
-    }
+    if !( $ensure in [ 'present', 'absent' ] ) { fail("${module_name}::config 'ensure' must be one of: 'present' or 'absent'") }
 
     # Install or remove the configuration files:
     file {

@@ -17,8 +17,8 @@ define user::real (
 ) {
 
     # Check for valid values:
-    if ! ( $samba in [ 'yes', 'no' ] ) { fail("${module_name} 'samba' must be one of: 'yes' or 'no'") }
-    if ! ( $ftp in [ 'yes', 'no' ] ) { fail("${module_name} 'ftp' must be one of: 'yes' or 'no'") }
+    if !( $samba in [ 'yes', 'no' ] ) { fail("${module_name} 'samba' must be one of: 'yes' or 'no'") }
+    if !( $ftp in [ 'yes', 'no' ] ) { fail("${module_name} 'ftp' must be one of: 'yes' or 'no'") }
 
     # Includes:
     include user::virtual

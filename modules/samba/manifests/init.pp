@@ -58,6 +58,7 @@
 #
 #------------------------------------------------------------------------------
 class samba (
+
     $ensure          = 'running',
     $version         = 'present',
     $workgroup       = 'MYGROUP',
@@ -73,20 +74,13 @@ class samba (
     $password_server = '',
     $load_printers   = 'no',
     $cups_options    = ''
+
 ) {
 
     # Check for valid values:
-    if ! ( $ensure in [ 'running', 'stopped', 'absent' ] ) {
-        fail("${module_name} 'ensure' must be one of: 'running', 'stopped' or 'absent'")
-    }
-
-    if ! ( $version in [ 'present', 'latest' ] ) {
-        fail("${module_name} 'version' must be one of: 'present' or 'latest'")
-    }
-
-    if ! ( $security in [ 'user', 'domain', 'ads', 'server', 'share' ] ) {
-        fai("${module_name} 'security' must be one of: 'user', 'domain', 'ads', 'server' or 'share'")
-    }
+    if !( $ensure in [ 'running', 'stopped', 'absent' ] ) { fail("${module_name} 'ensure' must be one of: 'running', 'stopped' or 'absent'") }
+    if !( $version in [ 'present', 'latest' ] ) { fail("${module_name} 'version' must be one of: 'present' or 'latest'") }
+    if !( $security in [ 'user', 'domain', 'ads', 'server', 'share' ] ) { fai("${module_name} 'security' must be one of: 'user', 'domain', 'ads', 'server' or 'share'") }
 
     # Register this module:
     motd::register { "${module_name}": }

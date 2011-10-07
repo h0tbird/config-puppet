@@ -26,8 +26,6 @@ class samba::params {
             $service_name   = 'smb'
         }
 
-        default: {
-            fail ( "${module_name}::params ${operatingsystem} is not supported yet." )
-        }
+        default: { fail("${module_name}::params ${operatingsystem} is not supported yet.") }
     }
 }

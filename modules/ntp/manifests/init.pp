@@ -47,6 +47,7 @@
 #   }
 #------------------------------------------------------------------------------
 class ntp (
+
     $ensure     = 'running',
     $version    = 'present',
     $servers    = [ '0.centos.pool.ntp.org iburst',
@@ -55,16 +56,12 @@ class ntp (
     $tickers    = [ '0.centos.pool.ntp.org',
                     '1.centos.pool.ntp.org',
                     '2.centos.pool.ntp.org' ]
+
 ) {
 
     # Check for valid values:
-    if ! ( $ensure in [ 'running', 'stopped', 'absent' ] ) {
-        fail("${module_name} 'ensure' must be one of: 'running', 'stopped' or 'absent'")
-    }
-
-    if ! ( $version in [ 'present', 'latest' ] ) {
-        fail("${module_name} 'version' must be one of: 'present' or 'latest'")
-    }
+    if !( $ensure in [ 'running', 'stopped', 'absent' ] ) { fail("${module_name} 'ensure' must be one of: 'running', 'stopped' or 'absent'") }
+    if !( $version in [ 'present', 'latest' ] ) { fail("${module_name} 'version' must be one of: 'present' or 'latest'") }
 
     # Register this module:
     motd::register { "${module_name}": }

@@ -15,9 +15,7 @@ class ntp::install ( $ensure ) {
     require "${module_name}"
 
     # Check for valid values:
-    if ! ( $ensure in [ 'present', 'latest', 'absent' ] ) {
-        fail ( "${module_name}::install 'ensure' must be one of: 'present', 'latest' or 'absent'" )
-    }
+    if !( $ensure in [ 'present', 'latest', 'absent' ] ) { fail("${module_name}::install 'ensure' must be one of: 'present', 'latest' or 'absent'") }
 
     # Install or remove the package/s:
     package { $ntp::params::packages: ensure => $ensure }

@@ -8,7 +8,7 @@
 #
 #   Tested platforms:
 #       - CentOS 5.6
-#	- CentOS 6.0
+#       - CentOS 6.0
 #
 # Parameters:
 #
@@ -41,11 +41,13 @@
 #   }
 #------------------------------------------------------------------------------
 define concat::fragment(
+
     $target,
-    $content    = '',
-    $source     = '',
-    $order      = '10',
-    $ensure     = 'present'
+    $content = '',
+    $source  = '',
+    $order   = '10',
+    $ensure  = 'present'
+
 ) {
 
     # Set variables:
