@@ -1,24 +1,24 @@
 
 [<%= name %>]
 
-<% if comment != 'undef' -%>    comment = <%= comment %>
+<% if comment != :undef -%>    comment = <%= comment %>
 <% end -%>
-<% if path != 'undef' -%>    path = <%= path %>
+<% if path != :undef -%>    path = <%= path %>
 <% end -%>
-<% if writeable != 'undef' -%>    writeable = <%= writeable %>
+<% if writeable != :undef -%>    writeable = <%= writeable %>
 <% end -%>
-<% if browseable != 'undef' -%>    browseable = <%= browseable %>
+<% if browseable != :undef -%>    browseable = <%= browseable %>
 <% end -%>
-<% if directory_mode != 'undef' -%>    directory mode = <%= directory_mode %>
+<% if directory_mode != :undef -%>    directory mode = <%= directory_mode %>
 <% end -%>
-<% if force_directory_mode != 'undef' -%>    force directory mode = <%= force_directory_mode %>
+<% if force_directory_mode != :undef -%>    force directory mode = <%= force_directory_mode %>
 <% end -%>
-<% if create_mode != 'undef' -%>    create mode = <%= create_mode %>
+<% if create_mode != :undef -%>    create mode = <%= create_mode %>
 <% end -%>
-<% if force_create_mode != 'undef' -%>    force create mode = <%= force_create_mode %>
+<% if force_create_mode != :undef -%>    force create mode = <%= force_create_mode %>
 <% end -%>
-<% if force_group != 'undef' -%>    force group = <%= force_group %>
+<% if force_group != :undef -%>    force group = <%= force_group %>
 <% end -%>
-<% if valid_users != 'undef' -%>    valid users = <% valid_users.each do |i| -%><%= i %>,<% end -%>
+<% if valid_users != :undef -%>    valid users = <% valid_users.each do |i| -%><%= i %>,<% end -%>
 <% end -%>
 
