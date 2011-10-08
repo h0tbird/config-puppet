@@ -43,8 +43,8 @@
 define concat::fragment(
 
     $target,
-    $content = '',
-    $source  = '',
+    $content = undef,
+    $source  = undef,
     $order   = '10',
     $ensure  = 'present'
 
@@ -58,8 +58,7 @@ define concat::fragment(
     # If neither passed, but $ensure is in symlink form, make a symlink.
     if $content { File { content => $content } }
     elsif $source { File { source => $source } }
-    elsif $ensure in [ 'present', 'file', 'directory' ]
-    { fail('No content, source or symlink specified.') }
+    elsif $ensure in [ 'present', 'file', 'directory' ] { fail('No content, source or symlink specified.') }
 
     # Place the fragment file:
     file { "${fragdir}/${order}_${name}":

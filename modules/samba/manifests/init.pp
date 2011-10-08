@@ -70,10 +70,10 @@ class samba (
     $max_log_size    = '50',
     $security        = 'user',
     $passdb_backend  = 'tdbsam',
-    $realm           = '',
-    $password_server = '',
+    $realm           = undef,
+    $password_server = undef,
     $load_printers   = 'no',
-    $cups_options    = ''
+    $cups_options    = undef
 
 ) {
 

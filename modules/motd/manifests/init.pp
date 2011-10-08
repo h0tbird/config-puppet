@@ -27,17 +27,17 @@ class motd {
     # Define the target file:
     concat { '/etc/motd': }
 
-    # Set the file header:
-    concat::fragment { 'motd_header':
-        target  => '/etc/motd',
-        content => template("${module_name}/motd_header.erb"),
-        order   => '01'
-    }
+    # Set the file header and footer:
+    concat::fragment {
 
-    # Set the file footer:
-    concat::fragment { 'motd_footer':
-        target  => '/etc/motd',
-        content => template("${module_name}/motd_footer.erb"),
-        order   => '99'
+        'motd_header':
+            target  => '/etc/motd',
+            content => template("${module_name}/motd_header.erb"),
+            order   => '01';
+
+        'motd_footer':
+            target  => '/etc/motd',
+            content => template("${module_name}/motd_footer.erb"),
+            order   => '99'
     }
 }
