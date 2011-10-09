@@ -11,6 +11,16 @@ class r_puppetmaster (
 
 ) {
 
+    # Dependency relationship:
+    Gitrepo['puppet'] -> File["${samba_share_path}"] -> Samba::Share['puppet']
+
+    # Git clone:
+    gitrepo { 'puppet':
+        ensure => 'present',
+        source => 'git://github.com/h0tbird/puppet.git',
+        path   => '/etc/puppet',
+    }
+
     # Samba service:
     class { 'samba':
         workgroup   => $samba_workgroup,
@@ -35,6 +45,6 @@ class r_puppetmaster (
     # Users:
     user::real { $samba_valid_users:
         groups => 'puppet',
-        samba  => 'yes'
+        samba  => 'yes',
     }
 }
