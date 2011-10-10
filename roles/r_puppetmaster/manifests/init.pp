@@ -3,22 +3,34 @@
 #------------------------------------------------------------------------------
 class r_puppetmaster (
 
+    # Git clone:
+    $git_source,
+    $git_path,
+
     # Samba parameters:
-    $samba_workgroup   = undef,
-    $samba_hosts_allow = undef,
-    $samba_share_path  = undef,
-    $samba_valid_users = undef
+    $samba_workgroup,
+    $samba_hosts_allow,
+    $samba_valid_users
 
 ) {
 
     # Dependency relationship:
-    Gitrepo['puppet'] -> File["${samba_share_path}"] -> Samba::Share['puppet']
+    Gitrepo['puppet'] -> File["${git_path}"] -> Samba::Share['puppet']
 
     # Git clone:
     gitrepo { 'puppet':
         ensure => 'present',
-        source => 'git://github.com/h0tbird/puppet.git',
-        path   => '/etc/puppet',
+        source => $git_source,
+        path   => $git_path,
+    }
+
+    # Recursive mode and ownership:
+    file { $git_path:
+        owner   => 'root',
+        group   => 'puppet',
+        mode    => '0664',
+        recurse => 'true',
+        ignore  => '.git',
     }
 
     # Samba service:
@@ -29,17 +41,8 @@ class r_puppetmaster (
 
     # Samba share:
     samba::share { 'puppet':
-        path        => $samba_share_path,
+        path        => $git_path,
         valid_users => $samba_valid_users,
-    }
-
-    # Recursive mode and ownership:
-    file { $samba_share_path:
-        owner   => 'root',
-        group   => 'puppet',
-        mode    => '0664',
-        recurse => 'true',
-        ignore  => '.git',
     }
 
     # Users:
