@@ -30,7 +30,7 @@ class r_puppetmaster (
         group   => 'puppet',
         mode    => '0664',
         recurse => 'true',
-        ignore  => '.git',
+        ignore  => [ '.git', '.*.swp'],
     }
 
     # Samba service:
