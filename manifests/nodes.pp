@@ -4,8 +4,9 @@
 
 class base {
 
-    include motd  # Motd module.
-    include ntp   # NTP module.
+    include motd   # Motd module.
+    include ntp    # NTP module.
+    include puppet # Puppet module.
 }
 
 #------------------------------------------------------------------------------
