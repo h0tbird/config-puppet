@@ -14,7 +14,7 @@ class base {
 
 node 'puppet.popapp.com' {
 
-    include base
+    require base
 
     class { 'r_puppetmaster':
 
