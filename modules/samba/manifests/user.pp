@@ -9,8 +9,8 @@
 #------------------------------------------------------------------------------
 define samba::user ( $pass = '' ) {
 
-    Class['samba'] -> Samba::User["${name}"]
-    User[ $name ] -> Samba::User["${name}"]
+    Class[ 'samba::service' ] -> Samba::User[ $name ]
+    User[ $name ] -> Samba::User[ $name ]
 
     exec { "smbpasswd-${name}":
         user    => 'root',
