@@ -2,7 +2,7 @@ require 'fileutils'
 
 Puppet::Type.type(:gitrepo).provide(:git) do
     desc "Provides support for the gitrepo provider."
-    commands :gitcmd => "git"
+    optional_commands :gitcmd => "git"
 
     def create
         FileUtils.rm_rf resource[:path]
