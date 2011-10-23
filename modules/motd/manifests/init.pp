@@ -8,7 +8,7 @@
 #
 #   Tested platforms:
 #       - CentOS 5.6
-#	- CentOS 6.0
+#       - CentOS 6.0
 #
 # Actions:
 #
