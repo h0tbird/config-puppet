@@ -15,7 +15,7 @@ class r_puppetmaster (
 ) {
 
     # Dependency relationship:
-    Gitrepo['puppet'] -> File["${git_path}"] -> Samba::Share['puppet']
+    package { 'git': ensure => 'present' } -> Gitrepo['puppet'] -> File[$git_path] -> Samba::Share['puppet']
 
     # Git clone:
     gitrepo { 'puppet':
