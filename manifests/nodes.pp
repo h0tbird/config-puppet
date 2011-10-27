@@ -17,7 +17,7 @@ node /^puppet(\d+)\./ {
 
     require base
 
-    class { 'r_puppetmaster':
+    class { 'r_puppet':
 
         # Git clone:
         git_source => extlookup('puppet_git_repo'),
