@@ -1,9 +1,9 @@
 #------------------------------------------------------------------------------
-# Class: r_puppetmaster
+# Class: r_puppet
 #------------------------------------------------------------------------------
-class r_puppetmaster (
+class r_puppet (
 
-    # Git clone:
+    # Git repo:
     $git_source,
     $git_path,
 
@@ -15,22 +15,16 @@ class r_puppetmaster (
 ) {
 
     # Dependency relationship:
-    package { 'git': ensure => 'present' } -> Gitrepo['puppet'] -> File[$git_path] -> Samba::Share['puppet']
+    package { 'git': ensure => 'present' } -> Gitrepo['puppet'] -> Samba::Share['puppet']
 
-    # Git clone:
+    # Git repo:
     gitrepo { 'puppet':
-        ensure => 'present',
-        source => $git_source,
-        path   => $git_path,
-    }
-
-    # Recursive mode and ownership:
-    file { $git_path:
+        ensure  => 'present',
         owner   => 'root',
         group   => 'puppet',
-        mode    => '0664',
-        recurse => 'true',
-        ignore  => [ '.git', '.*.swp'],
+        exclude => '*.git/*',
+        source  => $git_source,
+        path    => $git_path,
     }
 
     # Samba service:
