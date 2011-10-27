@@ -21,8 +21,5 @@ class puppet::config ( $ensure ) {
     file { $puppet::params::service_config:
         ensure  => $ensure,
         content => template("${puppet::params::templates}/puppet.conf.erb"),
-        owner   => 'root',
-        group   => 'root',
-        mode    => '0644',
     }
 }
