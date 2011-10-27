@@ -22,6 +22,7 @@ class r_puppet (
         ensure  => 'present',
         owner   => 'root',
         group   => 'puppet',
+        mode    => '0664',
         exclude => '*.git/*',
         source  => $git_source,
         path    => $git_path,

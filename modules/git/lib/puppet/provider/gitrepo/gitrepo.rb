@@ -7,7 +7,7 @@ Puppet::Type.type(:gitrepo).provide(:gitrepo) do
     def create
         destroy
         system "git clone '#{resource[:source]}' '#{resource[:path]}'"
-        ownership
+        ownership; mode
     end
 
     def destroy
@@ -16,8 +16,7 @@ Puppet::Type.type(:gitrepo).provide(:gitrepo) do
 
     def exists?
         if File.directory?(resource[:path] + "/.git")
-            ownership
-            return true
+            ownership; mode; return true
         end
     end
 
@@ -27,6 +26,16 @@ Puppet::Type.type(:gitrepo).provide(:gitrepo) do
             group = resource[:group] || nil
             excld = resource[:exclude] || nil
             system "find '#{resource[:path]}' -not -iwholename '#{excld}' | xargs chown '#{owner}':'#{group}'"
+        end
+    end
+
+    def mode
+        if resource[:mode]
+            mode = resource[:mode] || nil
+            excld = resource[:exclude] || nil
+            system "find '#{resource[:path]}' -type f -not -iwholename '#{excld}' | xargs chmod '#{mode}'" 
+            mode = mode.gsub("4","5").gsub("6","7")
+            system "find '#{resource[:path]}' -type d -not -iwholename '#{excld}' | xargs chmod '#{mode}'"
         end
     end
 end

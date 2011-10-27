@@ -26,6 +26,15 @@ Puppet::Type.newtype(:gitrepo) do
         end
     end
 
+    newparam(:mode) do
+        desc "Mode the files should be (in octal)."
+        validate do |value|
+            unless value =~ /^[0-7]+$/
+                raise ArgumentError, "%s is not a valid mode." % value
+            end
+        end
+    end
+
     newparam(:owner) do
         desc "The user/uid that owns the repository files."
     end
