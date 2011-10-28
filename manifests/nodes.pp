@@ -1,31 +1,19 @@
 #------------------------------------------------------------------------------
-# This class is required by all nodes:
+# This node is inherited by all nodes:
 #------------------------------------------------------------------------------
 
-class base {
+node 'base' {
 
-    class { 'motd':                       }
-    class { 'ntp':    version => 'latest' }
-    class { 'puppet': version => 'latest' }
+    include motd
+    include ntp
+    include puppet
 }
 
 #------------------------------------------------------------------------------
 # Puppet masters:
 #------------------------------------------------------------------------------
 
-node /^puppet(\d+)\./ {
+node /^puppet(\d+)\.popapp/ inherits base {
 
-    require base
-
-    class { 'r_puppet':
-
-        # Git clone:
-        git_source => extlookup('puppet_git_repo'),
-        git_path   => extlookup('puppet_confdir'),
-
-        # Samba service:
-        samba_workgroup   => extlookup('samba_workgroup'),
-        samba_hosts_allow => extlookup('samba_hosts_allow'),
-        samba_valid_users => [ 'marc', 'debo' ],
-    }
+    include r_puppet
 }
