@@ -4,9 +4,9 @@
 
 class base {
 
-    include motd   # Motd module.
-    include ntp    # NTP module.
-    include puppet # Puppet module.
+    class { 'motd':                       }
+    class { 'ntp':    version => 'latest' }
+    class { 'puppet': version => 'latest' }
 }
 
 #------------------------------------------------------------------------------
