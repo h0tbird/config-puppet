@@ -4,8 +4,13 @@
 
 node 'base' {
 
-    include motd
+    # By default modules set this to 'present':
+    Package <||> { ensure => 'latest' }
+
+    # Modules to be included in all nodes:
     include ntp
+    include motd
+    include repos
     include puppet
 }
 
