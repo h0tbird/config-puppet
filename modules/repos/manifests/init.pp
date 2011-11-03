@@ -13,7 +13,8 @@ class repos {
             gpgkey         => 'http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs',
             failovermethod => 'priority',
             enabled        => '1',
-            gpgcheck       => '1';
+            gpgcheck       => '1',
+            notify         => Exec['yum_clean_all'];
 
         'epel':
             descr          => 'Extra Packages for Enterprise Linux 6 - $basearch',
@@ -22,7 +23,8 @@ class repos {
             exclude        => 'puppet* facter',
             failovermethod => 'priority',
             enabled        => '1',
-            gpgcheck       => '1';
+            gpgcheck       => '1',
+            notify         => Exec['yum_clean_all'];
 
         'epel-testing':
             descr          => 'Extra Packages for Enterprise Linux 6 - Testing - $basearch',
@@ -31,6 +33,15 @@ class repos {
             exclude        => 'puppet* facter',
             failovermethod => 'priority',
             enabled        => '1',
-            gpgcheck       => '1';
+            gpgcheck       => '1',
+            notify         => Exec['yum_clean_all'];
+    }
+
+    exec { 'yum_clean_all':
+        user        => 'root',
+        group       => 'root',
+        refreshonly => true,
+        path        => '/usr/bin',
+        command     => 'yum clean all',
     }
 }
