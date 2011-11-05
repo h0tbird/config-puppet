@@ -15,7 +15,7 @@ class r_puppet (
 ) {
 
     # Dependency relationship:
-    package { 'git': ensure => 'present' } -> Gitrepo['puppet'] -> Samba::Share['puppet']
+    class { 'puppet-server': } -> package { 'git': ensure => 'present' } -> Gitrepo['puppet'] -> Samba::Share['puppet']
 
     # Git repo:
     gitrepo { 'puppet':

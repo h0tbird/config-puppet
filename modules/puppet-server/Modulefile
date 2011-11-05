@@ -1,0 +1,11 @@
+name            'h0tbird-puppet-server'
+version         '1.0.0'
+source          'https://github.com/h0tbird/puppet'
+author          'Marc Villacorta'
+license         'GPL'
+summary         'Empty Module'
+description     'Empty Module'
+project_page    'https://github.com/h0tbird/puppet'
+
+## Add dependencies, if any:
+# dependency 'username/name', '>= 1.2.0'
