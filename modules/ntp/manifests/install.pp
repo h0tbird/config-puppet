@@ -12,7 +12,7 @@
 class ntp::install ( $ensure ) {
 
     # Deliberate cyclical dependency:
-    require "${module_name}"
+    require $module_name
 
     # Check for valid values:
     if !( $ensure in [ 'present', 'latest', 'absent' ] ) { fail("${module_name}::install 'ensure' must be one of: 'present', 'latest' or 'absent'") }

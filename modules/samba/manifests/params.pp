@@ -12,7 +12,7 @@
 class samba::params {
 
     # Deliberate cyclical dependency:
-    require "${module_name}"
+    require $module_name
 
     # Set values unique to particular platforms:
     $files = "puppet:///modules/${module_name}/${operatingsystem}/${operatingsystemrelease}"
@@ -21,7 +21,7 @@ class samba::params {
     case $operatingsystem {
 
         /(RedHat|CentOS|Fedora)/: {
-            $packages       = [ 'samba' ]
+            $packages       = 'samba'
             $service_config = '/etc/samba/smb.conf'
             $service_name   = 'smb'
         }

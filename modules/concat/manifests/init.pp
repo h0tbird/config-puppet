@@ -56,13 +56,13 @@ define concat (
     # Files and directories:
     file {
 
-         "${fragdir}":
+         $fragdir:
             ensure  => 'directory',
             owner   => 'root',
             group   => 'root',
             mode    => '0755';
 
-         "${name}":
+         $name:
             ensure  => $ensure,
             owner   => $owner,
             group   => $group,
@@ -73,7 +73,7 @@ define concat (
     exec { "base_${name}":
         user    => 'root',
         group   => 'root',
-        before  => File[ "${fragdir}" ],
+        before  => File[ "$fragdir" ],
         command => '/bin/mkdir /var/lib/puppet/concat',
         creates => '/var/lib/puppet/concat',
     }
@@ -83,7 +83,7 @@ define concat (
         user        => 'root',
         group       => 'root',
         refreshonly => true,
-        subscribe   => File[ "${name}" ],
+        subscribe   => File[ "$name" ],
         path        => [ '/bin', '/usr/bin' ],
         command     => "cat ${fragdir}/* > ${name}",
         unless      => $ensure ? {

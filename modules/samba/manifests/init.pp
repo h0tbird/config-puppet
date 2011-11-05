@@ -63,7 +63,7 @@ class samba (
     $version         = 'present',
     $workgroup       = 'MYGROUP',
     $server_string   = 'Samba Server Version %v',
-    $netbios_name    = "${hostname}",
+    $netbios_name    = $hostname,
     $interfaces      = 'lo eth0',
     $hosts_allow     = '127.',
     $log_file        = '/var/log/samba/%m.log',
@@ -83,7 +83,7 @@ class samba (
     if !( $security in [ 'user', 'domain', 'ads', 'server', 'share' ] ) { fai("${module_name} 'security' must be one of: 'user', 'domain', 'ads', 'server' or 'share'") }
 
     # Register this module:
-    motd::register { "${module_name}": }
+    motd::register { $module_name: }
 
     # Set the appropriate requirements:
     case $ensure {

@@ -29,5 +29,5 @@ define user::real (
     if $groups { User <| title == $name |> { groups +> $groups } }
 
     # Samba user:
-    if $samba == 'yes' { samba::user { "${name}": pass => $pass } }
+    if $samba == 'yes' { samba::user { $name: pass => $pass } }
 }

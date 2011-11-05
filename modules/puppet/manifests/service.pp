@@ -12,7 +12,7 @@
 class puppet::service ( $ensure ) {
 
     # Deliberate cyclical dependency:
-    require "${module_name}"
+    require $module_name
 
     # Check for valid values:
     if !( $ensure in [ 'running', 'stopped' ] ) { fail("${module_name}::service 'ensure' must be one of: 'running' or 'stopped'") }

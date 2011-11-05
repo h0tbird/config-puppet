@@ -46,7 +46,7 @@ class puppet-server (
     if !( $version in [ 'present', 'latest' ] ) { fail("${module_name} 'version' must be one of: 'present' or 'latest'") }
 
     # Register this module:
-    motd::register { "${module_name}": }
+    motd::register { $module_name: }
 
     # Set the appropriate requirements:
     case $ensure {

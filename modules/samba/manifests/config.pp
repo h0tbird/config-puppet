@@ -12,7 +12,7 @@
 class samba::config ( $ensure ) {
 
     # Deliberate cyclical dependency:
-    require "${module_name}"
+    require $module_name
 
     # Check for valid values:
     if !( $ensure in [ 'present', 'absent' ] ) { fail("${module_name}::config 'ensure' must be one of: 'present' or 'absent'") }

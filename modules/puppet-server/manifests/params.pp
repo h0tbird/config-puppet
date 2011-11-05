@@ -12,7 +12,7 @@
 class puppet-server::params {
 
     # Deliberate cyclical dependency:
-    require "${module_name}"
+    require $module_name
 
     # Set values unique to particular platforms:
     $files = "puppet:///modules/${module_name}/${operatingsystem}/${operatingsystemrelease}"
