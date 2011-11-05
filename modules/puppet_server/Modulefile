@@ -1,4 +1,4 @@
-name            'h0tbird-puppet-server'
+name            'h0tbird-puppet_server'
 version         '1.0.0'
 source          'https://github.com/h0tbird/puppet'
 author          'Marc Villacorta'

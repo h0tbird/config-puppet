@@ -1,5 +1,5 @@
 #------------------------------------------------------------------------------
-# Class: puppet-server
+# Class: puppet_server
 #
 #   This module manages the puppetmaster service.
 #
@@ -20,21 +20,21 @@
 #
 #   Sample Usage:
 #
-#       include puppet-server
+#       include puppet_server
 #
 #       or
 #
-#       class { 'puppet-server': }
+#       class { 'puppet_server': }
 #
 #       or
 #
-#       class { 'puppet-server':
+#       class { 'puppet_server':
 #           ensure  => 'running',
 #           version => 'present',
 #       }
 #
 #------------------------------------------------------------------------------
-class puppet-server (
+class puppet_server (
 
     $ensure  = 'running',
     $version = 'present'

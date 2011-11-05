@@ -1,15 +1,15 @@
 #------------------------------------------------------------------------------
-# Class: puppet-server::params
+# Class: puppet_server::params
 #
-#   This class is part of the puppet-server module.
+#   This class is part of the puppet_server module.
 #   You should not be calling this class.
-#   The delegated class is Class['puppet-server'].
+#   The delegated class is Class['puppet_server'].
 #
 #   Marc Villacorta <marc.villacorta@gmail.com>
 #   2011-11-05
 #
 #------------------------------------------------------------------------------
-class puppet-server::params {
+class puppet_server::params {
 
     # Deliberate cyclical dependency:
     require $module_name
