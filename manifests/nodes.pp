@@ -7,7 +7,7 @@ node 'base' {
     include ntp
     include motd
     include repos
-    include puppet_client
+    include puppet
 }
 
 #------------------------------------------------------------------------------

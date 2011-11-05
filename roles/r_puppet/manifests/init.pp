@@ -14,10 +14,20 @@ class r_puppet (
 
 ) {
 
-    # Dependency relationship:
-    class { 'puppet_server': } -> package { 'git': ensure => 'present' } -> Gitrepo['puppet'] -> Samba::Share['puppet']
+    # Puppet master:
+    Package <| title == 'puppet' |> { name +> 'puppet-server' }
+    Service <| title == 'puppet' |> { name +> 'puppetmaster' }
+
+    exec { 'rmssl':
+        refreshonly => true,
+        subscribe   => Package['puppet'],
+        before      => Service['puppet'],
+        command     => '/bin/rm -rf /var/lib/puppet/ssl',
+    }
 
     # Git repo:
+    package { 'git': ensure => 'present' }
+
     gitrepo { 'puppet':
         ensure  => 'present',
         owner   => 'root',
@@ -38,6 +48,7 @@ class r_puppet (
     samba::share { 'puppet':
         path        => $git_path,
         valid_users => $samba_valid_users,
+        require     => Gitrepo['puppet'],
     }
 
     # Users:
