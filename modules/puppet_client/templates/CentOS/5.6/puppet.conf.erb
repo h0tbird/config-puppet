@@ -1,1 +1,23 @@
-/etc/puppet/puppet.conf
+[main]
+
+    confdir    = /etc/puppet
+    vardir     = /var/lib/puppet
+    logdir     = /var/log/puppet
+    rundir     = /var/run/puppet
+    ssldir     = $vardir/ssl
+    pluginsync = true
+
+[agent]
+
+    classfile     = $vardir/classes.txt
+    localconfig   = $vardir/localconfig
+    graphdir      = $vardir/state/graphs
+    graph         = true
+    factsignore   = .svn CVS .git *.markdown .*.swp
+    pluginsignore = .svn CVS .git *.markdown .*.swp
+
+[master]
+
+    modulepath    = $confdir/modules:$confdir/roles
+    certname      = puppet.<%= domain %>
+    dns_alt_names = puppet
