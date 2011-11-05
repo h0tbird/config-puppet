@@ -19,4 +19,13 @@ class puppet_server::install ( $ensure ) {
 
     # Install or remove the package/s:
     package { $puppet_server::params::packages: ensure => $ensure }
+
+    # Clean SSL:
+    exec { 'rmrfssl':
+        user        => 'root',
+        group       => 'root',
+        refreshonly => true,
+        subscribe   => Package[ $puppet_server::params::packages ],
+        command     => '/bin/rm -rf /var/lib/puppet/ssl',
+    }
 }
