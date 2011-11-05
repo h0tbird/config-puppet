@@ -1,15 +1,15 @@
 #------------------------------------------------------------------------------
-# Class: puppet::params
+# Class: puppet_client::params
 #
-#   This class is part of the puppet module.
+#   This class is part of the puppet_client module.
 #   You should not be calling this class.
-#   The delegated class is Class['puppet'].
+#   The delegated class is Class['puppet_client'].
 #
 #   Marc Villacorta <marc.villacorta@gmail.com>
 #   2011-10-12
 #
 #------------------------------------------------------------------------------
-class puppet::params {
+class puppet_client::params {
 
     # Deliberate cyclical dependency:
     require $module_name
