@@ -6,6 +6,7 @@ node 'base' {
 
     include ntp
     include motd
+    include hosts
     include repos
     include puppet
 }
