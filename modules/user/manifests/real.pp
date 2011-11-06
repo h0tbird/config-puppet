@@ -10,10 +10,10 @@
 define user::real (
 
     $pass   = extlookup("linux_pass_${name}"),
-    $groups = undef,
     $shell  = undef,
-    $samba  = undef,
-    $ftp    = undef
+    $home   = undef,
+    $groups = undef,
+    $samba  = undef
 
 ) {
 
@@ -24,6 +24,16 @@ define user::real (
     if $shell {
         User <| title == $name |> { password => mkpasswd( $pass, $name ) }
         User <| title == $name |> { shell => '/bin/bash' }
+    }
+
+    if $home {
+        exec { "${name}-home":
+            refreshonly => true,
+            subscribe   => User[$name],
+            path        => '/bin',
+            command     => "cp -r /etc/skel /home/${name} && chown -R ${name}:${name} /home/${name}",
+            creates     => "/home/${name}",
+        }
     }
 
     if $groups { User <| title == $name |> { groups +> $groups } }
