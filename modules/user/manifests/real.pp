@@ -11,23 +11,24 @@ define user::real (
 
     $pass   = extlookup("linux_pass_${name}"),
     $groups = undef,
-    $samba  = 'no',
-    $ftp    = 'no'
+    $shell  = undef,
+    $samba  = undef,
+    $ftp    = undef
 
 ) {
-
-    # Check for valid values:
-    if !( $samba in [ 'yes', 'no' ] ) { fail("${module_name} 'samba' must be one of: 'yes' or 'no'") }
-    if !( $ftp in [ 'yes', 'no' ] ) { fail("${module_name} 'ftp' must be one of: 'yes' or 'no'") }
 
     # Includes:
     include user::virtual
 
     # Linux user is mandatory:
-    realize ( User[ $name ], Group[ $name ] )
-    User <| title == $name |> { password => mkpasswd( $pass, $name ) }
+    if $shell {
+        User <| title == $name |> { password => mkpasswd( $pass, $name ) }
+        User <| title == $name |> { shell => '/bin/bash' }
+    }
+
     if $groups { User <| title == $name |> { groups +> $groups } }
+    realize ( User[ $name ], Group[ $name ] )
 
     # Samba user:
-    if $samba == 'yes' { samba::user { $name: pass => $pass } }
+    if $samba { samba::user { $name: pass => $pass } }
 }
