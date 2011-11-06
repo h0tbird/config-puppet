@@ -9,11 +9,12 @@
 #------------------------------------------------------------------------------
 define user::real (
 
-    $pass   = extlookup("linux_pass_${name}"),
-    $shell  = undef,
-    $home   = undef,
-    $groups = undef,
-    $samba  = undef
+    $has_password   = undef,
+    $can_login      = undef,
+    $create_home    = undef,
+    $other_groups   = undef,
+    $is_samba_user  = undef,
+    $password       = extlookup("linux_pass_${name}")
 
 ) {
 
@@ -21,12 +22,12 @@ define user::real (
     include user::virtual
 
     # Linux user is mandatory:
-    if $shell {
-        User <| title == $name |> { password => mkpasswd( $pass, $name ) }
-        User <| title == $name |> { shell => '/bin/bash' }
-    }
+    if $has_password { User <| title == $name |> { password => mkpasswd( $password, $name ) } }
+    if $can_login    { User <| title == $name |> { shell => '/bin/bash' } }
+    if $other_groups { User <| title == $name |> { groups +> $other_groups } }
+    realize (User[$name], Group[$name])
 
-    if $home {
+    if $create_home {
         exec { "${name}-home":
             refreshonly => true,
             subscribe   => User[$name],
@@ -36,9 +37,6 @@ define user::real (
         }
     }
 
-    if $groups { User <| title == $name |> { groups +> $groups } }
-    realize ( User[ $name ], Group[ $name ] )
-
     # Samba user:
-    if $samba { samba::user { $name: pass => $pass } }
+    if $is_samba_user { samba::user { $name: pass => $password } }
 }

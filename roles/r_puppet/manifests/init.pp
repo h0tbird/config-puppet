@@ -55,8 +55,10 @@ class r_puppet (
 
     # Users:
     user::real { $samba_valid_users:
-        groups => 'puppet',
-        home   => true,
-        samba  => true,
+        other_groups   => 'puppet',
+        create_home    => true,
+        is_samba_user  => true,
+        can_login      => true,
+        has_password   => false,
     }
 }
