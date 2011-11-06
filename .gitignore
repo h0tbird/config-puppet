@@ -1,4 +1,3 @@
-manifests/extdata/*.csv
 modules/*/pkg
 *.swp
 .DS_Store
