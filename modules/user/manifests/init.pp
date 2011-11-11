@@ -43,4 +43,11 @@ class user::virtual {
         ensure  => present,
         gid     => '502',
     }
+
+    @ssh_authorized_key { 'deborah.aguilar':
+        ensure  => present,
+        key     => extlookup('ssh/pub_key/deborah.aguilar'),
+        type    => 'ssh-rsa',
+        user    => 'deborah.aguilar',
+    }
 }

@@ -60,5 +60,6 @@ class r_puppet (
         is_samba_user  => true,
         can_login      => true,
         has_password   => false,
+        has_ssh_keys   => true,
     }
 }
