@@ -25,7 +25,9 @@ linux/pass/deborah.aguilar,"password"
 #------------------------------------------------------------------------------
 
 ssh/pub_key/marc.villacorta,"AAAAB3NzaC1yc2EAAAADAQABAAABAQDhIkAzWDvjJjtJkO+qjAogxiryZt3B36q4JPSMX6WEB7LpSNPzt4NVe0tSkswZ/KkmJmuN4K0gWFK/NO7MnuM5hCdo8j786o+a48h3GNsqFG1GloJVQSkDSOZgDxfMRNLD4oEQ0wx7q7kwlY7i1q8myue+qoy/bsRu35qwLVNlnOe/xe9gNPb4nnRJksober+qBhGxB/WOeiKmyWy7/OrH74tuRePI5+Zi9bnLNp01sJefsvMjSAXi+iRf0WNcSguN7az1g6P40iWQ6QGZPkBEXKHcCUp+C80nNDX/tdhlEqFElvGIfsXOHDavRiPSPZSNc3a8ngAHNq2ox0NP+VvR"
+ssh/pub_key/marc.villacorta/other_users,"root"
 ssh/pub_key/deborah.aguilar,"AAAAB3NzaC1yc2EAAAADAQABAAABAQCVblqnZu6pnuHyIqrYIVfmIn4LLo98nQTcUiDTBuyo1k2fOeSlMz8tDIB0fZpyOaoTFASTIGF4pSNczNlv23kwYj5mIuctLmiNF0+VCEWeE0wj7LEA7s1/YXziKBczVkFhl06uPNQ/OHhEKy7LjPn9DTX2NFnWO00GQ+oyLhTMMe5O8OTmtT/ySNYhouhxR7jdMtOo4qw2wkGVXk123A+i1hCpvylUaS70MkM08he/q99pjT3f1VbZg6mw6bPXtM+de4RkkCFF3T53djy4Omil6yiAGODzVIVBXXUuZtU+YlsWtATac3Vs0nFcgujqMKRvvuMVy9/ZejLG4eQartzB"
+ssh/pub_key/deborah.aguilar/other_users,"root"
 
 #------------------------------------------------------------------------------
 # Hosts:

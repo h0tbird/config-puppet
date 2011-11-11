@@ -56,7 +56,7 @@ class r_puppet (
     # Users:
     user::real { $samba_valid_users:
         other_groups   => 'puppet',
-        create_home    => true,
+        managehome     => true,
         is_samba_user  => true,
         can_login      => true,
         has_password   => false,

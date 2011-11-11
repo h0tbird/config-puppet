@@ -12,7 +12,7 @@ define user::real (
     $has_password   = undef,
     $has_ssh_keys   = undef,
     $can_login      = undef,
-    $create_home    = undef,
+    $managehome     = undef,
     $other_groups   = undef,
     $is_samba_user  = undef,
     $password       = extlookup("linux/pass/${name}")
@@ -26,20 +26,10 @@ define user::real (
     if $has_password { User <| title == $name |> { password => mkpasswd($password, $name) } }
     if $can_login    { User <| title == $name |> { shell => '/bin/bash' } }
     if $other_groups { User <| title == $name |> { groups +> $other_groups } }
+    if $managehome   { User <| title == $name |> { managehome => $managehome } }
+    if $has_ssh_keys { Ssh_authorized_key <| title == $name |> { user +> extlookup("ssh/pub_key/${name}/other_users") } }
+
     realize (User[$name], Group[$name])
-
-    if $create_home {
-
-        exec { "${name}-home":
-            refreshonly => true,
-            subscribe   => User[$name],
-            path        => '/bin',
-            command     => "cp -r /etc/skel /home/${name} && chown -R ${name}:${name} /home/${name}",
-            creates     => "/home/${name}",
-        }
-
-        if $has_ssh_keys { Ssh_authorized_key <| title == $name |> -> Exec["${name}-home"] }
-    }
 
     # Samba user:
     if $is_samba_user { samba::user { $name: pass => $password } }
