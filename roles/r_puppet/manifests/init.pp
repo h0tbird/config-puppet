@@ -4,13 +4,13 @@
 class r_puppet (
 
     # Git repo:
-    $git_source = extlookup('puppet_git_repo'),
-    $git_path   = extlookup('puppet_confdir'),
+    $git_source = extlookup('puppet/git/repo'),
+    $git_path   = extlookup('puppet/confdir'),
 
     # Samba parameters:
-    $samba_workgroup   = extlookup('samba_workgroup'),
-    $samba_hosts_allow = extlookup('samba_hosts_allow'),
-    $samba_valid_users = extlookup('samba_valid_users')
+    $samba_workgroup   = extlookup('samba/workgroup'),
+    $samba_hosts_allow = extlookup('samba/hosts_allow'),
+    $samba_valid_users = extlookup('samba/valid_users')
 
 ) {
 

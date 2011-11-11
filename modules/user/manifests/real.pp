@@ -14,7 +14,7 @@ define user::real (
     $create_home    = undef,
     $other_groups   = undef,
     $is_samba_user  = undef,
-    $password       = extlookup("linux_pass_${name}")
+    $password       = extlookup("linux/pass/${name}")
 
 ) {
 

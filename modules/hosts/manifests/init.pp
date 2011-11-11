@@ -14,6 +14,6 @@ class hosts {
 
         'puppet':
             ensure       => 'present',
-            ip           => extlookup('host_puppet'),
+            ip           => extlookup('host/puppet'),
     }
 }
