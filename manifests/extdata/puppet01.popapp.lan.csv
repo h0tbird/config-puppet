@@ -6,7 +6,7 @@
 r_puppet/users,"marc.villacorta","deborah.aguilar"
 
 # git:
-r_puppet/git/source,"git@github.com:h0tbird/puppet.git"
+r_puppet/git/source,"git://github.com/h0tbird/puppet.git"
 r_puppet/git/path,"/etc/puppet"
 
 # samba:
