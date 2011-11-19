@@ -1,17 +1,24 @@
 #------------------------------------------------------------------------------
-# Puppet:
+# r_puppet:
 #------------------------------------------------------------------------------
 
-puppet/git/repo,"git://github.com/h0tbird/puppet.git"
-puppet/confdir,"/etc/puppet"
+# r_puppet:
+r_puppet/users,"marc.villacorta","deborah.aguilar"
+
+# git:
+r_puppet/git/source,"git@github.com:h0tbird/puppet.git"
+r_puppet/git/path,"/etc/puppet"
+
+# samba:
+r_puppet/samba/workgroup,"POPAPP"
+r_puppet/samba/hosts_allow,"127. 192.168.1."
 
 #------------------------------------------------------------------------------
-# Samba:
+# Linux:
 #------------------------------------------------------------------------------
 
-samba/workgroup,"POPAPP"
-samba/hosts_allow,"127. 192.168.1."
-samba/valid_users,"marc.villacorta","deborah.aguilar"
+linux/pass/marc.villacorta,"password"
+linux/pass/deborah.aguilar,"password"
 
 #------------------------------------------------------------------------------
 # Linux:

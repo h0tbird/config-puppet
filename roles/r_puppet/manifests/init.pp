@@ -3,14 +3,18 @@
 #------------------------------------------------------------------------------
 class r_puppet (
 
-    # Git repo:
-    $git_source = extlookup('puppet/git/repo'),
-    $git_path   = extlookup('puppet/confdir'),
+    # r_puppet:
+    $users = extlookup("${module_name}/users", undef),
 
-    # Samba parameters:
-    $samba_workgroup   = extlookup('samba/workgroup'),
-    $samba_hosts_allow = extlookup('samba/hosts_allow'),
-    $samba_valid_users = extlookup('samba/valid_users')
+    # Git:
+    $git        = true,
+    $git_source = extlookup("${module_name}/git/source", undef),
+    $git_path   = extlookup("${module_name}/git/path", undef),
+
+    # Samba:
+    $samba             = true,
+    $samba_workgroup   = extlookup("${module_name}/samba/workgroup", undef),
+    $samba_hosts_allow = extlookup("${module_name}/samba/hosts_allow", undef)
 
 ) {
 
@@ -27,39 +31,47 @@ class r_puppet (
         command     => '/bin/rm -rf /var/lib/puppet/ssl',
     }
 
-    # Git repo:
-    package { 'git': ensure => 'present' }
-
-    gitrepo { 'puppet':
-        ensure  => 'present',
-        owner   => 'root',
-        group   => 'puppet',
-        mode    => '0664',
-        exclude => '*.git/*',
-        source  => $git_source,
-        path    => $git_path,
-    }
-
-    # Samba service:
-    class { 'samba':
-        workgroup   => $samba_workgroup,
-        hosts_allow => $samba_hosts_allow,
-    }
-
-    # Samba share:
-    samba::share { 'puppet':
-        path        => $git_path,
-        valid_users => $samba_valid_users,
-        require     => Gitrepo['puppet'],
-    }
-
     # Users:
-    user::real { $samba_valid_users:
+    user::real { $users:
         other_groups   => 'puppet',
         managehome     => true,
-        is_samba_user  => true,
+        is_samba_user  => $samba,
         can_login      => true,
         has_password   => false,
         has_ssh_keys   => true,
+    }
+
+    # Git repo:
+    if ($git and $git != 'false') {
+
+        include git
+
+        git::config { $users: }
+
+        gitrepo { 'puppet':
+            ensure  => 'present',
+            owner   => 'root',
+            group   => 'puppet',
+            mode    => '0664',
+            exclude => '*.git/*',
+            source  => $git_source,
+            path    => $git_path,
+        }
+    }
+
+    # Samba service:
+    if ($samba and $samba != 'false') {
+
+        class { 'samba':
+            workgroup   => $samba_workgroup,
+            hosts_allow => $samba_hosts_allow,
+        }
+
+        # Samba share:
+        samba::share { 'puppet':
+            path        => $git_path,
+            valid_users => $users,
+            require     => Gitrepo['puppet'],
+        }
     }
 }
