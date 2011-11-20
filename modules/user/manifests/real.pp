@@ -27,7 +27,7 @@ define user::real (
     if $can_login    { User <| title == $name |> { shell => '/bin/bash' } }
     if $other_groups { User <| title == $name |> { groups +> $other_groups } }
     if $managehome   { User <| title == $name |> { managehome => $managehome } }
-    if $has_ssh_keys { Ssh_authorized_key <| title == $name |> { user +> extlookup("ssh/pub_key/${name}/other_users") } }
+    if $has_ssh_keys { ssh::key { $name: users => extlookup("ssh/pub_key/${name}/other_users") } }
 
     realize (User[$name], Group[$name])
 

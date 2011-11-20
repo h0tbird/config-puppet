@@ -21,13 +21,6 @@ class user::virtual {
         gid     => '501',
     }
 
-    @ssh_authorized_key { 'marc.villacorta':
-        ensure  => present,
-        key     => extlookup('ssh/pub_key/marc.villacorta'),
-        type    => 'ssh-rsa',
-        user    => 'marc.villacorta',
-    }
-
     # Debo
     @user { 'deborah.aguilar':
         ensure     => present,
@@ -44,12 +37,5 @@ class user::virtual {
     @group { 'deborah.aguilar':
         ensure  => present,
         gid     => '502',
-    }
-
-    @ssh_authorized_key { 'deborah.aguilar':
-        ensure  => present,
-        key     => extlookup('ssh/pub_key/deborah.aguilar'),
-        type    => 'ssh-rsa',
-        user    => 'deborah.aguilar',
     }
 }
