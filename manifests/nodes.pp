@@ -5,6 +5,7 @@
 node 'base' {
 
     include ntp
+    include ssh
     include motd
     include hosts
     include repos
