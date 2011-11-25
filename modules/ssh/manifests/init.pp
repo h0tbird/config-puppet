@@ -9,11 +9,29 @@
 #   Tested platforms:
 #       - CentOS 6.0
 #
-#   Parameters:
+# Parameters:
 #
-#   Actions:
+#   ensure:  [ 'running' | 'stopped' | 'absent' ]
+#   version: [ 'present' | 'latest' ]
 #
-#   Sample Usage:
+# Actions:
+#
+#   Installs, configures, manages and removes the ssh service.
+#
+# Sample Usage:
+#
+#   include ssh
+#
+#   or
+#
+#   class { 'ssh': }
+#
+#   or
+#
+#   class {
+#       ensure  => 'running',
+#       version => 'present'
+#   }
 #
 #------------------------------------------------------------------------------
 class ssh (
