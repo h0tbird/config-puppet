@@ -53,7 +53,6 @@ class r_puppet (
             owner   => 'root',
             group   => 'puppet',
             mode    => '0664',
-            exclude => '*.git/*',
             source  => $git_source,
             path    => $git_path,
         }
