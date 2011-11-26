@@ -9,17 +9,14 @@
 #   2011-10-12
 #
 #------------------------------------------------------------------------------
-class puppet::config ( $ensure ) {
+class puppet::config {
 
     # Deliberate cyclical dependency:
     require $module_name
 
-    # Check for valid values:
-    if !( $ensure in [ 'present', 'absent' ] ) { fail("${module_name}::config 'ensure' must be one of: 'present' or 'absent'") }
-
-    # Install or remove the configuration files:
+    # Install the configuration files:
     file { $puppet::params::service_config:
-        ensure  => $ensure,
+        ensure  => 'present',
         content => template("${puppet::params::templates}/puppet.conf.erb"),
     }
 }

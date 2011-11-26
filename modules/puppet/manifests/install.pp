@@ -15,8 +15,8 @@ class puppet::install ( $ensure ) {
     require $module_name
 
     # Check for valid values:
-    if !( $ensure in [ 'present', 'latest', 'absent' ] ) { fail("${module_name}::install 'ensure' must be one of: 'present', 'latest' or 'absent'") }
+    if !($ensure in ['present','latest']) { fail("${module_name}::install 'ensure' must be one of: 'present' or 'latest'") }
 
-    # Install or remove the package/s:
+    # Install the package/s:
     package { $puppet::params::packages: ensure => $ensure }
 }

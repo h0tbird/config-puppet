@@ -21,7 +21,7 @@ class puppet::params {
     case $operatingsystem {
 
         /(RedHat|CentOS|Fedora)/: {
-            $packages       = [ 'puppet', 'facter' ]
+            $packages       = ['puppet','facter']
             $service_config = '/etc/puppet/puppet.conf'
             $service_name   = 'puppet'
         }
