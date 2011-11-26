@@ -44,11 +44,7 @@ class r_puppet (
     # Git repo:
     if ($git and $git != 'false') {
 
-        include git
-
-        git::config { $users: }
-
-        gitrepo { 'puppet':
+        git::repo { 'puppet':
             ensure  => 'present',
             owner   => 'root',
             group   => 'puppet',
