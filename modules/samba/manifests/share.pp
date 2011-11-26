@@ -6,6 +6,15 @@
 #   Marc Villacorta <marc.villacorta@gmail.com>
 #   2011-06-10
 #
+#   Tested platforms:
+#       - CentOS 6.0
+#
+# Parameters:
+#
+# Actions:
+#
+# Sample Usage:
+#
 #------------------------------------------------------------------------------
 define samba::share (
 
@@ -18,15 +27,15 @@ define samba::share (
     $force_directory_mode = '0770',
     $create_mode          = '0660',
     $force_create_mode    = '0660',
-    $force_group          = undef, 
+    $force_group          = undef,
     $valid_users          = undef
 
 ) {
 
     # Check for valid values:
-    if !( $ensure in [ 'present', 'absent' ] ) { fail("${module_name}::share 'ensure' must be one of: 'present' or 'absent'") }
-    if !( $writeable in [ 'yes', 'no' ] ) { fail("${module_name}::share 'writeable' must be one of: 'yes' or 'no'") }
-    if !( $browseable in [ 'yes', 'no' ] ) { fail("${module_name}::share 'browseable' must be one of: 'yes' or 'no'") }
+    if !($ensure in ['present','absent']) { fail("${module_name}::share 'ensure' must be one of: 'present' or 'absent'") }
+    if !($writeable in ['yes','no']) { fail("${module_name}::share 'writeable' must be one of: 'yes' or 'no'") }
+    if !($browseable in ['yes','no']) { fail("${module_name}::share 'browseable' must be one of: 'yes' or 'no'") }
 
     # Create the file fragment:
     concat::fragment { $name:

@@ -6,11 +6,20 @@
 #   Marc Villacorta <marc.villacorta@gmail.com>
 #   2011-06-10
 #
+#   Tested platforms:
+#       - CentOS 6.0
+#
+# Parameters:
+#
+# Actions:
+#
+# Sample Usage:
+#
 #------------------------------------------------------------------------------
 define samba::user ( $pass = '' ) {
 
-    Class[ 'samba::service' ] -> Samba::User[ $name ]
-    User[ $name ] -> Samba::User[ $name ]
+    Class['samba::service'] -> Samba::User[$name]
+    if defined(User[$name]) { User[$name] -> Samba::User[$name] }
 
     exec { "smbpasswd-${name}":
         user    => 'root',

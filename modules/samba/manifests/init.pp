@@ -12,7 +12,7 @@
 #
 # Parameters:
 #
-#   ensure:          [ 'running' | 'stopped' | 'absent' ]
+#   ensure:          [ 'running' | 'stopped' ]
 #   version:         [ 'present' | 'latest' ]
 #   workgroup:       [ string ]
 #   server_string:   [ string ]
@@ -30,7 +30,7 @@
 #
 # Actions:
 #
-#   Installs, configures, manages and removes the samba service.
+#   Installs, configures and manages the samba service.
 #
 # Sample Usage:
 #
@@ -78,28 +78,16 @@ class samba (
 ) {
 
     # Check for valid values:
-    if !( $ensure in [ 'running', 'stopped', 'absent' ] ) { fail("${module_name} 'ensure' must be one of: 'running', 'stopped' or 'absent'") }
-    if !( $version in [ 'present', 'latest' ] ) { fail("${module_name} 'version' must be one of: 'present' or 'latest'") }
-    if !( $security in [ 'user', 'domain', 'ads', 'server', 'share' ] ) { fai("${module_name} 'security' must be one of: 'user', 'domain', 'ads', 'server' or 'share'") }
+    if !($ensure in ['running','stopped']) { fail("${module_name} 'ensure' must be one of: 'running' or 'stopped'") }
+    if !($version in ['present','latest']) { fail("${module_name} 'version' must be one of: 'present' or 'latest'") }
+    if !($security in ['user','domain','ads','server','share' ]) { fai("${module_name} 'security' must be one of: 'user', 'domain', 'ads', 'server' or 'share'") }
 
     # Register this module:
-    motd::register { $module_name: }
+    if defined(Class['motd']) { motd::register { $module_name: } }
 
     # Set the appropriate requirements:
-    case $ensure {
-
-        'running', 'stopped': {
-            class { "${module_name}::params": } ->
-            class { "${module_name}::install": ensure => $version  } ->
-            class { "${module_name}::config":  ensure => 'present' } ~>
-            class { "${module_name}::service": ensure => $ensure   }
-        }
-
-        'absent': {
-            class { "${module_name}::params": } ->
-            class { "${module_name}::service": ensure => 'stopped' } ->
-            class { "${module_name}::config":  ensure => 'absent'  } ->
-            class { "${module_name}::install": ensure => 'absent'  }
-        }
-    }
+    class { "${module_name}::params": } ->
+    class { "${module_name}::install": ensure => $version } ->
+    class { "${module_name}::config": } ~>
+    class { "${module_name}::service": ensure => $ensure }
 }

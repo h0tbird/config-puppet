@@ -9,20 +9,17 @@
 #   2011-06-10
 #
 #------------------------------------------------------------------------------
-class samba::config ( $ensure ) {
+class samba::config {
 
     # Deliberate cyclical dependency:
     require $module_name
 
-    # Check for valid values:
-    if !( $ensure in [ 'present', 'absent' ] ) { fail("${module_name}::config 'ensure' must be one of: 'present' or 'absent'") }
-
     # Define the target file:
-    concat { $samba::params::service_config: ensure => $ensure }
+    concat { $samba::params::service_config: ensure => 'present' }
 
     # Config file header:
     concat::fragment { 'smb_header':
-        ensure  => $ensure,
+        ensure  => 'present',
         target  => $samba::params::service_config,
         content => template("${samba::params::templates}/smb.conf_header.erb"),
         order   => '00',
