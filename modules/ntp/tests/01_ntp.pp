@@ -1,8 +1,8 @@
 #------------------------------------------------------------------------------
-# puppet apply 00_puppet.pp --graph
+# puppet apply 00_ntp.pp --graph
 #------------------------------------------------------------------------------
 
-class { 'puppet':
-    ensure  => 'running',
+class { 'ntp':
+    ensure  => 'stopped',
     version => 'present',
 }
