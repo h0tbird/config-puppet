@@ -65,6 +65,7 @@ class r_puppet (
         # Samba share:
         samba::share { 'puppet':
             path        => $git_path,
+            comment     => 'Puppet share.',
             valid_users => $users,
             require     => Gitrepo['puppet'],
         }
