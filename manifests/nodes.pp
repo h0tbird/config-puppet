@@ -4,9 +4,9 @@
 
 node 'base' {
 
+    include motd
     include ntp
     include ssh
-    include motd
     include hosts
     include repos
     include puppet
