@@ -4,6 +4,7 @@
 
 # Marc Villacorta:
 user/marc.villacorta/name,"Marc Villacorta"
+user/marc.villacorta/email,"marc.villacorta@gmail.com"
 user/marc.villacorta/pass,"password"
 user/marc.villacorta/home,"/home/marc.villacorta"
 user/marc.villacorta/grant,"root"
@@ -11,6 +12,7 @@ user/marc.villacorta/key,"AAAAB3NzaC1yc2EAAAADAQABAAABAQDhIkAzWDvjJjtJkO+qjAogxi
 
 # Deborah Aguilar:
 user/deborah.aguilar/name,"Deborah Aguilar"
+user/deborah.aguilar/email,"dev@null.nop"
 user/deborah.aguilar/pass,"password"
 user/deborah.aguilar/home,"/home/deborah.aguilar"
 user/deborah.aguilar/grant,"root"

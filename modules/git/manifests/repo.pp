@@ -48,7 +48,7 @@ define git::repo (
     concat::fragment { "git_${name}_header":
         ensure  => $ensure,
         target  => "${path}/.git/config",
-        content => template("${git::params::templates}/config_header.erb"),
+        content => template("${git::params::templates}/config_repo_header.erb"),
         order   => '00',
     }
 }

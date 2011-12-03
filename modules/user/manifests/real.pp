@@ -15,6 +15,7 @@ define user::real (
     $managehome     = undef,
     $other_groups   = undef,
     $is_samba_user  = undef,
+    $is_git_user    = undef,
     $password       = extlookup("user/${name}/pass")
 
 ) {
@@ -22,15 +23,17 @@ define user::real (
     # Includes:
     include user::virtual
 
-    # Linux user is mandatory:
+    # Linux user:
     if $has_password { User <| title == $name |> { password => mkpasswd($password, $name) } }
     if $can_login    { User <| title == $name |> { shell => '/bin/bash' } }
     if $other_groups { User <| title == $name |> { groups +> $other_groups } }
     if $managehome   { User <| title == $name |> { managehome => $managehome } }
     if $has_ssh_keys { ssh::key { $name: users => extlookup("user/${name}/grant") } }
-
     realize (User[$name], Group[$name])
 
     # Samba user:
     if $is_samba_user { samba::user { $name: pass => $password } }
+
+    # Git user:
+    if $is_git_user { git::user { $name: } }
 }

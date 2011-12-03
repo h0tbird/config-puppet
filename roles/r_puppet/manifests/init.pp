@@ -36,7 +36,8 @@ class r_puppet (
         user::real { $users:
             other_groups   => 'puppet',
             managehome     => true,
-            is_samba_user  => $samba,
+            is_samba_user  => true,
+            is_git_user    => true,
             can_login      => true,
             has_password   => false,
             has_ssh_keys   => true,
