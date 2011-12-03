@@ -5,7 +5,7 @@
 	logallrefupdates = true
 [remote "origin"]
 	fetch = +refs/heads/*:refs/remotes/origin/*
-	url = git@github.com:h0tbird/puppet.git
+	url = git@<%= server %>:<%= user %>/<%= name %>.git
 [branch "master"]
 	remote = origin
 	merge = refs/heads/master

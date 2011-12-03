@@ -49,7 +49,8 @@ class r_puppet (
             owner   => 'root',
             group   => 'puppet',
             mode    => '0664',
-            source  => $git_source,
+            server  => 'github.com',
+            user    => 'h0tbird',
             path    => $git_path,
         }
     }

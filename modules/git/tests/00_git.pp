@@ -2,11 +2,12 @@
 # puppet apply 00_git.pp --graph
 #------------------------------------------------------------------------------
 
-git::repo { 'h0tbird':
+git::repo { 'puppet':
     ensure  => 'present',
     owner   => 'root',
     group   => 'puppet',
     mode    => '0664',
-    source  => 'git://github.com/h0tbird/puppet.git',
+    server  => 'github.com',
+    user    => 'h0tbird',
     path    => '/tmp/h0tbird',
 }

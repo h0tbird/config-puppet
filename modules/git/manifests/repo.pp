@@ -18,8 +18,7 @@
 #------------------------------------------------------------------------------
 define git::repo (
 
-    $path,
-    $source,
+    $server, $user, $path,
     $ensure = 'present',
     $owner  = 'root',
     $group  = 'root',
@@ -34,7 +33,7 @@ define git::repo (
         owner   => $owner,
         group   => $group,
         mode    => $mode,
-        source  => $source,
+        source  => "git://${server}/${user}/${name}.git",
         path    => $path,
     }
 
@@ -53,6 +52,3 @@ define git::repo (
         order   => '00',
     }
 }
-
-# [rw] git@github.com:h0tbird/puppet.git
-# [ro] git://github.com/h0tbird/puppet.git
