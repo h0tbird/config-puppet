@@ -40,7 +40,7 @@ define ssh::key::x ($key_name) {
 
     ssh_authorized_key { $name:
         ensure  => present,
-        key     => extlookup("${module_name}/pub_key/${key_name}"),
+        key     => extlookup("user/${key_name}/key"),
         type    => 'ssh-rsa',
         user    => $user[1],
     }
