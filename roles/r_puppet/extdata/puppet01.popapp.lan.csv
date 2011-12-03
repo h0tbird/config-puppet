@@ -1,0 +1,15 @@
+#------------------------------------------------------------------------------
+# r_puppet:
+#------------------------------------------------------------------------------
+
+# r_puppet:
+r_puppet/users,"marc.villacorta","deborah.aguilar"
+
+# git:
+r_puppet/git/server,"github.com"
+r_puppet/git/user,"h0tbird"
+r_puppet/git/path,"/etc/puppet"
+
+# samba:
+r_puppet/samba/workgroup,"POPAPP"
+r_puppet/samba/hosts_allow,"127. 192.168.1."

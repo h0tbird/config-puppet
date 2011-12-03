@@ -4,17 +4,16 @@
 class r_puppet (
 
     # r_puppet:
-    $users = extlookup("${module_name}/users", undef),
+    $users = extlookup("${module_name}/users", undef, "roles/${module_name}/${fqdn}"),
 
     # Git:
-    $git        = true,
-    $git_source = extlookup("${module_name}/git/source", undef),
-    $git_path   = extlookup("${module_name}/git/path", undef),
+    $git_server = extlookup("${module_name}/git/server", undef, "roles/${module_name}/${fqdn}"),
+    $git_user   = extlookup("${module_name}/git/user", undef, "roles/${module_name}/${fqdn}"),
+    $git_path   = extlookup("${module_name}/git/path", undef, "roles/${module_name}/${fqdn}"),
 
     # Samba:
-    $samba             = true,
-    $samba_workgroup   = extlookup("${module_name}/samba/workgroup", undef),
-    $samba_hosts_allow = extlookup("${module_name}/samba/hosts_allow", undef)
+    $samba_workgroup   = extlookup("${module_name}/samba/workgroup", undef, "roles/${module_name}/${fqdn}"),
+    $samba_hosts_allow = extlookup("${module_name}/samba/hosts_allow", undef, "roles/${module_name}/${fqdn}")
 
 ) {
 
@@ -32,31 +31,34 @@ class r_puppet (
     }
 
     # Users:
-    user::real { $users:
-        other_groups   => 'puppet',
-        managehome     => true,
-        is_samba_user  => $samba,
-        can_login      => true,
-        has_password   => false,
-        has_ssh_keys   => true,
+    if $users {
+
+        user::real { $users:
+            other_groups   => 'puppet',
+            managehome     => true,
+            is_samba_user  => $samba,
+            can_login      => true,
+            has_password   => false,
+            has_ssh_keys   => true,
+        }
     }
 
     # Git repo:
-    if ($git and $git != 'false') {
+    if ($git_server and $git_user and $git_path) {
 
         git::repo { 'puppet':
             ensure  => 'present',
             owner   => 'root',
             group   => 'puppet',
             mode    => '0664',
-            server  => 'github.com',
-            user    => 'h0tbird',
+            server  => $git_server,
+            user    => $git_user,
             path    => $git_path,
         }
     }
 
     # Samba service:
-    if ($samba and $samba != 'false') {
+    if ($samba_workgroup and $samba_hosts_allow) {
 
         class { 'samba':
             workgroup   => $samba_workgroup,
