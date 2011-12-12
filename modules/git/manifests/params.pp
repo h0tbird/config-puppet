@@ -15,8 +15,8 @@ class git::params {
     require $module_name
 
     # Set values unique to particular platforms:
-    $files = "puppet:///modules/${module_name}/${operatingsystem}/${operatingsystemrelease}"
-    $templates = "${module_name}/${operatingsystem}/${operatingsystemrelease}"
+    $files = "puppet:///modules/${module_name}/${operatingsystem}"
+    $templates = "${module_name}/${operatingsystem}"
 
     case $operatingsystem {
 
