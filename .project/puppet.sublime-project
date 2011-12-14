@@ -1,12 +1,12 @@
 {
-	"folders":
-	[
-		{
-			"path": "/Volumes/puppet",
+    "folders":
+    [
+        {
+            "path": "/Volumes/puppet",
             "folder_exclude_patterns": [".*"],
             "file_exclude_patterns": [".*","*.png"]
-		}
-	],
+        }
+    ],
     "settings":
     {
         "tab_size": 4,
