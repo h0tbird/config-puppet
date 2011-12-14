@@ -1,4 +1,4 @@
-modules/*/pkg
+*.sublime-workspace
 *.swp
 .DS_Store
 ._.*
