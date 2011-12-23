@@ -30,7 +30,7 @@
 #------------------------------------------------------------------------------
 define ssh::key ($users = undef) {
 
-    $usrs = regsubst(split(inline_template("<%= name + ',' + users %>"),','), '(^.*)', "${name}/\1")
+    $usrs = regsubst(split(inline_template("<%= name + ',' + users %>"),','), '(^.*)', "${name}/\\1")
     ssh::key::x { $usrs: key_name => $name }
 }
 
