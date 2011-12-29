@@ -16,7 +16,7 @@ class ssh::config {
 
     # Install the configuration files:
     file { $ssh::params::service_config:
-        ensure  => 'present',
+        ensure  => present,
         content => template("${ssh::params::templates}/sshd_config.erb"),
         owner   => 'root',
         group   => 'root',
