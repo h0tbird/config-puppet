@@ -15,7 +15,7 @@ class mysql::install ( $ensure ) {
     require $module_name
 
     # Check for valid values:
-    if !($ensure in ['present','latest']) { fail("${module_name}::install 'ensure' must be one of: 'present' or 'latest'") }
+    if !($ensure in [ present, latest ]) { fail("${module_name}::install 'ensure' must be one of: 'present' or 'latest'") }
 
     # Install the package/s:
     package { $mysql::params::packages: ensure => $ensure }

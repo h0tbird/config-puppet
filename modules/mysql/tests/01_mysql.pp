@@ -3,6 +3,6 @@
 #------------------------------------------------------------------------------
 
 class { 'mysql':
-    ensure  => 'stopped',
-    version => 'present',
+    ensure  => stopped,
+    version => present,
 }

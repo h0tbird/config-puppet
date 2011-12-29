@@ -15,11 +15,11 @@ class mysql::config {
     require $module_name
 
     # Define the target file:
-    concat { $mysql::params::service_config: ensure => 'present' }
+    concat { $mysql::params::service_config: ensure => present }
 
     # Config file header:
     concat::fragment { 'mycnf_header':
-        ensure  => 'present',
+        ensure  => present,
         target  => $mysql::params::service_config,
         content => template("${mysql::params::templates}/my.cnf_header.erb"),
         order   => '00',

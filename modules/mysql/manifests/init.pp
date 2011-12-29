@@ -11,8 +11,8 @@
 #
 # Parameters:
 #
-#   ensure:          [ 'running' | 'stopped' ]
-#   version:         [ 'present' | 'latest' ]
+#   ensure:  [ running | stopped ]
+#   version: [ present | latest ]
 #
 # Actions:
 #
@@ -29,8 +29,8 @@
 #   or
 #
 #   class { 'mysql':
-#       ensure  => 'running',
-#       version => 'present'
+#       ensure  => running,
+#       version => present
 #   }
 #------------------------------------------------------------------------------
 class mysql (
@@ -41,8 +41,8 @@ class mysql (
 ) {
 
     # Check for valid values:
-    if !($ensure in ['running','stopped']) { fail("${module_name} 'ensure' must be one of: 'running' or 'stopped'") }
-    if !($version in ['present','latest']) { fail("${module_name} 'version' must be one of: 'present' or 'latest'") }
+    if !($ensure in [ running, stopped ]) { fail("${module_name} 'ensure' must be one of: 'running' or 'stopped'") }
+    if !($version in [ present, latest ]) { fail("${module_name} 'version' must be one of: 'present' or 'latest'") }
 
     # Register this module:
     if defined(Class['motd']) { motd::register { $module_name: } }
