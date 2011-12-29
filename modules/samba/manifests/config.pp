@@ -15,11 +15,11 @@ class samba::config {
     require $module_name
 
     # Define the target file:
-    concat { $samba::params::service_config: ensure => 'present' }
+    concat { $samba::params::service_config: ensure => present }
 
     # Config file header:
     concat::fragment { 'smb_header':
-        ensure  => 'present',
+        ensure  => present,
         target  => $samba::params::service_config,
         content => template("${samba::params::templates}/smb.conf_header.erb"),
         order   => '00',

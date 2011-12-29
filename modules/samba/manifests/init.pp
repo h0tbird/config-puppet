@@ -12,8 +12,8 @@
 #
 # Parameters:
 #
-#   ensure:          [ 'running' | 'stopped' ]
-#   version:         [ 'present' | 'latest' ]
+#   ensure:          [ running | stopped ]
+#   version:         [ present | latest ]
 #   workgroup:       [ string ]
 #   server_string:   [ string ]
 #   netbios_name:    [ string ]
@@ -43,8 +43,8 @@
 #   or
 #
 #   class { 'samba':
-#       ensure          => 'running',
-#       version         => 'present',
+#       ensure          => running,
+#       version         => present,
 #       workgroup       => 'MYGROUP',
 #       server_string   => 'Samba Server Version %v',
 #       netbios_name    => 'MYPCNAME',
@@ -59,8 +59,8 @@
 #------------------------------------------------------------------------------
 class samba (
 
-    $ensure          = 'running',
-    $version         = 'present',
+    $ensure          = running,
+    $version         = present,
     $workgroup       = 'MYGROUP',
     $server_string   = 'Samba Server Version %v',
     $netbios_name    = $hostname,
@@ -78,9 +78,9 @@ class samba (
 ) {
 
     # Check for valid values:
-    if !($ensure in ['running','stopped']) { fail("${module_name} 'ensure' must be one of: 'running' or 'stopped'") }
-    if !($version in ['present','latest']) { fail("${module_name} 'version' must be one of: 'present' or 'latest'") }
-    if !($security in ['user','domain','ads','server','share' ]) { fai("${module_name} 'security' must be one of: 'user', 'domain', 'ads', 'server' or 'share'") }
+    if !($ensure in [ running, stopped ]) { fail("${module_name} 'ensure' must be one of: 'running' or 'stopped'") }
+    if !($version in [ present, latest ]) { fail("${module_name} 'version' must be one of: 'present' or 'latest'") }
+    if !($security in [ 'user','domain','ads','server','share' ]) { fai("${module_name} 'security' must be one of: 'user', 'domain', 'ads', 'server' or 'share'") }
 
     # Register this module:
     if defined(Class['motd']) { motd::register { $module_name: } }

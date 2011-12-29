@@ -19,7 +19,7 @@
 define samba::share (
 
     $path,
-    $ensure               = 'present',
+    $ensure               = present,
     $comment              = 'Samba Share.',
     $writeable            = 'yes',
     $browseable           = 'yes',
@@ -33,9 +33,9 @@ define samba::share (
 ) {
 
     # Check for valid values:
-    if !($ensure in ['present','absent']) { fail("${module_name}::share 'ensure' must be one of: 'present' or 'absent'") }
-    if !($writeable in ['yes','no']) { fail("${module_name}::share 'writeable' must be one of: 'yes' or 'no'") }
-    if !($browseable in ['yes','no']) { fail("${module_name}::share 'browseable' must be one of: 'yes' or 'no'") }
+    if !($ensure in [ present, absent ]) { fail("${module_name}::share 'ensure' must be one of: 'present' or 'absent'") }
+    if !($writeable in [ 'yes','no' ]) { fail("${module_name}::share 'writeable' must be one of: 'yes' or 'no'") }
+    if !($browseable in [ 'yes','no' ]) { fail("${module_name}::share 'browseable' must be one of: 'yes' or 'no'") }
 
     # Create the file fragment:
     concat::fragment { $name:
