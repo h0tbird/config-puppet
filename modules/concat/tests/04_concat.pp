@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------------
 
 concat { '/tmp/hello.txt':
-    ensure => 'absent'
+    ensure => absent
 }
 
 concat::fragment { 'header':

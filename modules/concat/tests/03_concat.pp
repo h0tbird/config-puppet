@@ -3,18 +3,18 @@
 #------------------------------------------------------------------------------
 
 concat { '/tmp/hello.txt':
-    ensure => 'absent'
+    ensure => absent
 }
 
 concat::fragment { 'header':
-    ensure  => 'absent',
+    ensure  => absent,
     target  => '/tmp/hello.txt',
     content => 'Hello',
     order   => '00'
 }
 
 concat::fragment { 'footer':
-    ensure  => 'absent',
+    ensure  => absent,
     target  => '/tmp/hello.txt',
     content => 'World',
     order   => '99'

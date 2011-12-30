@@ -5,14 +5,14 @@
 concat { '/tmp/hello.txt': }
 
 concat::fragment { 'header':
-    ensure  => 'absent',
+    ensure  => absent,
     target  => '/tmp/hello.txt',
     content => 'Hello',
     order   => '00'
 }
 
 concat::fragment { 'footer':
-    ensure  => 'absent',
+    ensure  => absent,
     target  => '/tmp/hello.txt',
     content => 'World',
     order   => '99'

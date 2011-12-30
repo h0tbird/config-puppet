@@ -11,7 +11,7 @@ concat::fragment { 'header':
 }
 
 concat::fragment { 'footer':
-    ensure  => 'absent',
+    ensure  => absent,
     target  => '/tmp/hello.txt',
     content => 'World',
     order   => '99'
