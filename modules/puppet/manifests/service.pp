@@ -15,7 +15,7 @@ class puppet::service ( $ensure ) {
     require $module_name
 
     # Check for valid values:
-    if !($ensure in ['running','stopped']) { fail("${module_name}::service 'ensure' must be one of: 'running' or 'stopped'") }
+    if !($ensure in [ running, stopped ]) { fail("${module_name}::service 'ensure' must be one of: 'running' or 'stopped'") }
 
     # Start or stop the service:
     service { $puppet::params::service_name:

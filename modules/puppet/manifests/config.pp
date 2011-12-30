@@ -16,7 +16,7 @@ class puppet::config {
 
     # Install the configuration files:
     file { $puppet::params::service_config:
-        ensure  => 'present',
+        ensure  => present,
         content => template("${puppet::params::templates}/puppet.conf.erb"),
     }
 }
