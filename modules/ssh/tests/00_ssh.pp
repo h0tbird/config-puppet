@@ -3,6 +3,6 @@
 #------------------------------------------------------------------------------
 
 class { 'ssh':
-    ensure  => 'running',
-    version => 'present',
+    ensure  => running,
+    version => present,
 }

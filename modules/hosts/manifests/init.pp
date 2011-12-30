@@ -8,12 +8,12 @@ class hosts {
     host {
 
         'localhost':
-            ensure       => 'present',
+            ensure       => present,
             ip           => '127.0.0.1',
             host_aliases => 'localhost.localdomain';
 
         'puppet':
-            ensure       => 'present',
+            ensure       => present,
             ip           => extlookup('host/puppet'),
     }
 }

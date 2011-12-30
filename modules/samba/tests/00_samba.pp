@@ -3,8 +3,8 @@
 #------------------------------------------------------------------------------
 
 class { 'samba':
-    ensure          => 'running',
-    version         => 'present',
+    ensure          => running,
+    version         => present,
     workgroup       => 'MYGROUP',
     server_string   => 'Samba Server Version %v',
     netbios_name    => $hostname,

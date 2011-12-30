@@ -3,6 +3,6 @@
 #------------------------------------------------------------------------------
 
 class { 'puppet':
-    ensure  => 'stopped',
-    version => 'present',
+    ensure  => stopped,
+    version => present,
 }

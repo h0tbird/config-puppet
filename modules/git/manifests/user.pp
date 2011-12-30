@@ -18,7 +18,7 @@
 #------------------------------------------------------------------------------
 define git::user (
 
-    $ensure   = 'present',
+    $ensure   = present,
     $home     = extlookup("user/${name}/home"),
     $fullname = extlookup("user/${name}/name"),
     $email    = extlookup("user/${name}/email")

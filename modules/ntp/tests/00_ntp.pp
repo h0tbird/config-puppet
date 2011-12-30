@@ -3,6 +3,6 @@
 #------------------------------------------------------------------------------
 
 class { 'ntp':
-    ensure  => 'running',
-    version => 'present',
+    ensure  => running,
+    version => present,
 }

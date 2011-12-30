@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------------
 
 git::repo { 'puppet':
-    ensure  => 'absent',
+    ensure  => absent,
     owner   => 'root',
     group   => 'puppet',
     mode    => '0664',

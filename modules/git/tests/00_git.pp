@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------------
 
 git::repo { 'puppet':
-    ensure  => 'present',
+    ensure  => present,
     owner   => 'root',
     group   => 'puppet',
     mode    => '0664',

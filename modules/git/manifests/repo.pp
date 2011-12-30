@@ -19,7 +19,7 @@
 define git::repo (
 
     $server, $user, $path,
-    $ensure = 'present',
+    $ensure = present,
     $owner  = 'root',
     $group  = 'root',
     $mode   = '0664'
