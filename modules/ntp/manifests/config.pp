@@ -18,21 +18,21 @@ class ntp::config {
     file {
 
         $ntp::params::service_config:
-            ensure  => 'present',
+            ensure  => present,
             content => template("${ntp::params::templates}/ntp.conf.erb"),
             owner   => 'root',
             group   => 'root',
             mode    => '0644';
 
         $ntp::params::step_tickers:
-            ensure  => 'present',
+            ensure  => present,
             content => template("${ntp::params::templates}/step-tickers.erb"),
             owner   => 'root',
             group   => 'root',
             mode    => '0644';
 
         $ntp::params::keys:
-            ensure  => 'present',
+            ensure  => present,
             content => template("${ntp::params::templates}/keys.erb"),
             owner   => 'root',
             group   => 'root',
