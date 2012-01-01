@@ -20,7 +20,7 @@ class r_puppet (
     # Puppet master:
     Package <| title == 'puppet' |> { name +> 'puppet-server' }
     Service <| title == 'puppet' |> { name +> 'puppetmaster' }
-    Host <| title == 'localhost' |> { host_aliases +> 'puppet' }
+    Host <| title == 'localhost' |> { host_aliases +> ['puppet', "puppet.${::domain}"] }
     Host <| title == 'puppet' |> { ensure => absent }
 
     exec { 'rmssl':

@@ -15,5 +15,6 @@ class hosts {
         'puppet':
             ensure       => present,
             ip           => extlookup('host/puppet'),
+            host_aliases => "puppet.${::domain}";
     }
 }
