@@ -15,8 +15,14 @@ class puppet::config {
     require $module_name
 
     # Install the configuration files:
-    file { $puppet::params::service_config:
-        ensure  => present,
-        content => template("${puppet::params::templates}/puppet.conf.erb"),
+    file {
+        
+        $puppet::params::service_config:
+            ensure  => present,
+            content => template("${puppet::params::templates}/puppet.conf.erb");
+            
+        $puppet::params::auth_config:
+            ensure  => present,
+            content => template("${puppet::params::templates}/auth.conf.erb");
     }
 }

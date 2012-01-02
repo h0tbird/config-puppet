@@ -23,6 +23,7 @@ class puppet::params {
         /(RedHat|CentOS|Fedora)/: {
             $packages       = ['puppet','facter']
             $service_config = '/etc/puppet/puppet.conf'
+            $auth_config    = '/etc/puppet/auth.conf'
             $service_name   = 'puppet'
         }
 
