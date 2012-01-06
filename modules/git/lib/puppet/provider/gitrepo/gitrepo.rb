@@ -33,7 +33,7 @@ Puppet::Type.type(:gitrepo).provide(:gitrepo) do
         if resource[:mode]
             mode = resource[:mode] || nil
             excld = resource[:exclude] || nil
-            system "find '#{resource[:path]}' -type f -not -iwholename '#{excld}' | xargs chmod '#{mode}'" 
+            system "find '#{resource[:path]}' -type f -not -iwholename '#{excld}' | xargs chmod '#{mode}'"
             mode = mode.gsub("4","5").gsub("6","7")
             system "find '#{resource[:path]}' -type d -not -iwholename '#{excld}' | xargs chmod '#{mode}'"
         end
