@@ -1,5 +1,5 @@
 #------------------------------------------------------------------------------
-# puppet apply 00_mysql.pp --graph
+# puppet apply 02_mysql.pp --graph
 #------------------------------------------------------------------------------
 
 class { 'mysql':
@@ -8,6 +8,6 @@ class { 'mysql':
 }
 
 mysqldb { 'puppet': 
-    ensure  => present,
-    charset => 'latin1',
+    ensure  => absent,
+    charset => 'utf8',
 }

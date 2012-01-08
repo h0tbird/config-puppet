@@ -3,6 +3,11 @@
 #------------------------------------------------------------------------------
 
 class { 'mysql':
-    ensure  => stopped,
+    ensure  => running,
     version => present,
+}
+
+mysqldb { 'puppet': 
+    ensure  => present,
+    charset => 'utf8',
 }
