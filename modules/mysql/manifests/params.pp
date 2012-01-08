@@ -21,7 +21,7 @@ class mysql::params {
     case $operatingsystem {
 
         /(RedHat|CentOS|Fedora)/: {
-            $packages       = 'mysql-server'
+            $packages       = ['mysql','mysql-server']
             $service_config = '/etc/my.cnf'
             $service_name   = 'mysqld'
         }

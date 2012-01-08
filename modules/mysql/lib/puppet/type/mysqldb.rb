@@ -11,6 +11,10 @@ Puppet::Type.newtype(:mysqldb) do
         "mysql"
     end
 
+    autorequire(:service) do
+        "mysqld"
+    end
+
     newparam(:name) do
         desc "The name of the database."
         isnamevar
