@@ -11,3 +11,8 @@ mysqldb { 'puppet':
     ensure  => present,
     charset => 'latin1',
 }
+
+mysqluser { 'marc@localhost':
+    ensure        => present,
+    password_hash => '00000111110000011111000001111100000111110',
+}
