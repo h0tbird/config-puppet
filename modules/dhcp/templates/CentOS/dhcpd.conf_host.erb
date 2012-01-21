@@ -1,0 +1,7 @@
+
+host <%= name %> {
+<% if hardware_ethernet != :undef -%>   hardware ethernet <%= hardware_ethernet %>;
+<% end -%>
+<% if fixed_address != :undef -%>   fixed-address <%= fixed_address %>;
+<% end -%>
+}
