@@ -13,7 +13,7 @@
 #
 #   ensure:  [ running | stopped ]
 #   version: [ present | latest ]
-
+#
 # Actions:
 #
 #   Installs, configures and manages the DHCP service.
