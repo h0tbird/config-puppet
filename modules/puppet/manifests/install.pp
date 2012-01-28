@@ -12,8 +12,9 @@
 class puppet::install {
 
     # Collect variables:
-    $version = getvar("${module_name}::version")
+    $version  = getvar("${module_name}::version")
+    $packages = getvar("${module_name}::params::packages")
 
     # Install the package/s:
-    package { $puppet::params::packages: ensure => $version }
+    package { $packages: ensure => $version }
 }
