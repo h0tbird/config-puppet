@@ -37,7 +37,7 @@ define samba::share (
     validate_re($writeable, '^yes$|^no$')
     validate_re($browseable, '^yes$|^no$')
 
-    # Collect variable:
+    # Collect variables:
     $templates = getvar("${module_name}::params::templates")
     $configs   = getvar("${module_name}::params::configs")
 

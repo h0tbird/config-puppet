@@ -11,7 +11,7 @@
 #------------------------------------------------------------------------------
 class puppet::config {
 
-    # Collect variable:
+    # Collect variables:
     $templates = getvar("${module_name}::params::templates")
     $configs   = getvar("${module_name}::params::configs")
 
