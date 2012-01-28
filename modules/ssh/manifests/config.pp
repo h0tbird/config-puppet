@@ -11,13 +11,14 @@
 #------------------------------------------------------------------------------
 class ssh::config {
 
-    # Deliberate cyclical dependency:
-    require $module_name
+    # Collect variable:
+    $templates = getvar("${module_name}::params::templates")
+    $configs   = getvar("${module_name}::params::configs")
 
     # Install the configuration files:
-    file { $ssh::params::service_config:
+    file { $configs[0]:
         ensure  => present,
-        content => template("${ssh::params::templates}/sshd_config.erb"),
+        content => template("${templates}/sshd_config.erb"),
         owner   => 'root',
         group   => 'root',
         mode    => '0600',

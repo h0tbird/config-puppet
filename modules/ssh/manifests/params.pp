@@ -11,21 +11,19 @@
 #------------------------------------------------------------------------------
 class ssh::params {
 
-    # Deliberate cyclical dependency:
-    require $module_name
-
-    # Set values unique to particular platforms:
-    $files = "puppet:///modules/${module_name}/${operatingsystem}"
+    # Set location for files and templates:
+    $files     = "puppet:///modules/${module_name}/${operatingsystem}"
     $templates = "${module_name}/${operatingsystem}"
 
-    case $operatingsystem {
+    # Set OS specifics:
+    case $osfamily {
 
-        /(RedHat|CentOS|Fedora)/: {
-            $packages       = ['openssh','openssh-server','openssh-clients','libssh2']
-            $service_config = '/etc/ssh/sshd_config'
-            $service_name   = 'sshd'
+        'RedHat': {
+            $packages = ['openssh','openssh-server','openssh-clients','libssh2']
+            $configs  = ['/etc/ssh/sshd_config']
+            $services = ['sshd']
         }
 
-        default: { fail("${module_name}::params ${operatingsystem} is not supported yet.") }
+        default: { fail("${module_name}::params ${osfamily} family is not supported yet.") }
     }
 }

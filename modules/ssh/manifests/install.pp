@@ -9,14 +9,12 @@
 #   2011-11-19
 #
 #------------------------------------------------------------------------------
-class ssh::install ( $ensure ) {
+class ssh::install {
 
-    # Deliberate cyclical dependency:
-    require $module_name
-
-    # Check for valid values:
-    if !($ensure in [ present, latest ]) { fail("${module_name}::install 'ensure' must be one of: 'present' or 'latest'") }
+    # Collect variables:
+    $version  = getvar("${module_name}::version")
+    $packages = getvar("${module_name}::params::packages")
 
     # Install the package/s:
-    package { $ssh::params::packages: ensure => $ensure }
+    package { $packages: ensure => $version }
 }
