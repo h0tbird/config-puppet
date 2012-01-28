@@ -77,17 +77,19 @@ class samba (
 
 ) {
 
-    # Check for valid values:
-    if !($ensure in [ running, stopped ]) { fail("${module_name} 'ensure' must be one of: 'running' or 'stopped'") }
-    if !($version in [ present, latest ]) { fail("${module_name} 'version' must be one of: 'present' or 'latest'") }
-    if !($security in [ 'user','domain','ads','server','share' ]) { fail("${module_name} 'security' must be one of: 'user', 'domain', 'ads', 'server' or 'share'") }
+    # Validate parameters:
+    validate_re($ensure, '^running$|^stopped$')
+    validate_re($version, '^present$|^latest$')
+    validate_re($security, '^user$|^domain$|^ads$|^server$|^share$')
 
     # Register this module:
     if defined(Class['motd']) { motd::register { $module_name: } }
 
-    # Set the appropriate requirements:
-    class { "${module_name}::params": } ->
-    class { "${module_name}::install": ensure => $version } ->
-    class { "${module_name}::config": } ~>
-    class { "${module_name}::service": ensure => $ensure }
+    # Set the requirements:
+    anchor { "${module_name}::begin":   } ->
+    class  { "${module_name}::params":  } ->
+    class  { "${module_name}::install": } ->
+    class  { "${module_name}::config":  } ~>
+    class  { "${module_name}::service": } ->
+    anchor { "${module_name}::end":     }
 }
