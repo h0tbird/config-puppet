@@ -9,13 +9,10 @@
 #   2011-10-12
 #
 #------------------------------------------------------------------------------
-class puppet::service ( $ensure ) {
+class puppet::service {
 
-    # Deliberate cyclical dependency:
-    require $module_name
-
-    # Check for valid values:
-    if !($ensure in [ running, stopped ]) { fail("${module_name}::service 'ensure' must be one of: 'running' or 'stopped'") }
+    # Collect variables:
+    $ensure = getvar("${module_name}::ensure")
 
     # Start or stop the service:
     service { $puppet::params::service_name:

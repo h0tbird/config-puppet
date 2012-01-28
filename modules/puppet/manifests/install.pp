@@ -9,14 +9,11 @@
 #   2011-10-12
 #
 #------------------------------------------------------------------------------
-class puppet::install ( $ensure ) {
+class puppet::install {
 
-    # Deliberate cyclical dependency:
-    require $module_name
-
-    # Check for valid values:
-    if !($ensure in [ present, latest ]) { fail("${module_name}::install 'ensure' must be one of: 'present' or 'latest'") }
+    # Collect variables:
+    $version = getvar("${module_name}::version")
 
     # Install the package/s:
-    package { $puppet::params::packages: ensure => $ensure }
+    package { $puppet::params::packages: ensure => $version }
 }

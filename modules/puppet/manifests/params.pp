@@ -11,9 +11,6 @@
 #------------------------------------------------------------------------------
 class puppet::params {
 
-    # Deliberate cyclical dependency:
-    require $module_name
-
     # Set values unique to particular platforms:
     $files = "puppet:///modules/${module_name}/${operatingsystem}"
     $templates = "${module_name}/${operatingsystem}"

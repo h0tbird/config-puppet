@@ -11,9 +11,6 @@
 #------------------------------------------------------------------------------
 class puppet::config {
 
-    # Deliberate cyclical dependency:
-    require $module_name
-
     # Install the configuration files:
     file {
         
