@@ -29,7 +29,8 @@ define user::real (
     if $other_groups { User <| title == $name |> { groups +> $other_groups } }
     if $managehome   { User <| title == $name |> { managehome => $managehome } }
     if $has_ssh_keys { ssh::key { $name: users => extlookup("user/${name}/grant") } }
-    realize (User[$name], Group[$name])
+
+    realize(User[$name], Group[$name])
 
     # Samba user:
     if $is_samba_user { samba::user { $name: pass => $password } }
