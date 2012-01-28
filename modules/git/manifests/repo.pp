@@ -26,7 +26,14 @@ define git::repo (
 
 ) {
 
+    # Validate parameters:
+    validate_re($ensure, '^present$|^absent$')
+
+    # Include delegated git class:
     include git
+
+    # Collect variables:
+    $templates = getvar("${module_name}::params::templates")
 
     gitrepo { $name:
         ensure  => $ensure,
@@ -48,7 +55,7 @@ define git::repo (
     concat::fragment { "git_${name}_header":
         ensure  => $ensure,
         target  => "${path}/.git/config",
-        content => template("${git::params::templates}/config_repo_header.erb"),
+        content => template("${templates}/config_repo_header.erb"),
         order   => '00',
     }
 }

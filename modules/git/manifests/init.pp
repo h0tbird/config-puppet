@@ -3,13 +3,15 @@
 #------------------------------------------------------------------------------
 class git ( $version = present ) {
 
-    # Check for valid values:
-    if !($version in [ present, latest ]) { fail("${module_name} 'version' must be one of: 'present' or 'latest'") }
+    # Validate parameters:
+    validate_re($version, '^present$|^latest$')
 
     # Register this module:
     if defined(Class['motd']) { motd::register { $module_name: } }
 
-    # Set the appropriate requirements:
-    class { "${module_name}::params": } ->
-    class { "${module_name}::install": ensure => $version }
+    # Set the requirements:
+    anchor { "${module_name}::begin":   } ->
+    class  { "${module_name}::params":  } ->
+    class  { "${module_name}::install": } ->
+    anchor { "${module_name}::end":     }
 }

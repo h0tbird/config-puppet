@@ -25,19 +25,32 @@ define git::user (
 
 ) {
 
-    if defined(User[$name]) { User[$name] -> Git::User[$name] }
+    # Validate parameters:
+    validate_re($ensure, '^present$|^absent$')
 
-    concat { "${home}/.gitconfig":
-        ensure  => $ensure,
-        owner   => $name,
-        group   => $name,
-        mode    => '0644',
-    }
+    # Include delegated git class:
+    include git
 
-    concat::fragment { "git_${name}_header":
-        ensure  => $ensure,
-        target  => "${home}/.gitconfig",
-        content => template("${git::params::templates}/config_user_header.erb"),
-        order   => '00',
+    # Collect variables:
+    $templates = getvar("${module_name}::params::templates")
+
+    # Set the requirements:
+    if defined(User[$name]) {
+
+        User[$name] -> Git::User[$name]
+
+        concat { "${home}/.gitconfig":
+            ensure  => $ensure,
+            owner   => $name,
+            group   => $name,
+            mode    => '0644',
+        }
+
+        concat::fragment { "git_${name}_header":
+            ensure  => $ensure,
+            target  => "${home}/.gitconfig",
+            content => template("${templates}/config_user_header.erb"),
+            order   => '00',
+        }
     }
 }
