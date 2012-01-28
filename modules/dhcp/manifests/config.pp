@@ -11,17 +11,18 @@
 #------------------------------------------------------------------------------
 class dhcp::config {
 
-    # Deliberate cyclical dependency:
-    require $module_name
+    # Collect variables:
+    $templates = getvar("${module_name}::params::templates")
+    $configs   = getvar("${module_name}::params::configs")
 
     # Define the target file:
-    concat { $dhcp::params::service_config: ensure => present }
+    concat { $configs[0]: ensure => present }
 
     # Config file header:
     concat::fragment { 'dhcp_header':
         ensure  => present,
-        target  => $dhcp::params::service_config,
-        content => template("${dhcp::params::templates}/dhcpd.conf_header.erb"),
+        target  => $configs[0],
+        content => template("${templates}/dhcpd.conf_header.erb"),
         order   => '00',
     }
 }

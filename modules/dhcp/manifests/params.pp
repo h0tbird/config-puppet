@@ -11,21 +11,19 @@
 #------------------------------------------------------------------------------
 class dhcp::params {
 
-    # Deliberate cyclical dependency:
-    require $module_name
-
-    # Set values unique to particular platforms:
-    $files = "puppet:///modules/${module_name}/${operatingsystem}"
+    # Set location for files and templates:
+    $files     = "puppet:///modules/${module_name}/${operatingsystem}"
     $templates = "${module_name}/${operatingsystem}"
 
-    case $operatingsystem {
+    # Set OS specifics:
+    case $osfamily {
 
-        /(RedHat|CentOS|Fedora)/: {
-            $packages       = ['dhcp','dhcp-common']
-            $service_config = '/etc/dhcp/dhcpd.conf'
-            $service_name   = 'dhcpd'
+        'RedHat': {
+            $packages = ['dhcp','dhcp-common']
+            $configs  = ['/etc/dhcp/dhcpd.conf']
+            $services = ['dhcpd']
         }
 
-        default: { fail("${module_name}::params ${operatingsystem} is not supported yet.") }
+        default: { fail("${module_name}::params ${osfamily} family is not supported yet.") }
     }
 }

@@ -47,14 +47,21 @@ define dhcp::subnet (
 
 ) {
 
-    # Check for valid values:
-    if !($ensure in [ present, absent ]) { fail("${module_name}::share 'ensure' must be one of: 'present' or 'absent'") }
+    # Validate parameters:
+    validate_re($ensure, '^present$|^absent$')
+
+    # Include delegated class:
+    include dhcp
+
+    # Collect variables:
+    $templates = getvar("${module_name}::params::templates")
+    $configs   = getvar("${module_name}::params::configs")
 
     # Create the file fragment:
     concat::fragment { $name:
         ensure  => $ensure,
         order   => '10',
-        target  => $dhcp::params::service_config,
-        content => template("${dhcp::params::templates}/dhcpd.conf_subnet.erb"),
+        target  => $configs[0],
+        content => template("${templates}/dhcpd.conf_subnet.erb"),
     }
 }
