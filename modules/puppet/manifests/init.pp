@@ -48,9 +48,11 @@ class puppet (
     # Register this module:
     if defined(Class['motd']) { motd::register { $module_name: } }
 
-    # Set the appropriate requirements:
-    class { "${module_name}::params":  } ->
-    class { "${module_name}::install": } ->
-    class { "${module_name}::config":  } ~>
-    class { "${module_name}::service": }
+    # Set the requirements:
+    anchor { "${module_name}::begin":   } ->
+    class  { "${module_name}::params":  } ->
+    class  { "${module_name}::install": } ->
+    class  { "${module_name}::config":  } ~>
+    class  { "${module_name}::service": } ->
+    anchor { "${module_name}::end":     }
 }

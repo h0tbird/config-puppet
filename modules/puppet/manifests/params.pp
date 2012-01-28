@@ -11,10 +11,11 @@
 #------------------------------------------------------------------------------
 class puppet::params {
 
-    # Set values unique to particular platforms:
-    $files = "puppet:///modules/${module_name}/${operatingsystem}"
+    # Set location for files and templates:
+    $files     = "puppet:///modules/${module_name}/${operatingsystem}"
     $templates = "${module_name}/${operatingsystem}"
 
+    # Set OS specifics:
     case $osfamily {
 
         'RedHat': {
