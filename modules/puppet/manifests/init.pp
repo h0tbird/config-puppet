@@ -41,9 +41,9 @@ class puppet (
 
 ) {
 
-    # Check for valid values:
-    if !($ensure in [ running, stopped ]) { fail("${module_name} 'ensure' must be one of: 'running' or 'stopped'") }
-    if !($version in [ present, latest ]) { fail("${module_name} 'version' must be one of: 'present' or 'latest'") }
+    # Validate parameters:
+    validate_re($ensure, '^running$|^stopped$')
+    validate_re($version, '^present$|^latest$')
 
     # Register this module:
     if defined(Class['motd']) { motd::register { $module_name: } }
