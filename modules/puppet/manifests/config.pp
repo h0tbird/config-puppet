@@ -11,15 +11,19 @@
 #------------------------------------------------------------------------------
 class puppet::config {
 
+    # Collect variable:
+    $templates = getvar("${module_name}::params::templates")
+    $configs   = getvar("${module_name}::params::configs")
+
     # Install the configuration files:
     file {
-        
-        $puppet::params::service_config:
+
+        $configs[0]:
             ensure  => present,
-            content => template("${puppet::params::templates}/puppet.conf.erb");
-            
-        $puppet::params::auth_config:
+            content => template("${templates}/puppet.conf.erb");
+
+        $configs[1]:
             ensure  => present,
-            content => template("${puppet::params::templates}/auth.conf.erb");
+            content => template("${templates}/auth.conf.erb");
     }
 }

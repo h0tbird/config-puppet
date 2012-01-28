@@ -15,15 +15,14 @@ class puppet::params {
     $files = "puppet:///modules/${module_name}/${operatingsystem}"
     $templates = "${module_name}/${operatingsystem}"
 
-    case $operatingsystem {
+    case $osfamily {
 
-        /(RedHat|CentOS|Fedora)/: {
-            $packages       = ['puppet','facter']
-            $service_config = '/etc/puppet/puppet.conf'
-            $auth_config    = '/etc/puppet/auth.conf'
-            $service_name   = 'puppet'
+        'RedHat': {
+            $packages = ['puppet','facter']
+            $configs  = ['/etc/puppet/puppet.conf','/etc/puppet/auth.conf']
+            $services = ['puppet']
         }
 
-        default: { fail("${module_name}::params ${operatingsystem} is not supported yet.") }
+        default: { fail("${module_name}::params ${osfamily} family is not supported yet.") }
     }
 }

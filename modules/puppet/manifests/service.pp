@@ -12,10 +12,11 @@
 class puppet::service {
 
     # Collect variables:
-    $ensure = getvar("${module_name}::ensure")
+    $ensure   = getvar("${module_name}::ensure")
+    $services = getvar("${module_name}::params::services")
 
     # Start or stop the service:
-    service { $puppet::params::service_name:
+    service { $services:
         ensure  => $ensure,
         enable  => $ensure ? {
             'running' => true,
