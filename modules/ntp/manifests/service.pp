@@ -9,16 +9,14 @@
 #   2011-05-15
 #
 #------------------------------------------------------------------------------
-class ntp::service ( $ensure ) {
+class ntp::service {
 
-    # Deliberate cyclical dependency:
-    require $module_name
-
-    # Check for valid values:
-    if !($ensure in [ running, stopped ]) { fail("${module_name}::service 'ensure' must be one of: 'running' or 'stopped'") }
+    # Collect variables:
+    $ensure   = getvar("${module_name}::ensure")
+    $services = getvar("${module_name}::params::services")
 
     # Start or stop the service:
-    service { $ntp::params::service_name:
+    service { $services:
         ensure  => $ensure,
         enable  => $ensure ? {
             'running' => true,

@@ -11,29 +11,30 @@
 #------------------------------------------------------------------------------
 class ntp::config {
 
-    # Deliberate cyclical dependency:
-    require $module_name
+    # Collect variables:
+    $templates = getvar("${module_name}::params::templates")
+    $configs   = getvar("${module_name}::params::configs")
 
-    # Install or remove the configuration files:
+    # Install the configuration files:
     file {
 
-        $ntp::params::service_config:
+        $configs[0]:
             ensure  => present,
-            content => template("${ntp::params::templates}/ntp.conf.erb"),
+            content => template("${templates}/ntp.conf.erb"),
             owner   => 'root',
             group   => 'root',
             mode    => '0644';
 
-        $ntp::params::step_tickers:
+        $configs[1]:
             ensure  => present,
-            content => template("${ntp::params::templates}/step-tickers.erb"),
+            content => template("${templates}/step-tickers.erb"),
             owner   => 'root',
             group   => 'root',
             mode    => '0644';
 
-        $ntp::params::keys:
+        $configs[2]:
             ensure  => present,
-            content => template("${ntp::params::templates}/keys.erb"),
+            content => template("${templates}/keys.erb"),
             owner   => 'root',
             group   => 'root',
             mode    => '0600';

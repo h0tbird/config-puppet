@@ -11,23 +11,19 @@
 #------------------------------------------------------------------------------
 class ntp::params {
 
-    # Deliberate cyclical dependency:
-    require $module_name
-
-    # Set values unique to particular platforms:
-    $files = "puppet:///modules/${module_name}/${operatingsystem}"
+    # Set location for files and templates:
+    $files     = "puppet:///modules/${module_name}/${operatingsystem}"
     $templates = "${module_name}/${operatingsystem}"
 
-    case $operatingsystem {
+    # Set OS specifics:
+    case $osfamily {
 
-        /(RedHat|CentOS|Fedora)/: {
-            $packages       = 'ntp'
-            $service_config = '/etc/ntp.conf'
-            $step_tickers   = '/etc/ntp/step-tickers'
-            $keys           = '/etc/ntp/keys'
-            $service_name   = 'ntpd'
+        'RedHat': {
+            $packages = ['ntp']
+            $configs  = ['/etc/ntp.conf','/etc/ntp/step-tickers','/etc/ntp/keys']
+            $services = ['ntpd']
         }
 
-        default: { fail("${module_name}::params ${operatingsystem} is not supported yet.") }
+        default: { fail("${module_name}::params ${osfamily} family is not supported yet.") }
     }
 }

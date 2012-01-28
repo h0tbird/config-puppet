@@ -9,14 +9,12 @@
 #   2011-05-15
 #
 #------------------------------------------------------------------------------
-class ntp::install ( $ensure ) {
+class ntp::install {
 
-    # Deliberate cyclical dependency:
-    require $module_name
-
-    # Check for valid values:
-    if !($ensure in [ present, latest ]) { fail("${module_name}::install 'ensure' must be one of: 'present' or 'latest'") }
+    # Collect variables:
+    $version  = getvar("${module_name}::version")
+    $packages = getvar("${module_name}::params::packages")
 
     # Install the package/s:
-    package { $ntp::params::packages: ensure => $ensure }
+    package { $packages: ensure => $version }
 }
