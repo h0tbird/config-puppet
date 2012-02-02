@@ -20,8 +20,8 @@ define user::real (
 
 ) {
 
-    # Includes:
-    include user::virtual
+    # Include the main class:
+    include user
 
     # Linux user:
     if $has_password { User <| title == $name |> { password => mkpasswd($password, $name) } }
