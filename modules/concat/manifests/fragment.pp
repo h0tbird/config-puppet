@@ -7,7 +7,6 @@
 #   2011-06-13
 #
 #   Tested platforms:
-#       - CentOS 5.6
 #       - CentOS 6.0
 #
 # Parameters:
@@ -40,7 +39,7 @@
 #       ensure  => '/etc/motd.local',
 #   }
 #------------------------------------------------------------------------------
-define concat::fragment(
+define concat::fragment (
 
     $target,
     $content = undef,
@@ -52,15 +51,16 @@ define concat::fragment(
 
     # Set variables:
     $safe_target = regsubst($target, '/', '_', 'G')
-    $fragdir = "/var/lib/puppet/concat/${safe_target}"
+    $basedir     = '/var/lib/puppet/concat'
+    $fragdir     = "${basedir}/${safe_target}"
 
     # If content is passed, use that, else if source is passed use that.
     # If neither passed, but $ensure is in symlink form, make a symlink.
     if $content { File { content => $content } }
     elsif $source { File { source => $source } }
-    elsif $ensure in [ present, 'file', 'directory' ] { fail('No content, source or symlink specified.') }
+    elsif $ensure in [ present, absent ] { fail('No content, source or symlink specified.') }
 
-    # Place the fragment file:
+    # Create the fragment file:
     file { "${fragdir}/${order}_${name}":
         ensure => $ensure,
         owner  => 'root',
