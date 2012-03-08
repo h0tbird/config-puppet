@@ -1,8 +1,0 @@
-name            'h0tbird-git'
-version         '1.0.0'
-source          'https://github.com/h0tbird/puppet'
-author          'Marc Villacorta'
-license         'GPL'
-summary         'Git Module'
-description     'Git Module'
-project_page    'https://github.com/h0tbird/puppet'

@@ -1,8 +1,0 @@
-name            'h0tbird-ssh'
-version         '1.0.0'
-source          'https://github.com/h0tbird/puppet'
-author          'Marc Villacorta'
-license         'GPL'
-summary         'SSH Module'
-description     'SSH Module'
-project_page    'https://github.com/h0tbird/puppet'
