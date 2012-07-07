@@ -1,22 +1,18 @@
 #------------------------------------------------------------------------------
-# This node is inherited by all nodes:
+# Clone the repository:
 #------------------------------------------------------------------------------
 
-node 'base' {
-
-    include motd
-    include ntp
-    include ssh
-    include hosts
-    include repos
-    include puppet
-}
+git clone git@github.com:h0tbird/puppet.git /etc/puppet
+cd /etc/puppet
+git submodule init
+git submodule update
 
 #------------------------------------------------------------------------------
-# Puppet masters:
+# Run puppet apply:
 #------------------------------------------------------------------------------
 
-node /^puppet(\d+)/ inherits base {
-
-    include r_puppet
-}
+FACTER_fqdn=puppet01.domain \
+FACTER_domain=domain \
+puppet apply \
+--modulepath=/etc/puppet/modules:/etc/puppet/roles \
+/etc/puppet/manifests/site.pp
