@@ -77,7 +77,7 @@ class r_puppet (
             owner     => 'root',
             group     => 'puppet',
             mode      => '0664',
-            submodule => true,
+            recursive => true,
             server    => $git_server,
             user      => $git_user,
             path      => $git_path,
