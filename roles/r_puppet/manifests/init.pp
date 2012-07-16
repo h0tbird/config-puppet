@@ -42,13 +42,6 @@ class r_puppet (
     Host <| title == 'localhost' |> { host_aliases +> ['puppet', "puppet.${::domain}"] }
     Host <| title == 'puppet' |> { ensure => absent }
 
-    exec { 'rm_ssl':
-        refreshonly => true,
-        subscribe   => Package['puppet'],
-        before      => Service['puppet'],
-        command     => '/bin/rm -rf /var/lib/puppet/ssl',
-    }
-
     #---------------
     # System users:
     #---------------
