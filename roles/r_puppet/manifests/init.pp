@@ -3,26 +3,12 @@
 #------------------------------------------------------------------------------
 class r_puppet (
 
-    #--------
-    # Users:
-    #--------
-
     $users = extlookup("${module_name}/users", undef, "roles/${module_name}/${::fqdn}"),
-
-    #------
-    # Git:
-    #------
-
     $git_server = extlookup("${module_name}/git/server", undef, "roles/${module_name}/${::fqdn}"),
-    $git_user   = extlookup("${module_name}/git/user", undef, "roles/${module_name}/${::fqdn}"),
-    $git_path   = extlookup("${module_name}/git/path", undef, "roles/${module_name}/${::fqdn}"),
-
-    #--------
-    # Samba:
-    #--------
-
-    $samba_workgroup   = extlookup("${module_name}/samba/workgroup", undef, "roles/${module_name}/${::fqdn}"),
-    $samba_hosts_allow = extlookup("${module_name}/samba/hosts_allow", undef, "roles/${module_name}/${::fqdn}")
+    $git_user = extlookup("${module_name}/git/user", undef, "roles/${module_name}/${::fqdn}"),
+    $git_path = extlookup("${module_name}/git/path", undef, "roles/${module_name}/${::fqdn}"),
+    $samba_workgroup = extlookup("${module_name}/samba/workgroup", undef, "roles/${module_name}/${::fqdn}"),
+    $samba_hosts_allow = extlookup("${module_name}/samba/hosts_allow", undef, "roles/${module_name}/${::fqdn}"),
 
 ) {
 
@@ -37,10 +23,7 @@ class r_puppet (
     # Puppet master:
     #----------------
 
-    Package <| title == 'puppet' |> { name +> 'puppet-server' }
-    Service <| title == 'puppet' |> { name +> 'puppetmaster' }
-    Host <| title == 'localhost' |> { host_aliases +> ['puppet', "puppet.${::domain}"] }
-    Host <| title == 'puppet' |> { ensure => absent }
+    include puppet::master
 
     #---------------
     # System users:
