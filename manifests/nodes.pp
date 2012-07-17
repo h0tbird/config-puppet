@@ -4,13 +4,16 @@
 
 node 'base' {
 
+    # Stage: pre
+    class { 'hosts': stage => pre } ->
+    class { 'repos': stage => pre }
+
+    # Stage: main
     class {
-        'repos':  stage => pre;
-        'hosts':  stage => pre;
-        'puppet': stage => main;
-        'motd':   stage => main;
-        'ntp':    stage => main;
-        'ssh':    stage => main;
+        'motd':;
+        'ntp':;
+        'ssh':;
+        'puppet::client':;
     }
 }
 

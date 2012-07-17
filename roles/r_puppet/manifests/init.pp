@@ -23,7 +23,7 @@ class r_puppet (
     # Puppet master:
     #----------------
 
-    include puppet::master
+    include puppet::server
 
     #---------------
     # System users:
