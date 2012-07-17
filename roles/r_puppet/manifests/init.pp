@@ -57,6 +57,7 @@ class r_puppet (
             server    => $git_server,
             user      => $git_user,
             path      => $git_path,
+            before    => Service['puppet'],
         }
     }
 
