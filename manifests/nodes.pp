@@ -4,12 +4,14 @@
 
 node 'base' {
 
-    include motd
-    include ntp
-    include ssh
-    include hosts
-    include repos
-    include puppet
+    class {
+        'repos':  stage => pre;
+        'hosts':  stage => pre;
+        'puppet': stage => main;
+        'motd':   stage => main;
+        'ntp':    stage => main;
+        'ssh':    stage => main;
+    }
 }
 
 #------------------------------------------------------------------------------
