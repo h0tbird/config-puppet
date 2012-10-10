@@ -1,39 +1,39 @@
 [submodule "modules/stdlib"]
 	path = modules/stdlib
-	url = https://github.com/h0tbird/puppet-stdlib.git
+	url = https://h0tbird@github.com/h0tbird/puppet-stdlib.git
 [submodule "modules/concat"]
 	path = modules/concat
-	url = https://github.com/h0tbird/puppet-concat.git
+	url = https://h0tbird@github.com/h0tbird/puppet-concat.git
 [submodule "modules/dhcp"]
 	path = modules/dhcp
-	url = https://github.com/h0tbird/puppet-dhcp.git
+	url = https://h0tbird@github.com/h0tbird/puppet-dhcp.git
 [submodule "modules/git"]
 	path = modules/git
-	url = https://github.com/h0tbird/puppet-git.git
+	url = https://h0tbird@github.com/h0tbird/puppet-git.git
 [submodule "modules/hosts"]
 	path = modules/hosts
-	url = https://github.com/h0tbird/puppet-hosts.git
+	url = https://h0tbird@github.com/h0tbird/puppet-hosts.git
 [submodule "modules/motd"]
 	path = modules/motd
-	url = https://github.com/h0tbird/puppet-motd.git
+	url = https://h0tbird@github.com/h0tbird/puppet-motd.git
 [submodule "modules/mysql"]
 	path = modules/mysql
-	url = https://github.com/h0tbird/puppet-mysql.git
+	url = https://h0tbird@github.com/h0tbird/puppet-mysql.git
 [submodule "modules/ntp"]
 	path = modules/ntp
-	url = https://github.com/h0tbird/puppet-ntp.git
+	url = https://h0tbird@github.com/h0tbird/puppet-ntp.git
 [submodule "modules/puppet"]
 	path = modules/puppet
-	url = https://github.com/h0tbird/puppet-puppet.git
+	url = https://h0tbird@github.com/h0tbird/puppet-puppet.git
 [submodule "modules/repos"]
 	path = modules/repos
-	url = https://github.com/h0tbird/puppet-repos.git
+	url = https://h0tbird@github.com/h0tbird/puppet-repos.git
 [submodule "modules/samba"]
 	path = modules/samba
-	url = https://github.com/h0tbird/puppet-samba.git
+	url = https://h0tbird@github.com/h0tbird/puppet-samba.git
 [submodule "modules/ssh"]
 	path = modules/ssh
-	url = https://github.com/h0tbird/puppet-ssh.git
+	url = https://h0tbird@github.com/h0tbird/puppet-ssh.git
 [submodule "modules/user"]
 	path = modules/user
-	url = https://github.com/h0tbird/puppet-user.git
+	url = https://h0tbird@github.com/h0tbird/puppet-user.git
