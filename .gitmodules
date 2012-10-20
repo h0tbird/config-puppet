@@ -37,3 +37,6 @@
 [submodule "modules/user"]
 	path = modules/user
 	url = https://h0tbird@github.com/h0tbird/puppet-user.git
+[submodule "modules/yum"]
+	path = modules/yum
+	url = https://h0tbird@github.com/h0tbird/puppet-yum.git

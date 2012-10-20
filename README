@@ -31,3 +31,10 @@ puppet agent --test
 #------------------------------------------------------------------------------
 
 puppet cert -s puppet01.domain
+
+#------------------------------------------------------------------------------
+# Create a new git sobmodule:
+#------------------------------------------------------------------------------
+
+git submodule add https://h0tbird@github.com/h0tbird/puppet-yum.git modules/yum
+git push -u origin master
