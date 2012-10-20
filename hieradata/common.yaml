@@ -1,0 +1,64 @@
+---
+
+#------------------------------------------------------------------------------
+# yum:
+#------------------------------------------------------------------------------
+
+yum::version           : 'present'
+yum::cachedir          : '/var/cache/yum/$basearch/$releasever'
+yum::keepcache         : '0'
+yum::debuglevel        : '2'
+yum::logfile           : '/var/log/yum.log'
+yum::exactarch         : '1'
+yum::obsoletes         : '1'
+yum::gpgcheck          : '1'
+yum::plugins           : '1'
+yum::installonly_limit : '5'
+yum::bugtracker_url    : 'http://bugs.centos.org/set_project.php?project_id=16&ref=http://bugs.centos.org/bug_report_page.php?category=yum'
+yum::distroverpkg      : 'centos-release'
+
+yum::repos:
+ centos_base:
+  name     : 'CentOS-$releasever - Base'
+  baseurl  : 'http://192.168.2.2/cobbler/ks_mirror/CentOS_6.3-x86_64/'
+  gpgcheck : '1'
+  gpgkey   : 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
+ centos_updates:
+  name     : 'CentOS-$releasever - Updates'
+  baseurl  : 'http://192.168.2.2/cobbler/repo_mirror/CentOS_6.3-x86_64-updates/'
+  gpgcheck : '1'
+  gpgkey   : 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
+ centos_extras:
+  name       : 'CentOS-$releasever - Extras'
+  mirrorlist : 'http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=extras'
+  gpgcheck   : '1'
+  gpgkey     : 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
+
+#------------------------------------------------------------------------------
+# puppet:
+#------------------------------------------------------------------------------
+
+puppet::repos:
+ puppetlabs_products:
+  name     : 'Puppet Labs Products El 6 - $basearch'
+  baseurl  : 'http://192.168.2.2/cobbler/repo_mirror/puppetlabs-products-el6-x86_64/'
+  gpgkey   : 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs'
+  enabled  : '1'
+  gpgcheck : '1'
+ puppetlabs_deps:
+  name     : 'Puppet Labs Dependencies El 6 - $basearch'
+  baseurl  : 'http://192.168.2.2/cobbler/repo_mirror/puppetlabs-deps-el6-x86_64/'
+  gpgkey   : 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs'
+  enabled  : '1'
+  gpgcheck : '1'
+
+#------------------------------------------------------------------------------
+# foreman:
+#------------------------------------------------------------------------------
+
+foreman::repos:
+ foreman:
+  name     : 'Foreman'
+  baseurl  : 'http://192.168.2.2/cobbler/repo_mirror/foreman-el6-x86_64/'
+  enabled  : '1'
+  gpgcheck : '0'

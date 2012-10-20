@@ -6,7 +6,7 @@ node 'base' {
 
     # Stage: pre
     class { 'hosts': stage => pre } ->
-    class { 'repos': stage => pre }
+    class { 'yum':   stage => pre }
 
     # Stage: main
     class {
@@ -23,7 +23,7 @@ node 'base' {
 
 node /^puppet(\d+)/ inherits base {
 
-    include r_puppet
+    # include r_puppet
 }
 
 #------------------------------------------------------------------------------
