@@ -10,13 +10,13 @@ hosts::hosts:
   host_aliases: 'localhost.localdomain'
  puppet:
   ip: '192.168.2.2'
-  host_aliases: 'puppet.demo.lan'
+  host_aliases: 'puppet.%{domain}'
  cobbler:
   ip: '192.168.2.2'
-  host_aliases: 'cobbler.demo.lan'
+  host_aliases: 'cobbler.%{domain}'
  foreman:
   ip: '192.168.2.2'
-  host_aliases: 'foreman.demo.lan'
+  host_aliases: 'foreman.%{domain}'
 
 #------------------------------------------------------------------------------
 # yum:
@@ -39,7 +39,7 @@ yum::repos:
 
  centos_base:
   name: 'CentOS-$releasever - Base'
-  baseurl: "http://cobbler.demo.lan/cobbler/ks_mirror/CentOS_6.3-x86_64/\n
+  baseurl: "http://cobbler.%{domain}/cobbler/ks_mirror/CentOS_6.3-x86_64/\n
             http://mirror.centos.org/centos/$releasever/os/$basearch/"
   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
   gpgcheck: '1'
@@ -47,7 +47,7 @@ yum::repos:
 
  centos_updates:
   name: 'CentOS-$releasever - Updates'
-  baseurl: "http://cobbler.demo.lan/cobbler/repo_mirror/CentOS_6.3-x86_64-updates/\n
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/CentOS_6.3-x86_64-updates/\n
             http://mirror.centos.org/centos/$releasever/updates/$basearch/"
   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
   gpgcheck: '1'
@@ -55,7 +55,7 @@ yum::repos:
 
  centos_extras:
   name: 'CentOS-$releasever - Extras'
-  baseurl: "http://cobbler.demo.lan/cobbler/repo_mirror/CentOS_6.3-x86_64-extras/\n
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/CentOS_6.3-x86_64-extras/\n
             http://mirror.centos.org/centos/$releasever/extras/$basearch/"
   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
   gpgcheck: '1'
@@ -63,7 +63,7 @@ yum::repos:
 
  epel:
   name: 'Extra Packages for Enterprise Linux 6 - $basearch'
-  baseurl: "http://cobbler.demo.lan/cobbler/repo_mirror/EPEL_6-x86_64/\n
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/EPEL_6-x86_64/\n
             http://download.fedoraproject.org/pub/epel/6/$basearch"
   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6'
   failovermethod: 'priority'
@@ -72,7 +72,7 @@ yum::repos:
 
  epel_testing:
   name: 'Extra Packages for Enterprise Linux 6 - Testing - $basearch'
-  baseurl: "http://cobbler.demo.lan/cobbler/repo_mirror/EPEL_6-x86_64-testing/\n
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/EPEL_6-x86_64-testing/\n
             http://download.fedoraproject.org/pub/epel/testing/6/$basearch"
   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6'
   failovermethod: 'priority'
@@ -87,7 +87,7 @@ puppet::repos:
 
  puppetlabs_products:
   name: 'Puppet Labs Products El 6 - $basearch'
-  baseurl: "http://cobbler.demo.lan/cobbler/repo_mirror/puppetlabs-products-el6-x86_64/\n
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/puppetlabs-products-el6-x86_64/\n
             http://yum.puppetlabs.com/el/6/products/$basearch"
   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs'
   gpgcheck: '1'
@@ -95,7 +95,7 @@ puppet::repos:
 
  puppetlabs_deps:
   name: 'Puppet Labs Dependencies El 6 - $basearch'
-  baseurl: "http://cobbler.demo.lan/cobbler/repo_mirror/puppetlabs-deps-el6-x86_64/\n
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/puppetlabs-deps-el6-x86_64/\n
             http://yum.puppetlabs.com/el/6/dependencies/$basearch"
   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs'
   gpgcheck: '1'
@@ -109,7 +109,7 @@ foreman::repos:
 
  foreman:
   name: 'Foreman'
-  baseurl: "http://cobbler.demo.lan/cobbler/repo_mirror/foreman-el6-x86_64/\n
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/foreman-el6-x86_64/\n
             http://yum.theforeman.org/releases/1.0/el6/$basearch"
   gpgcheck: '0'
   enabled: '1'
