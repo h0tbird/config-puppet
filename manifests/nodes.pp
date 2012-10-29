@@ -9,12 +9,7 @@ node 'base' {
     class { 'yum':   stage => pre }
 
     # Stage: main
-    class {
-        'motd':;
-        'ntp':;
-        'ssh':;
-        'puppet::client':;
-    }
+    include ['motd','ntp','ssh','puppet::client']
 }
 
 #------------------------------------------------------------------------------
