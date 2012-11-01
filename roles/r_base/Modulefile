@@ -1,0 +1,8 @@
+name            'h0tbird-r_base'
+version         '1.0.0'
+source          'https://github.com/h0tbird/puppet'
+author          'Marc Villacorta'
+license         'GPL'
+summary         'Base role module'
+description     'Base role module'
+project_page    'https://github.com/h0tbird/puppet'

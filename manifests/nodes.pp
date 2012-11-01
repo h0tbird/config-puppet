@@ -4,12 +4,7 @@
 
 node 'base' {
 
-    # Stage: pre
-    class { 'hosts': stage => pre } ->
-    class { 'yum':   stage => pre }
-
-    # Stage: main
-    include ['motd','ntp','ssh','puppet::client']
+    include r_base
 }
 
 #------------------------------------------------------------------------------
@@ -28,4 +23,22 @@ node /^puppet(\d+)/ inherits base {
 node /^kvm(\d+)/ inherits base {
 
     include r_kvm
+}
+
+#------------------------------------------------------------------------------
+# Frontends:
+#------------------------------------------------------------------------------
+
+node /^frontend(\d+)/ inherits base {
+
+    include r_frontend
+}
+
+#------------------------------------------------------------------------------
+# Backends:
+#------------------------------------------------------------------------------
+
+node /^backend(\d+)/ inherits base {
+
+    include r_backend
 }
