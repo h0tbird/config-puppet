@@ -3,12 +3,12 @@
 #------------------------------------------------------------------------------
 class r_puppet (
 
-    $users = extlookup("${module_name}/users", undef, "roles/${module_name}/${::fqdn}"),
-    $git_server = extlookup("${module_name}/git/server", undef, "roles/${module_name}/${::fqdn}"),
-    $git_user = extlookup("${module_name}/git/user", undef, "roles/${module_name}/${::fqdn}"),
-    $git_path = extlookup("${module_name}/git/path", undef, "roles/${module_name}/${::fqdn}"),
-    $samba_workgroup = extlookup("${module_name}/samba/workgroup", undef, "roles/${module_name}/${::fqdn}"),
-    $samba_hosts_allow = extlookup("${module_name}/samba/hosts_allow", undef, "roles/${module_name}/${::fqdn}"),
+    $users,
+    $git_server,
+    $git_user,
+    $git_path,
+    $samba_workgroup,
+    $samba_hosts_allow,
 
 ) {
 
