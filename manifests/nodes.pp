@@ -13,7 +13,7 @@ node 'base' {
 
 node /^puppet(\d+)/ inherits base {
 
-    # include r_puppet
+    include r_puppet
 }
 
 #------------------------------------------------------------------------------

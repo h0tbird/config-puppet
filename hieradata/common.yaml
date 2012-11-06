@@ -125,11 +125,11 @@ puppet::repos:
 # r_puppet:
 #------------------------------------------------------------------------------
 
-r_puppet::git::server: 'github.com'
-r_puppet::git::user: 'h0tbird'
-r_puppet::git::path: '/etc/puppet'
-r_puppet::samba::workgroup: 'DEMO'
-r_puppet::samba::hosts_allow: '127. 192.168.'
+r_puppet::git_server: 'github.com'
+r_puppet::git_user: 'h0tbird'
+r_puppet::git_path: '/etc/puppet'
+r_puppet::samba_workgroup: 'DEMO'
+r_puppet::samba_hosts_allow: '127. 192.168.'
 r_puppet::users: - 'marc.villacorta'
                  - 'deborah.aguilar'
 

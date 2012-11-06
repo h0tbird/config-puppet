@@ -3,12 +3,12 @@
 #------------------------------------------------------------------------------
 class r_puppet (
 
-    $users,
-    $git_server,
-    $git_user,
-    $git_path,
-    $samba_workgroup,
-    $samba_hosts_allow,
+    $users             = undef,
+    $git_server        = undef,
+    $git_user          = undef,
+    $git_path          = undef,
+    $samba_workgroup   = undef,
+    $samba_hosts_allow = undef,
 
 ) {
 
