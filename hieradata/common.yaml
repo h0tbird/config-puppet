@@ -1,149 +1,212 @@
 ---
 
 #------------------------------------------------------------------------------
-# hosts:
+# Aliases:
 #------------------------------------------------------------------------------
 
-hosts::hosts:
- localhost:
-  ip: '127.0.0.1'
-  host_aliases: 'localhost.localdomain'
- puppet:
-  ip: '192.168.2.2'
-  host_aliases: 'puppet.%{domain}'
- cobbler:
-  ip: '192.168.2.2'
-  host_aliases: 'cobbler.%{domain}'
- foreman:
-  ip: '192.168.2.2'
-  host_aliases: 'foreman.%{domain}'
+aliases:
+ - &puppet_path '/etc/puppet'
 
 #------------------------------------------------------------------------------
-# yum:
+# Users:
 #------------------------------------------------------------------------------
 
-yum::version: 'present'
-yum::cachedir: '/var/cache/yum/$basearch/$releasever'
-yum::keepcache: '0'
-yum::debuglevel: '2'
-yum::logfile: '/var/log/yum.log'
-yum::exactarch: '1'
-yum::obsoletes: '1'
-yum::gpgcheck: '1'
-yum::plugins: '1'
-yum::installonly_limit: '5'
-yum::bugtracker_url: 'http://bugs.centos.org/set_project.php?project_id=16&ref=http://bugs.centos.org/bug_report_page.php?category=yum'
-yum::distroverpkg: 'centos-release'
+users:
+ marc.villacorta: &marc_villacorta
+  uid: '501'
+  gid: '501'
+  name: 'Marc Villacorta'
+  groups: 'puppet'
+  pass: '!!'
+  home: '/home/marc.villacorta'
+  shell: '/bin/bash'
+  git:
+   home: '/home/marc.villacorta'
+   fullname: 'Marc Villacorta'
+   email: 'marc.villacorta@gmail.com'
+   editor: 'vim'
+   difftool: 'vimdiff'
+  samba:
+   password: 'password'
+  grant: 'root'
+  key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDhIkAzWDvjJjtJkO+qjAogxiryZt3B36q4JPSMX6WEB7LpSNPzt4NVe0tSkswZ/KkmJmuN4K0gWFK/NO7MnuM5hCdo8j786o+a48h3GNsqFG1GloJVQSkDSOZgDxfMRNLD4oEQ0wx7q7kwlY7i1q8myue+qoy/bsRu35qwLVNlnOe/xe9gNPb4nnRJksober+qBhGxB/WOeiKmyWy7/OrH74tuRePI5+Zi9bnLNp01sJefsvMjSAXi+iRf0WNcSguN7az1g6P40iWQ6QGZPkBEXKHcCUp+C80nNDX/tdhlEqFElvGIfsXOHDavRiPSPZSNc3a8ngAHNq2ox0NP+VvR'
 
-yum::repos:
+ deborah.aguilar: &deborah_aguilar
+  uid: '502'
+  gid: '502'
+  name: 'Deborah Aguilar'
+  groups: 'puppet'
+  pass: '!!'
+  home: '/home/deborah.aguilar'
+  shell: '/bin/bash'
+  git:
+   home: '/home/deborah.aguilar'
+   fullname: 'Deborah Aguilar'
+   email: 'dev@null.nop'
+   editor: 'vim'
+   difftool: 'vimdiff'
+  samba:
+   password: 'password'
+  grant: 'root'
+  key: 'AAAB3NzaC1yc2EAAAADAQABAAABAQCVblqnZu6pnuHyIqrYIVfmIn4LLo98nQTcUiDTBuyo1k2fOeSlMz8tDIB0fZpyOaoTFASTIGF4pSNczNlv23kwYj5mIuctLmiNF0+VCEWeE0wj7LEA7s1/YXziKBczVkFhl06uPNQ/OHhEKy7LjPn9DTX2NFnWO00GQ+oyLhTMMe5O8OTmtT/ySNYhouhxR7jdMtOo4qw2wkGVXk123A+i1hCpvylUaS70MkM08he/q99pjT3f1VbZg6mw6bPXtM+de4RkkCFF3T53djy4Omil6yiAGODzVIVBXXUuZtU+YlsWtATac3Vs0nFcgujqMKRvvuMVy9/ZejLG4eQartzB'
 
- centos_base:
-  name: 'CentOS-$releasever - Base'
-  baseurl: "http://cobbler.%{domain}/cobbler/ks_mirror/CentOS_6.3-x86_64/\n
+#------------------------------------------------------------------------------
+# r_base:
+#------------------------------------------------------------------------------
+
+# hosts
+r_base::hosts:
+ hosts:
+  localhost:
+   ip: '127.0.0.1'
+   host_aliases: 'localhost.localdomain'
+  puppet:
+   ip: '192.168.2.2'
+   host_aliases: 'puppet.%{domain}'
+  cobbler:
+   ip: '192.168.2.2'
+   host_aliases: 'cobbler.%{domain}'
+  foreman:
+   ip: '192.168.2.2'
+   host_aliases: 'foreman.%{domain}'
+
+# yum
+r_base::yum:
+ version: 'present'
+ cachedir: '/var/cache/yum/$basearch/$releasever'
+ keepcache: '0'
+ debuglevel: '2'
+ logfile: '/var/log/yum.log'
+ exactarch: '1'
+ obsoletes: '1'
+ gpgcheck: '1'
+ plugins: '1'
+ installonly_limit: '5'
+ bugtracker_url: 'http://bugs.centos.org/set_project.php?project_id=16&ref=http://bugs.centos.org/bug_report_page.php?category=yum'
+ distroverpkg: 'centos-release'
+ repos:
+  centos_base:
+   name: 'CentOS-$releasever - Base'
+   baseurl: "http://cobbler.%{domain}/cobbler/ks_mirror/CentOS_6.3-x86_64/\n
             http://mirror.centos.org/centos/$releasever/os/$basearch/"
-  gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
-  gpgcheck: '1'
-  enabled: '1'
-
- centos_updates:
-  name: 'CentOS-$releasever - Updates'
-  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/CentOS_6.3-x86_64-updates/\n
+   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
+   gpgcheck: '1'
+   enabled: '1'
+  centos_updates:
+   name: 'CentOS-$releasever - Updates'
+   baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/CentOS_6.3-x86_64-updates/\n
             http://mirror.centos.org/centos/$releasever/updates/$basearch/"
-  gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
-  gpgcheck: '1'
-  enabled: '1'
-
- centos_extras:
-  name: 'CentOS-$releasever - Extras'
-  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/CentOS_6.3-x86_64-extras/\n
+   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
+   gpgcheck: '1'
+   enabled: '1'
+  centos_extras:
+   name: 'CentOS-$releasever - Extras'
+   baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/CentOS_6.3-x86_64-extras/\n
             http://mirror.centos.org/centos/$releasever/extras/$basearch/"
-  gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
-  gpgcheck: '1'
-  enabled: '1'
-
- epel:
-  name: 'Extra Packages for Enterprise Linux 6 - $basearch'
-  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/EPEL_6-x86_64/\n
+   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
+   gpgcheck: '1'
+   enabled: '1'
+  epel:
+   name: 'Extra Packages for Enterprise Linux 6 - $basearch'
+   baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/EPEL_6-x86_64/\n
             http://download.fedoraproject.org/pub/epel/6/$basearch"
-  gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6'
-  failovermethod: 'priority'
-  gpgcheck: '1'
-  enabled: '1'
-
- epel_testing:
-  name: 'Extra Packages for Enterprise Linux 6 - Testing - $basearch'
-  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/EPEL_6-x86_64-testing/\n
+   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6'
+   failovermethod: 'priority'
+   gpgcheck: '1'
+   enabled: '1'
+  epel_testing:
+   name: 'Extra Packages for Enterprise Linux 6 - Testing - $basearch'
+   baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/EPEL_6-x86_64-testing/\n
             http://download.fedoraproject.org/pub/epel/testing/6/$basearch"
-  gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6'
-  failovermethod: 'priority'
-  gpgcheck: '1'
-  enabled: '1'
-
-#------------------------------------------------------------------------------
-# ntp:
-#------------------------------------------------------------------------------
-
-ntp::ensure: 'running'
-ntp::version: 'present'
-ntp::servers: - '0.centos.pool.ntp.org iburst'
-              - '1.centos.pool.ntp.org iburst'
-              - '2.centos.pool.ntp.org iburst'
-ntp::tickers: - '0.centos.pool.ntp.org'
-              - '1.centos.pool.ntp.org'
-              - '2.centos.pool.ntp.org'
-
-#------------------------------------------------------------------------------
-# ssh:
-#------------------------------------------------------------------------------
-
-ssh::ensure: 'running'
-ssh::version: 'present'
-
-#------------------------------------------------------------------------------
-# puppet:
-#------------------------------------------------------------------------------
-
-puppet::repos:
-
- puppetlabs_products:
-  name: 'Puppet Labs Products El 6 - $basearch'
-  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/puppetlabs-products-el6-x86_64/\n
+   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6'
+   failovermethod: 'priority'
+   gpgcheck: '1'
+   enabled: '1'
+  puppetlabs_products:
+   name: 'Puppet Labs Products El 6 - $basearch'
+   baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/puppetlabs-products-el6-x86_64/\n
             http://yum.puppetlabs.com/el/6/products/$basearch"
-  gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs'
-  gpgcheck: '1'
-  enabled: '1'
-
- puppetlabs_deps:
-  name: 'Puppet Labs Dependencies El 6 - $basearch'
-  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/puppetlabs-deps-el6-x86_64/\n
+   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs'
+   gpgcheck: '1'
+   enabled: '1'
+  puppetlabs_deps:
+   name: 'Puppet Labs Dependencies El 6 - $basearch'
+   baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/puppetlabs-deps-el6-x86_64/\n
             http://yum.puppetlabs.com/el/6/dependencies/$basearch"
-  gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs'
-  gpgcheck: '1'
-  enabled: '1'
+   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs'
+   gpgcheck: '1'
+   enabled: '1'
+  foreman:
+   name: 'Foreman'
+   baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/foreman-el6-x86_64/\n
+            http://yum.theforeman.org/releases/1.0/el6/$basearch"
+   gpgcheck: '0'
+   enabled: '1'
+
+# ntp
+r_base::ntp:
+ ensure: 'running'
+ version: 'present'
+ servers:
+  - '0.centos.pool.ntp.org iburst'
+  - '1.centos.pool.ntp.org iburst'
+  - '2.centos.pool.ntp.org iburst'
+ tickers:
+  - '0.centos.pool.ntp.org'
+  - '1.centos.pool.ntp.org'
+  - '2.centos.pool.ntp.org'
+
+# ssh
+r_base::ssh:
+ ensure: 'running'
+ version: 'present'
+
+# puppet
+r_base::puppet:
+ ensure: 'running'
+ version: 'present'
 
 #------------------------------------------------------------------------------
 # r_puppet:
 #------------------------------------------------------------------------------
 
-r_puppet::git_server: 'github.com'
-r_puppet::git_user: 'h0tbird'
-r_puppet::git_path: '/etc/puppet'
-r_puppet::samba_workgroup: 'DEMO'
-r_puppet::samba_hosts_allow: '127. 192.168.'
-r_puppet::users: - 'marc.villacorta'
-                 - 'deborah.aguilar'
+r_puppet::users:
+ marc.villacorta: *marc_villacorta
+ deborah.aguilar: *deborah_aguilar
+
+r_puppet::repos:
+ puppet:
+  ensure: 'present'
+  owner: 'root'
+  group: 'puppet'
+  mode: '0664'
+  recursive: true
+  server: 'github.com'
+  user: 'h0tbird'
+  path: *puppet_path
 
 #------------------------------------------------------------------------------
-# foreman:
+# r_samba:
 #------------------------------------------------------------------------------
 
-foreman::repos:
+r_samba::ensure: 'running'
+r_samba::version: 'present'
+r_samba::workgroup: 'DEMO'
+r_samba::server_string: 'Samba Server Version %v'
+r_samba::netbios_name: "%{hostname}"
+r_samba::interfaces: 'lo eth0'
+r_samba::hosts_allow: '127. 192.168.'
+r_samba::log_file: '/var/log/samba/%m.log'
+r_samba::max_log_size: '50'
+r_samba::security: 'user'
+r_samba::passdb_backend: 'tdbsam'
+r_samba::load_printers: 'no'
 
- foreman:
-  name: 'Foreman'
-  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/foreman-el6-x86_64/\n
-            http://yum.theforeman.org/releases/1.0/el6/$basearch"
-  gpgcheck: '0'
-  enabled: '1'
+r_samba::shares:
+ puppet:
+  path: *puppet_path
+  comment: 'Puppet share.'
+  valid_users: - 'marc.villacorta'
+               - 'deborah.aguilar'
 
 ...
