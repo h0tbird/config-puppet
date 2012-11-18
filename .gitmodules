@@ -25,9 +25,6 @@
 [submodule "modules/puppet"]
 	path = modules/puppet
 	url = https://h0tbird@github.com/h0tbird/puppet-puppet.git
-[submodule "modules/repos"]
-	path = modules/repos
-	url = https://h0tbird@github.com/h0tbird/puppet-repos.git
 [submodule "modules/samba"]
 	path = modules/samba
 	url = https://h0tbird@github.com/h0tbird/puppet-samba.git
