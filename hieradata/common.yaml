@@ -148,7 +148,7 @@ GitRepos:
   path: '/etc/puppet'
 
 ###############################################################################
-## ROLES: This data is feeded into class parameters.
+## ROLES: This data is feeded into role class parameters.
 ###############################################################################
 
 #------------------------------------------------------------------------------
@@ -213,13 +213,16 @@ r_base::puppet:
 # r_puppet:
 #------------------------------------------------------------------------------
 
+# users
 r_puppet::users:
  marc.villacorta: *User_marc_villacorta
  deborah.aguilar: *User_deborah_aguilar
 
+# repos
 r_puppet::repos:
  puppet: *GitRepo_puppet
 
+# samba
 r_puppet::samba:
  ensure: 'running'
  version: 'present'
@@ -244,8 +247,55 @@ r_puppet::samba:
 # r_router:
 #------------------------------------------------------------------------------
 
+# pppd
 r_router::pppd:
  ensure: 'running'
  version: 'present'
-
+ interfaces:
+  ppp0:
+   userctl: 'no'
+   bootproto: 'dialup'
+   name: 'FTTHppp0'
+   device: 'ppp0'
+   type: 'FTTH'
+   onboot: 'yes'
+   pidfile: '/var/run/pppoe-ftth.pid'
+   firewall: 'none'
+   ping: '.'
+   pppoe_timeout: '120'
+   lcp_failure: '3'
+   lcp_interval: '20'
+   clampmss: '1412'
+   connect_poll: '6'
+   connect_timeout: '60'
+   defroute: 'yes'
+   synchronous: 'no'
+   eth: 'br0.6'
+   provider: 'FTTHppp0'
+   user: 'adslppp@telefonicanetpa'
+   peerdns: 'yes'
+   demand: 'no'
+  ppp1:
+   userctl: ''
+   bootproto: ''
+   name: ''
+   device: ''
+   type: ''
+   onboot: ''
+   pidfile: ''
+   firewall: ''
+   ping: ''
+   pppoe_timeout: ''
+   lcp_failure: ''
+   lcp_interval: ''
+   clampmss: ''
+   connect_poll: ''
+   connect_timeout: ''
+   defroute: ''
+   synchronous: ''
+   eth: ''
+   provider: ''
+   user: ''
+   peerdns: ''
+   demand: ''
 ...
