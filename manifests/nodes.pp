@@ -14,7 +14,6 @@ node 'base' {
 node /^puppet(\d+)/ inherits base {
 
     include r_puppet
-    include r_samba
 }
 
 #------------------------------------------------------------------------------
@@ -24,6 +23,7 @@ node /^puppet(\d+)/ inherits base {
 node /^kvm(\d+)/ inherits base {
 
     include r_kvm
+    include r_router
 }
 
 #------------------------------------------------------------------------------

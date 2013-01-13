@@ -1,8 +1,0 @@
-name            'h0tbird-r_samba'
-version         '1.0.0'
-source          'https://github.com/h0tbird/puppet'
-author          'Marc Villacorta'
-license         'GPL'
-summary         'Samba role Module'
-description     'Samba role Module'
-project_page    'https://github.com/h0tbird/puppet'

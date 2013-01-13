@@ -1,5 +1,9 @@
 ---
 
+###############################################################################
+## LISTS: To be referenced later on.
+###############################################################################
+
 #------------------------------------------------------------------------------
 # Hosts:
 #------------------------------------------------------------------------------
@@ -143,6 +147,10 @@ GitRepos:
   user: 'h0tbird'
   path: '/etc/puppet'
 
+###############################################################################
+## ROLES: This data is feeded into class parameters.
+###############################################################################
+
 #------------------------------------------------------------------------------
 # r_base:
 #------------------------------------------------------------------------------
@@ -212,28 +220,32 @@ r_puppet::users:
 r_puppet::repos:
  puppet: *GitRepo_puppet
 
+r_puppet::samba:
+ ensure: 'running'
+ version: 'present'
+ workgroup: 'DEMO'
+ server_string: 'Samba Server Version %v'
+ netbios_name: "%{hostname}"
+ interfaces: 'lo eth0'
+ hosts_allow: '127. 192.168.'
+ log_file: '/var/log/samba/%m.log'
+ max_log_size: '50'
+ security: 'user'
+ passdb_backend: 'tdbsam'
+ load_printers: 'no'
+ shares:
+  puppet:
+   path: '/etc/puppet'
+   comment: 'Puppet share.'
+   valid_users: - 'marc.villacorta'
+                - 'deborah.aguilar'
+
 #------------------------------------------------------------------------------
-# r_samba:
+# r_router:
 #------------------------------------------------------------------------------
 
-r_samba::ensure: 'running'
-r_samba::version: 'present'
-r_samba::workgroup: 'DEMO'
-r_samba::server_string: 'Samba Server Version %v'
-r_samba::netbios_name: "%{hostname}"
-r_samba::interfaces: 'lo eth0'
-r_samba::hosts_allow: '127. 192.168.'
-r_samba::log_file: '/var/log/samba/%m.log'
-r_samba::max_log_size: '50'
-r_samba::security: 'user'
-r_samba::passdb_backend: 'tdbsam'
-r_samba::load_printers: 'no'
-
-r_samba::shares:
- puppet:
-  path: '/etc/puppet'
-  comment: 'Puppet share.'
-  valid_users: - 'marc.villacorta'
-               - 'deborah.aguilar'
+r_router::pppd:
+ ensure: 'running'
+ version: 'present'
 
 ...
