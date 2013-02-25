@@ -1,4 +1,11 @@
-class r_kvm {
+class r_kvm (
 
-    include libvirt
+    $libvirt = undef,
+
+) {
+
+    class { 'libvirt':
+        ensure  => $libvirt['ensure'],
+        version => $libvirt['version'],
+    }
 }
