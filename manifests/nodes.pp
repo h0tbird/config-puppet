@@ -23,6 +23,14 @@ node /^puppet(\d+)/ inherits base {
 node /^kvm(\d+)/ inherits base {
 
     include r_kvm
+}
+
+#------------------------------------------------------------------------------
+# Router:
+#------------------------------------------------------------------------------
+
+node /^router(\d+)/ inherits base {
+
     include r_router
 }
 
