@@ -93,7 +93,8 @@ YumRepos:
   enabled: '1'
  epel: &YumRepo_epel
   name: 'Extra Packages for Enterprise Linux 6 - $basearch'
-  baseurl: "http://download.fedoraproject.org/pub/epel/6/$basearch"
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/EPEL-el6-x86_64/\n
+           http://download.fedoraproject.org/pub/epel/6/$basearch"
   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6'
   failovermethod: 'priority'
   gpgcheck: '1'
@@ -251,7 +252,7 @@ r_puppet::samba:
 r_router::pppd:
  ensure: 'running'
  version: 'present'
- interfaces:
+ ifaces:
   ppp0:
    userctl: 'no'
    bootproto: 'dialup'
@@ -275,27 +276,4 @@ r_router::pppd:
    user: 'adslppp@telefonicanetpa'
    peerdns: 'yes'
    demand: 'no'
-  ppp1:
-   userctl: ''
-   bootproto: ''
-   name: ''
-   device: ''
-   type: ''
-   onboot: ''
-   pidfile: ''
-   firewall: ''
-   ping: ''
-   pppoe_timeout: ''
-   lcp_failure: ''
-   lcp_interval: ''
-   clampmss: ''
-   connect_poll: ''
-   connect_timeout: ''
-   defroute: ''
-   synchronous: ''
-   eth: ''
-   provider: ''
-   user: ''
-   peerdns: ''
-   demand: ''
 ...
