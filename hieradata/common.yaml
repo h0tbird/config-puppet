@@ -252,6 +252,7 @@ r_puppet::samba:
 r_kvm::libvirt:
  ensure: 'running'
  version: 'present'
+ mdns_adv: '0'
 
 #------------------------------------------------------------------------------
 # r_router:

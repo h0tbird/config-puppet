@@ -1,11 +1,12 @@
 class r_kvm (
 
-    $libvirt = undef,
+    $libvirt  = undef,
 
 ) {
 
     class { 'libvirt':
-        ensure  => $libvirt['ensure'],
-        version => $libvirt['version'],
+        ensure   => $libvirt['ensure'],
+        version  => $libvirt['version'],
+        mdns_adv => $libvirt['mdns_adv'],
     }
 }
