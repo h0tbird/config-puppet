@@ -4,7 +4,7 @@ class r_kvm (
 
 ) {
 
-    $packages = ['qemu-kvm','koan','python-virtinst']
+    $packages = ['qemu-kvm','koan']
 
     package { $packages:
         ensure => present,
