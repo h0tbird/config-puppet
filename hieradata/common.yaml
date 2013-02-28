@@ -95,30 +95,26 @@ YumRepos:
   name: 'Extra Packages for Enterprise Linux 6 - $basearch'
   baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/EPEL-el6-x86_64/\n
            http://download.fedoraproject.org/pub/epel/6/$basearch"
-  gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6'
   failovermethod: 'priority'
-  gpgcheck: '1'
+  gpgcheck: '0'
   enabled: '1'
  epel_testing: &YumRepo_epel_testing
   name: 'Extra Packages for Enterprise Linux 6 - Testing - $basearch'
   baseurl: "http://download.fedoraproject.org/pub/epel/testing/6/$basearch"
-  gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6'
   failovermethod: 'priority'
-  gpgcheck: '1'
+  gpgcheck: '0'
   enabled: '1'
  puppetlabs_products: &YumRepo_puppetlabs_products
   name: 'Puppet Labs Products El 6 - $basearch'
   baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/puppetlabs-products-el6-x86_64/\n
            http://yum.puppetlabs.com/el/6/products/$basearch"
-  gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs'
-  gpgcheck: '1'
+  gpgcheck: '0'
   enabled: '1'
  puppetlabs_deps: &YumRepo_puppetlabs_deps
   name: 'Puppet Labs Dependencies El 6 - $basearch'
   baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/puppetlabs-deps-el6-x86_64/\n
            http://yum.puppetlabs.com/el/6/dependencies/$basearch"
-  gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs'
-  gpgcheck: '1'
+  gpgcheck: '0'
   enabled: '1'
  foreman: &YumRepo_foreman
   name: 'Foreman'

@@ -4,6 +4,12 @@ class r_kvm (
 
 ) {
 
+    $packages = ['qemu-kvm','koan','python-virtinst']
+
+    package { $packages:
+        ensure => present,
+    }
+
     if $libvirt {
         class { 'libvirt':
             ensure                     => $libvirt['ensure'],
