@@ -43,3 +43,6 @@
 [submodule "modules/libvirt"]
 	path = modules/libvirt
 	url = https://h0tbird@github.com/h0tbird/puppet-libvirt.git
+[submodule "modules/kvm"]
+	path = modules/kvm
+	url = https://h0tbird@github.com/h0tbird/puppet-kvm.git
