@@ -1,14 +1,36 @@
 class r_kvm (
 
+    $koan    = undef,
     $libvirt = undef,
+    $kvm     = undef,
 
 ) {
 
-    $packages = ['qemu-kvm','koan']
+    #-------
+    # Koan:
+    #-------
 
-    package { $packages:
-        ensure => present,
+    if $koan {
+        package { 'koan':
+            ensure => $koan['version'],
+        }
     }
+
+    #------
+    # KVM:
+    #------
+
+    if $kvm {
+        class { 'kvm':
+            version  => $kvm['version'],
+            ksm      => $kvm['ksm'],
+            ksmtuned => $kvm['ksmtuned'],
+        }
+    }
+
+    #----------
+    # Libvirt:
+    #----------
 
     if $libvirt {
         class { 'libvirt':

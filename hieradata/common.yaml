@@ -264,6 +264,16 @@ r_kvm::libvirt:
  auth_tcp: 'sasl'
  auth_tls: 'none'
 
+# kvm
+r_kvm::kvm:
+ version: 'present'
+ ksm: 'running'
+ ksmtuned: 'running'
+
+# koan
+r_kvm::koan:
+ version: 'present'
+
 #------------------------------------------------------------------------------
 # r_router:
 #------------------------------------------------------------------------------
