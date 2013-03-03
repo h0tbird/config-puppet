@@ -21,6 +21,7 @@ class r_kvm (
             owner   => 'root',
             group   => 'root',
             mode    => '0644',
+            require => Package['koan'],
         }
     }
 
