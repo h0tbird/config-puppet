@@ -275,9 +275,15 @@ r_kvm::kvm:
 r_kvm::koan:
  version: 'present'
  systems:
-  - 'frontend01.%{domain}'
-  - 'backend01.%{domain}'
-  - 'router01.%{domain}'
+  frontend01:
+   size: '4096'
+   volume: 'vg0'
+  backend01:
+   size: '4096'
+   volume: 'vg0'
+  router01:
+   size: '4096'
+   volume: 'vg0'
 
 #------------------------------------------------------------------------------
 # r_router:
