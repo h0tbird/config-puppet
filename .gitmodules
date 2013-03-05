@@ -46,3 +46,6 @@
 [submodule "modules/kvm"]
 	path = modules/kvm
 	url = https://h0tbird@github.com/h0tbird/puppet-kvm.git
+[submodule "modules/koan"]
+	path = modules/koan
+	url = https://h0tbird@github.com/h0tbird/puppet-koan.git

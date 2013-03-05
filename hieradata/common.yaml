@@ -237,8 +237,9 @@ r_puppet::samba:
   puppet:
    path: '/etc/puppet'
    comment: 'Puppet share.'
-   valid_users: - 'marc.villacorta'
-                - 'deborah.aguilar'
+   valid_users:
+    - 'marc.villacorta'
+    - 'deborah.aguilar'
 
 #------------------------------------------------------------------------------
 # r_kvm:
@@ -273,6 +274,10 @@ r_kvm::kvm:
 # koan
 r_kvm::koan:
  version: 'present'
+ systems:
+  - 'frontend01.%{domain}'
+  - 'backend01.%{domain}'
+  - 'router01.%{domain}'
 
 #------------------------------------------------------------------------------
 # r_router:

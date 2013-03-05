@@ -11,17 +11,9 @@ class r_kvm (
     #-------
 
     if $koan {
-        package { 'koan':
-            ensure => $koan['version'],
-        }
-
-        file { '/usr/lib/python2.6/site-packages/koan/virtinstall.py':
-            ensure  => present,
-            content => template("${module_name}/virtinstall.py.erb"),
-            owner   => 'root',
-            group   => 'root',
-            mode    => '0644',
-            require => Package['koan'],
+        class { 'koan':
+            version => $koan['version'],
+            systems => $koan['systems'],
         }
     }
 
