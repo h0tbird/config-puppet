@@ -297,7 +297,7 @@ r_router::pppd:
   ppp0:
    userctl: 'no'
    bootproto: 'dialup'
-   name: 'FTTHppp0'
+   name: 'FTTH'
    device: 'ppp0'
    type: 'FTTH'
    onboot: 'yes'
@@ -313,8 +313,9 @@ r_router::pppd:
    defroute: 'yes'
    synchronous: 'no'
    eth: 'br0.6'
-   provider: 'FTTHppp0'
+   provider: 'ppp0'
    user: 'adslppp@telefonicanetpa'
+   password: 'adslppp'
    peerdns: 'yes'
    demand: 'no'
 ...
