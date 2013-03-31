@@ -13,13 +13,13 @@ Hosts:
   ip: '127.0.0.1'
   host_aliases: 'localhost.localdomain'
  puppet: &Host_puppet
-  ip: '192.168.2.2'
+  ip: '192.168.1.4'
   host_aliases: 'puppet.%{domain}'
  cobbler: &Host_cobbler
-  ip: '192.168.2.2'
+  ip: '192.168.1.4'
   host_aliases: 'cobbler.%{domain}'
  foreman: &Host_foreman
-  ip: '192.168.2.2'
+  ip: '192.168.1.4'
   host_aliases: 'foreman.%{domain}'
 
 #------------------------------------------------------------------------------
@@ -73,21 +73,22 @@ Users:
 YumRepos:
  centos_base: &YumRepo_centos_base
   name: 'CentOS-$releasever - Base'
-  baseurl: "http://cobbler.%{domain}/cobbler/ks_mirror/CentOS_6.3-x86_64/\n
+  baseurl: "http://cobbler.%{domain}/cobbler/ks_mirror/CentOS_6-x86_64/\n
            http://mirror.centos.org/centos/$releasever/os/$basearch/"
   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
   gpgcheck: '1'
   enabled: '1'
  centos_updates: &YumRepo_centos_updates
   name: 'CentOS-$releasever - Updates'
-  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/CentOS_6.3-x86_64-updates/\n
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/CentOS_6-x86_64-updates/\n
            http://mirror.centos.org/centos/$releasever/updates/$basearch/"
   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
   gpgcheck: '1'
   enabled: '1'
  centos_extras: &YumRepo_centos_extras
   name: 'CentOS-$releasever - Extras'
-  baseurl: "http://mirror.centos.org/centos/$releasever/extras/$basearch/"
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/CentOS_6-x86_64-extras/\n
+           http://mirror.centos.org/centos/$releasever/extras/$basearch/"
   gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'
   gpgcheck: '1'
   enabled: '1'
@@ -100,7 +101,8 @@ YumRepos:
   enabled: '1'
  epel_testing: &YumRepo_epel_testing
   name: 'Extra Packages for Enterprise Linux 6 - Testing - $basearch'
-  baseurl: "http://download.fedoraproject.org/pub/epel/testing/6/$basearch"
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/EPEL_testing-el6-x86_64/\n
+           http://download.fedoraproject.org/pub/epel/testing/6/$basearch"
   failovermethod: 'priority'
   gpgcheck: '0'
   enabled: '1'
@@ -119,7 +121,7 @@ YumRepos:
  foreman: &YumRepo_foreman
   name: 'Foreman'
   baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/foreman-el6-x86_64/\n
-           http://yum.theforeman.org/releases/1.0/el6/$basearch"
+           http://yum.theforeman.org/releases/latest/el6/$basearch"
   gpgcheck: '0'
   enabled: '1'
  percona: &YumRepo_percona
@@ -299,7 +301,7 @@ r_router::pppd:
    bootproto: 'dialup'
    name: 'FTTH'
    device: 'ppp0'
-   type: 'FTTH'
+   type: 'xDSL'
    onboot: 'yes'
    pidfile: '/var/run/pppoe-ftth.pid'
    firewall: 'none'
@@ -312,7 +314,7 @@ r_router::pppd:
    connect_timeout: '60'
    defroute: 'yes'
    synchronous: 'no'
-   eth: 'br0.6'
+   eth: 'eth2'
    provider: 'ppp0'
    user: 'adslppp@telefonicanetpa'
    password: 'adslppp'
