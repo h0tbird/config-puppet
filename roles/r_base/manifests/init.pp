@@ -48,8 +48,9 @@ class r_base (
     } ->
 
     class { 'ssh':
-        ensure  => $ssh['ensure'],
-        version => $ssh['version'],
+        ensure    => $ssh['ensure'],
+        version   => $ssh['version'],
+        root_keys => $ssh['root_keys'],
     } ->
 
     class { 'puppet::client':
