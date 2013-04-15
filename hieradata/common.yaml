@@ -44,7 +44,6 @@ Users:
    pass: '!!'
    home: '/home/marc.villacorta'
    shell: '/bin/bash'
-   grant: 'root'
    key: *SshKey_marc_villacorta
   git:
    home: '/home/marc.villacorta'
@@ -63,7 +62,6 @@ Users:
    pass: '!!'
    home: '/home/deborah.aguilar'
    shell: '/bin/bash'
-   grant: 'root'
    key: *SshKey_deborah_aguilar
   git:
    home: '/home/deborah.aguilar'
