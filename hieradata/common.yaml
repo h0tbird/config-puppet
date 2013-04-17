@@ -11,23 +11,30 @@
 Hosts:
  localhost: &Host_localhost
   ip: '127.0.0.1'
-  host_aliases: 'localhost.localdomain'
+  name: '%{hostname}.%{domain}'
+  host_aliases:
+   - '%{hostname}'
+   - 'localhost.localdomain'
+   - 'localhost'
  puppet: &Host_puppet
   ip: '192.168.1.4'
-  host_aliases: 'puppet.%{domain}'
+  name: 'puppet.%{domain}'
+  host_aliases: 'puppet'
  cobbler: &Host_cobbler
   ip: '192.168.1.4'
-  host_aliases: 'cobbler.%{domain}'
+  name: 'cobbler.%{domain}'
+  host_aliases: 'cobbler'
  foreman: &Host_foreman
   ip: '192.168.1.4'
-  host_aliases: 'foreman.%{domain}'
+  name: 'foreman.%{domain}'
+  host_aliases: 'foreman'
 
 #------------------------------------------------------------------------------
 # Ssh public keys:
 #------------------------------------------------------------------------------
 
 SshKeys:
- marc.villacorta: &SshKey_marc_villacorta 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDhIkAzWDvjJjtJkO+qjAogxiryZt3B36q4JPSMX6WEB7LpSNPzt4NVe0tSkswZ/KkmJmuN4K0gWFK/NO7MnuM5hCdo8j786o+a48h3GNsqFG1GloJVQSkDSOZgDxfMRNLD4oEQ0wx7q7kwlY7i1q8myue+qoy/bsRu35qwLVNlnOe/xe9gNPb4nnRJksober+qBhGxB/WOeiKmyWy7/OrH74tuRePI5+Zi9bnLNp01sJefsvMjSAXi+iRf0WNcSguN7az1g6P40iWQ6QGZPkBEXKHcCUp+C80nNDX/tdhlEqFElvGIfsXOHDavRiPSPZSNc3a8ngAHNq2ox0NP+VvR'
+ marc.villacorta: &SshKey_marc_villacorta 'AAAAB3NzaC1yc2EAAAADAQABAAABAQD4FtYAzzgjQWuR8yDa0XV+LGlUjuHvI9HXhAKGmkb2HsSNTcPOJmE5F1TxC761va4KRN+nTTJ5d1Ts+7TyupvmSJVM53I3nZBipCieF59uTQxFSFTTJbQh9+0EhhjFl5WL3tA8kgzlAC/ARAWiW0+GDVmo8IQ+RkKcNVebKbXHMH9lFzKxUmFN7pS7VfPOwxjEqZMEAnNb7K3adWQDf98w2qDQ2gfwDqbc45TiNf39+4OJIW4oPyvT9B/p0K6NGNu1SSct9uO+HDNuZlLcRd7yIbhL0IrcROHNwAmHxHo9Ki2G/mIoOCUyinLyg94XzW+D0QWIBN2oJA7CWOrr0TJn'
  deborah.aguilar: &SshKey_deborah_aguilar 'AAAB3NzaC1yc2EAAAADAQABAAABAQCVblqnZu6pnuHyIqrYIVfmIn4LLo98nQTcUiDTBuyo1k2fOeSlMz8tDIB0fZpyOaoTFASTIGF4pSNczNlv23kwYj5mIuctLmiNF0+VCEWeE0wj7LEA7s1/YXziKBczVkFhl06uPNQ/OHhEKy7LjPn9DTX2NFnWO00GQ+oyLhTMMe5O8OTmtT/ySNYhouhxR7jdMtOo4qw2wkGVXk123A+i1hCpvylUaS70MkM08he/q99pjT3f1VbZg6mw6bPXtM+de4RkkCFF3T53djy4Omil6yiAGODzVIVBXXUuZtU+YlsWtATac3Vs0nFcgujqMKRvvuMVy9/ZejLG4eQartzB'
 
 #------------------------------------------------------------------------------
