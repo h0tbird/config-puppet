@@ -2,7 +2,7 @@
 # This node is inherited by all nodes:
 #------------------------------------------------------------------------------
 
-node 'base' {
+node base {
 
     include r_base
 }
