@@ -143,6 +143,12 @@ YumRepos:
            http://repo.percona.com/centos/6/os/$basearch"
   gpgcheck: '0'
   enabled: '1'
+ bitcoin: &YumRepo_bitcoin
+  name: 'Bitcoin'
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/bitcoin-el6-x86_64/\n
+           http://linux.ringingliberty.com/bitcoin/el6/$basearch"
+  gpgcheck: '0'
+  enabled: '1'
 
 #------------------------------------------------------------------------------
 # GitRepos:
