@@ -58,4 +58,5 @@ node /^backend(\d+)/ inherits base {
 
 node /^miner(\d+)/ inherits base {
 
+    include r_miner
 }
