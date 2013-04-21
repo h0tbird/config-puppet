@@ -1,7 +1,8 @@
-class r_miner (
+class r_miner ( $yum = undef ) {
 
-    $yum = undef,
+    #-------
+    # Base:
+    #-------
 
-) inherits r_base {
-
+    require r_base
 }

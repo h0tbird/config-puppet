@@ -1,15 +1,16 @@
-class r_router (
+class r_router ( $pppd = undef ) {
 
-    $pppd = undef,
+    #-------
+    # Base:
+    #-------
 
-) inherits r_base {
+    require r_base
 
     #-------
     # pppd:
     #-------
 
     if $pppd {
-
         class { 'pppd':
             ensure  => $pppd['ensure'],
             version => $pppd['version'],

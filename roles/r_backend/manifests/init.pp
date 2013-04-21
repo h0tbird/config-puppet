@@ -1,3 +1,8 @@
-class r_backend inherits r_base {
+class r_backend {
 
+    #-------
+    # Base:
+    #-------
+
+    require r_base
 }
