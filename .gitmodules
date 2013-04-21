@@ -49,3 +49,6 @@
 [submodule "modules/koan"]
 	path = modules/koan
 	url = https://h0tbird@github.com/h0tbird/puppet-koan.git
+[submodule "modules/factsdotd"]
+	path = modules/factsdotd
+	url = https://h0tbird@github.com/h0tbird/puppet-factsdotd.git
