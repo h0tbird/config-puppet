@@ -181,6 +181,10 @@ r_base::hosts:
   cobbler: *Host_cobbler
   foreman: *Host_foreman
 
+# factsdotd:
+r_base::factsdotd:
+ hostgroup: true
+
 # yum
 r_base::yum:
  version: 'present'
@@ -193,7 +197,6 @@ r_base::yum:
  gpgcheck: '1'
  plugins: '1'
  installonly_limit: '5'
- bugtracker_url: 'http://bugs.centos.org/set_project.php?project_id=16&ref=http://bugs.centos.org/bug_report_page.php?category=yum'
  distroverpkg: 'centos-release'
  repos:
   centos_base: *YumRepo_centos_base
@@ -347,4 +350,14 @@ r_router::pppd:
    password: 'adslppp'
    peerdns: 'yes'
    demand: 'no'
+
+#------------------------------------------------------------------------------
+# r_miner:
+#------------------------------------------------------------------------------
+
+# yum
+r_miner::yum:
+ version: 'latest'
+ repos:
+  bitcoin: *YumRepo_bitcoin
 ...

@@ -1,10 +1,11 @@
 class r_base (
 
-    $hosts  = undef,
-    $yum    = undef,
-    $ntp    = undef,
-    $ssh    = undef,
-    $puppet = undef,
+    $hosts     = undef,
+    $factsdotd = undef,
+    $yum       = undef,
+    $ntp       = undef,
+    $ssh       = undef,
+    $puppet    = undef,
 
 ){
 
@@ -16,6 +17,13 @@ class r_base (
         class { 'hosts':
             hosts => $hosts['hosts'],
             stage => pre,
+        }
+    }
+
+    if $factsdotd {
+        class { 'factsdotd':
+            hostgroup => $factsdotd['hostgroup'],
+            stage     => pre,
         }
     }
 
