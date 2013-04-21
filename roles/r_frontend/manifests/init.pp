@@ -1,3 +1,3 @@
-class r_frontend {
+class r_frontend inherits r_base {
 
 }

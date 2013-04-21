@@ -1,4 +1,8 @@
-class r_router ( $pppd = undef ) {
+class r_router (
+
+    $pppd = undef,
+
+) inherits r_base {
 
     #-------
     # pppd:

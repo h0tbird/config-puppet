@@ -1,17 +1,8 @@
 #------------------------------------------------------------------------------
-# This node is inherited by all nodes:
-#------------------------------------------------------------------------------
-
-node base {
-
-    include r_base
-}
-
-#------------------------------------------------------------------------------
 # Puppet masters:
 #------------------------------------------------------------------------------
 
-node /^puppet(\d+)/ inherits base {
+node /^puppet(\d+)/ {
 
     include r_puppet
 }
@@ -20,7 +11,7 @@ node /^puppet(\d+)/ inherits base {
 # KVM hosts:
 #------------------------------------------------------------------------------
 
-node /^kvm(\d+)/ inherits base {
+node /^kvm(\d+)/ {
 
     include r_kvm
 }
@@ -29,7 +20,7 @@ node /^kvm(\d+)/ inherits base {
 # Router:
 #------------------------------------------------------------------------------
 
-node /^router(\d+)/ inherits base {
+node /^router(\d+)/ {
 
     include r_router
 }
@@ -38,7 +29,7 @@ node /^router(\d+)/ inherits base {
 # Frontends:
 #------------------------------------------------------------------------------
 
-node /^frontend(\d+)/ inherits base {
+node /^frontend(\d+)/ {
 
     include r_frontend
 }
@@ -47,7 +38,7 @@ node /^frontend(\d+)/ inherits base {
 # Backends:
 #------------------------------------------------------------------------------
 
-node /^backend(\d+)/ inherits base {
+node /^backend(\d+)/ {
 
     include r_backend
 }
@@ -56,7 +47,7 @@ node /^backend(\d+)/ inherits base {
 # Miners:
 #------------------------------------------------------------------------------
 
-node /^miner(\d+)/ inherits base {
+node /^miner(\d+)/ {
 
     include r_miner
 }

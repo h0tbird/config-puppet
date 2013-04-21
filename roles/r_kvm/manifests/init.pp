@@ -4,7 +4,7 @@ class r_kvm (
     $libvirt = undef,
     $kvm     = undef,
 
-) {
+) inherits r_base {
 
     #-------
     # Koan:

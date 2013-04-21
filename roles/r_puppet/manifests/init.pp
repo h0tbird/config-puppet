@@ -4,7 +4,7 @@ class r_puppet (
     $repos = undef,
     $samba = undef,
 
-) {
+) inherits r_base {
 
     #----------------
     # Puppet master:
