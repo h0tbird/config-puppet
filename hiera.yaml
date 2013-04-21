@@ -1,7 +1,14 @@
 ---
-:hierarchy:
-    - common
 :backends:
     - yaml
+
+:hierarchy:
+    - "%{fqdn}"      # frontend01.demo.lan
+    - "%{hostname}"  # frontend01
+    - "%{hostgroup}" # frontend
+    - common
+
 :yaml:
     :datadir: '/etc/puppet/hieradata'
+
+:merge_behavior: deeper
