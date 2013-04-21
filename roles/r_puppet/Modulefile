@@ -1,8 +1,0 @@
-name            'h0tbird-r_puppet'
-version         '1.0.0'
-source          'https://github.com/h0tbird/puppet'
-author          'Marc Villacorta'
-license         'GPL'
-summary         'Puppet role Module'
-description     'Puppet role Module'
-project_page    'https://github.com/h0tbird/puppet'
