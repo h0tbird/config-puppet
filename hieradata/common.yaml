@@ -351,6 +351,29 @@ r_router::pppd:
    peerdns: 'yes'
    demand: 'no'
 
+# dhcp
+r_router::dhcp:
+ ensure: 'running'
+ version: 'present'
+ globals:
+  - 'ddns-update-style interim'
+  - 'allow booting'
+  - 'allow bootp'
+  - 'ignore client-updates'
+  - 'set vendorclass = option vendor-class-identifier'
+  - 'option pxe-system-type code 93 = unsigned integer 16'
+ subnets:
+  192.168.1.0:
+   netmask: '255.255.255.0'
+   domain_name: 'demo.lan'
+   domain_name_servers: '192.168.1.1,8.8.8.8'
+   routers: '192.168.1.1'
+   subnet_mask: '255.255.255.0'
+   ntp_servers: '192.168.1.1'
+   default_lease_time: '21600'
+   max_lease_time: '43200'
+   range_dynamic_bootp: '192.168.1.200 192.168.1.250'
+
 #------------------------------------------------------------------------------
 # r_miner:
 #------------------------------------------------------------------------------
