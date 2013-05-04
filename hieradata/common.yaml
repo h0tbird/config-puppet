@@ -356,7 +356,6 @@ r_router::dhcp:
  ensure: 'running'
  version: 'present'
  globals:
-  - 'ddns-update-style interim'
   - 'allow booting'
   - 'allow bootp'
   - 'ignore client-updates'
