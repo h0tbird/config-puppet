@@ -224,6 +224,7 @@ r_base::ntp:
 r_base::ssh:
  ensure: 'running'
  version: 'present'
+ permit_user_environment: true
  root_keys:
   marc.villacorta:
    key: *SshKey_marc_villacorta

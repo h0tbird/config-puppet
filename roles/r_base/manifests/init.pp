@@ -63,9 +63,10 @@ class r_base (
 
     if $ssh {
         class { 'ssh':
-            ensure    => $ssh['ensure'],
-            version   => $ssh['version'],
-            root_keys => $ssh['root_keys'],
+            ensure                  => $ssh['ensure'],
+            version                 => $ssh['version'],
+            permit_user_environment => $ssh['permit_user_environment'],
+            root_keys               => $ssh['root_keys'],
         }
     }
 
