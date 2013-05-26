@@ -31,9 +31,9 @@
 [submodule "modules/ssh"]
 	path = modules/ssh
 	url = https://h0tbird@github.com/h0tbird/puppet-ssh.git
-[submodule "modules/user"]
-	path = modules/user
-	url = https://h0tbird@github.com/h0tbird/puppet-user.git
+[submodule "modules/users"]
+	path = modules/users
+	url = https://h0tbird@github.com/h0tbird/puppet-users.git
 [submodule "modules/yum"]
 	path = modules/yum
 	url = https://h0tbird@github.com/h0tbird/puppet-yum.git
