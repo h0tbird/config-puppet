@@ -1,5 +1,6 @@
 class r_base (
 
+    $users     = undef,
     $hosts     = undef,
     $factsdotd = undef,
     $yum       = undef,
@@ -12,6 +13,13 @@ class r_base (
     #------------
     # Stage: pre
     #------------
+
+    if $users {
+        class { 'users':
+            users => $users['users'],
+            stage => pre,
+        }
+    }
 
     if $hosts {
         class { 'hosts':

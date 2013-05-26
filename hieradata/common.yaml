@@ -42,6 +42,14 @@ SshKeys:
 #------------------------------------------------------------------------------
 
 Users:
+ root: &User_root
+  linux:
+   uid: '0'
+   gid: '0'
+   comment: 'root'
+   pass: '!!'
+   home: '/root'
+   shell: '/bin/bash'
  marc.villacorta: &User_marc_villacorta
   linux:
    uid: '501'
@@ -172,6 +180,11 @@ GitRepos:
 #------------------------------------------------------------------------------
 # r_base:
 #------------------------------------------------------------------------------
+
+# users
+r_base::users:
+ users:
+  root: *User_root
 
 # hosts
 r_base::hosts:

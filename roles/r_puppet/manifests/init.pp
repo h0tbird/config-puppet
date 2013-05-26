@@ -22,7 +22,7 @@ class r_puppet (
     # Users and repos:
     #------------------
 
-    if $users { create_resources(user::real, $users) }
+    if $users { create_resources(users::user, $users) }
     if $repos { create_resources(git::repo, $repos, { before => Service['puppet'] }) }
 
     #--------
