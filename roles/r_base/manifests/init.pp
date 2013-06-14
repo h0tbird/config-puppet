@@ -16,14 +16,14 @@ class r_base (
 
     if $users {
         class { 'users':
-            users => $users['users'],
+            users => $users,
             stage => pre,
         }
     }
 
     if $hosts {
         class { 'hosts':
-            hosts => $hosts['hosts'],
+            hosts => $hosts,
             stage => pre,
         }
     }
