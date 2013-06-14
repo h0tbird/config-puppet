@@ -50,6 +50,7 @@ Users:
    pass: '!!'
    home: '/root'
    shell: '/bin/bash'
+   profile: true
  marc.villacorta: &User_marc_villacorta
   linux:
    uid: '501'
@@ -183,16 +184,14 @@ GitRepos:
 
 # users
 r_base::users:
- users:
-  root: *User_root
+ root: *User_root
 
 # hosts
 r_base::hosts:
- hosts:
-  localhost: *Host_localhost
-  puppet: *Host_puppet
-  cobbler: *Host_cobbler
-  foreman: *Host_foreman
+ localhost: *Host_localhost
+ puppet: *Host_puppet
+ cobbler: *Host_cobbler
+ foreman: *Host_foreman
 
 # factsdotd:
 r_base::factsdotd:
