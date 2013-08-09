@@ -50,6 +50,11 @@ Users:
    pass: '!!'
    home: '/root'
    shell: '/bin/bash'
+   keys:
+    marc.villacorta:
+     key: *SshKey_marc_villacorta
+    deborah.aguilar:
+     key: *SshKey_deborah_aguilar
    profile: true
  marc.villacorta: &User_marc_villacorta
   linux:
@@ -60,7 +65,9 @@ Users:
    pass: '!!'
    home: '/home/marc.villacorta'
    shell: '/bin/bash'
-   key: *SshKey_marc_villacorta
+   keys:
+    marc.villacorta:
+     key: *SshKey_marc_villacorta
   git:
    home: '/home/marc.villacorta'
    fullname: 'Marc Villacorta'
@@ -78,7 +85,9 @@ Users:
    pass: '!!'
    home: '/home/deborah.aguilar'
    shell: '/bin/bash'
-   key: *SshKey_deborah_aguilar
+   keys:
+    deborah.aguilar:
+     key: *SshKey_deborah_aguilar
   git:
    home: '/home/deborah.aguilar'
    fullname: 'Deborah Aguilar'
@@ -237,11 +246,6 @@ r_base::ssh:
  ensure: 'running'
  version: 'present'
  permit_user_environment: true
- root_keys:
-  marc.villacorta:
-   key: *SshKey_marc_villacorta
-  deborah.aguilar:
-   key: *SshKey_deborah_aguilar
 
 # puppet
 r_base::puppet:
