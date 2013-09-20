@@ -152,22 +152,10 @@ YumRepos:
            http://yum.puppetlabs.com/el/6/dependencies/$basearch"
   gpgcheck: '0'
   enabled: '1'
- foreman: &YumRepo_foreman
-  name: 'Foreman'
-  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/foreman-el6-x86_64/\n
-           http://yum.theforeman.org/releases/latest/el6/$basearch"
-  gpgcheck: '0'
-  enabled: '1'
- percona: &YumRepo_percona
-  name: 'Percona'
-  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/percona-el6-x86_64/\n
-           http://repo.percona.com/centos/6/os/$basearch"
-  gpgcheck: '0'
-  enabled: '1'
- bitcoin: &YumRepo_bitcoin
-  name: 'Bitcoin'
-  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/bitcoin-el6-x86_64/\n
-           http://linux.ringingliberty.com/bitcoin/el6/$basearch"
+ foreman: &YumRepo_hop5
+  name: 'hop5'
+  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/hop5-el6-x86_64/\n
+           http://www.hop5.in/yum/el6/hop5.repo"
   gpgcheck: '0'
   enabled: '1'
 
