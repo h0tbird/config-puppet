@@ -1,4 +1,4 @@
-class r_miner ( $yum = undef ) {
+class r_lxc {
 
     #-------
     # Base:
