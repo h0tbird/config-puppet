@@ -212,7 +212,6 @@ r_base::yum:
   epel_testing: *YumRepo_epel_testing
   puppetlabs_products: *YumRepo_puppetlabs_products
   puppetlabs_deps: *YumRepo_puppetlabs_deps
-  hop5: *YumRepo_hop5
 
 # ntp
 r_base::ntp:
