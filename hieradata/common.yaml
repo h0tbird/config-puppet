@@ -152,12 +152,6 @@ YumRepos:
            http://yum.puppetlabs.com/el/6/dependencies/$basearch"
   gpgcheck: '0'
   enabled: '1'
- foreman: &YumRepo_hop5
-  name: 'hop5'
-  baseurl: "http://cobbler.%{domain}/cobbler/repo_mirror/hop5-el6-x86_64/\n
-           http://www.hop5.in/yum/el6/hop5.repo"
-  gpgcheck: '0'
-  enabled: '1'
 
 #------------------------------------------------------------------------------
 # GitRepos:
@@ -218,6 +212,7 @@ r_base::yum:
   epel_testing: *YumRepo_epel_testing
   puppetlabs_products: *YumRepo_puppetlabs_products
   puppetlabs_deps: *YumRepo_puppetlabs_deps
+  hop5: *YumRepo_hop5
 
 # ntp
 r_base::ntp:
@@ -380,14 +375,4 @@ r_router::dhcp:
    default_lease_time: '21600'
    max_lease_time: '43200'
    range_dynamic_bootp: '192.168.1.200 192.168.1.250'
-
-#------------------------------------------------------------------------------
-# r_miner:
-#------------------------------------------------------------------------------
-
-# yum
-r_miner::yum:
- version: 'latest'
- repos:
-  bitcoin: *YumRepo_bitcoin
 ...
