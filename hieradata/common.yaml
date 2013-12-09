@@ -231,6 +231,7 @@ r_base::ssh:
  ensure: 'running'
  version: 'present'
  permit_user_environment: true
+ use_dns: 'no'
 
 # puppet
 r_base::puppet:

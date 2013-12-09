@@ -74,6 +74,7 @@ class r_base (
             ensure                  => $ssh['ensure'],
             version                 => $ssh['version'],
             permit_user_environment => $ssh['permit_user_environment'],
+            use_dns                 => $ssh['use_dns'],
         }
     }
 
