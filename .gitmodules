@@ -1,54 +1,54 @@
 [submodule "modules/stdlib"]
 	path = modules/stdlib
-	url = https://h0tbird@github.com/h0tbird/puppet-stdlib.git
+	url = https://github.com/h0tbird/puppet-stdlib.git
 [submodule "modules/concat"]
 	path = modules/concat
-	url = https://h0tbird@github.com/h0tbird/puppet-concat.git
+	url = https://github.com/h0tbird/puppet-concat.git
 [submodule "modules/dhcp"]
 	path = modules/dhcp
-	url = https://h0tbird@github.com/h0tbird/puppet-dhcp.git
+	url = https://github.com/h0tbird/puppet-dhcp.git
 [submodule "modules/git"]
 	path = modules/git
-	url = https://h0tbird@github.com/h0tbird/puppet-git.git
+	url = https://github.com/h0tbird/puppet-git.git
 [submodule "modules/hosts"]
 	path = modules/hosts
-	url = https://h0tbird@github.com/h0tbird/puppet-hosts.git
+	url = https://github.com/h0tbird/puppet-hosts.git
 [submodule "modules/motd"]
 	path = modules/motd
-	url = https://h0tbird@github.com/h0tbird/puppet-motd.git
+	url = https://github.com/h0tbird/puppet-motd.git
 [submodule "modules/mysql"]
 	path = modules/mysql
-	url = https://h0tbird@github.com/h0tbird/puppet-mysql.git
+	url = https://github.com/h0tbird/puppet-mysql.git
 [submodule "modules/ntp"]
 	path = modules/ntp
-	url = https://h0tbird@github.com/h0tbird/puppet-ntp.git
+	url = https://github.com/h0tbird/puppet-ntp.git
 [submodule "modules/puppet"]
 	path = modules/puppet
-	url = https://h0tbird@github.com/h0tbird/puppet-puppet.git
+	url = https://github.com/h0tbird/puppet-puppet.git
 [submodule "modules/samba"]
 	path = modules/samba
-	url = https://h0tbird@github.com/h0tbird/puppet-samba.git
+	url = https://github.com/h0tbird/puppet-samba.git
 [submodule "modules/ssh"]
 	path = modules/ssh
-	url = https://h0tbird@github.com/h0tbird/puppet-ssh.git
+	url = https://github.com/h0tbird/puppet-ssh.git
 [submodule "modules/users"]
 	path = modules/users
-	url = https://h0tbird@github.com/h0tbird/puppet-users.git
+	url = https://github.com/h0tbird/puppet-users.git
 [submodule "modules/yum"]
 	path = modules/yum
-	url = https://h0tbird@github.com/h0tbird/puppet-yum.git
+	url = https://github.com/h0tbird/puppet-yum.git
 [submodule "modules/pppd"]
 	path = modules/pppd
-	url = https://h0tbird@github.com/h0tbird/puppet-pppd.git
+	url = https://github.com/h0tbird/puppet-pppd.git
 [submodule "modules/libvirt"]
 	path = modules/libvirt
-	url = https://h0tbird@github.com/h0tbird/puppet-libvirt.git
+	url = https://github.com/h0tbird/puppet-libvirt.git
 [submodule "modules/kvm"]
 	path = modules/kvm
-	url = https://h0tbird@github.com/h0tbird/puppet-kvm.git
+	url = https://github.com/h0tbird/puppet-kvm.git
 [submodule "modules/koan"]
 	path = modules/koan
-	url = https://h0tbird@github.com/h0tbird/puppet-koan.git
+	url = https://github.com/h0tbird/puppet-koan.git
 [submodule "modules/factsdotd"]
 	path = modules/factsdotd
-	url = https://h0tbird@github.com/h0tbird/puppet-factsdotd.git
+	url = https://github.com/h0tbird/puppet-factsdotd.git
