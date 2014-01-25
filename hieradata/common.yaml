@@ -307,17 +307,17 @@ r_kvm::kvm:
 r_kvm::koan:
  version: 'present'
  systems:
-  frontend01:
-   size: '4096'
+  lxc01:
+   size: '25600'
    volume: 'vg0'
-  backend01:
-   size: '4096'
+  lxc02:
+   size: '25600'
+   volume: 'vg0'
+  lxc03:
+   size: '25600'
    volume: 'vg0'
   router01:
-   size: '4096'
-   volume: 'vg0'
-  lxc01:
-   size: '4096'
+   size: '25600'
    volume: 'vg0'
 
 #------------------------------------------------------------------------------
