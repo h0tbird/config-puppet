@@ -5,4 +5,10 @@ class r_lxc {
     #-------
 
     require r_base
+
+    #---------
+    # Docker:
+    #---------
+
+    class { 'docker': }
 }
