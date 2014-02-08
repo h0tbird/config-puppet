@@ -10,5 +10,7 @@ class r_lxc {
     # Docker:
     #---------
 
-    class { 'docker': }
+    class { 'docker':
+        other_args => '-b br0',
+    }
 }
