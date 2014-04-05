@@ -52,3 +52,6 @@
 [submodule "modules/factsdotd"]
 	path = modules/factsdotd
 	url = https://github.com/h0tbird/puppet-factsdotd.git
+[submodule "modules/dnsmasq"]
+	path = modules/dnsmasq
+	url = https://h0tbird@github.com/h0tbird/puppet-dnsmasq.git
