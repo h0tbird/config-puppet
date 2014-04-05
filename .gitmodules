@@ -52,6 +52,3 @@
 [submodule "modules/factsdotd"]
 	path = modules/factsdotd
 	url = https://github.com/h0tbird/puppet-factsdotd.git
-[submodule "modules/docker"]
-	path = modules/docker
-	url = https://github.com/h0tbird/puppet-docker.git
