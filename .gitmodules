@@ -58,3 +58,6 @@
 [submodule "modules/sshd"]
 	path = modules/sshd
 	url = https://h0tbird@github.com/h0tbird/puppet-sshd.git
+[submodule "modules/supervisord"]
+	path = modules/supervisord
+	url = https://h0tbird@github.com/h0tbird/puppet-supervisord.git
