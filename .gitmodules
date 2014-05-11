@@ -55,3 +55,6 @@
 [submodule "modules/dnsmasq"]
 	path = modules/dnsmasq
 	url = https://h0tbird@github.com/h0tbird/puppet-dnsmasq.git
+[submodule "modules/sshd"]
+	path = modules/sshd
+	url = https://h0tbird@github.com/h0tbird/puppet-sshd.git
