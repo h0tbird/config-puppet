@@ -54,10 +54,10 @@
 	url = https://github.com/h0tbird/puppet-factsdotd.git
 [submodule "environments/production/modules/dnsmasq"]
 	path = environments/production/modules/dnsmasq
-	url = https://h0tbird@github.com/h0tbird/puppet-dnsmasq.git
+	url = https://github.com/h0tbird/puppet-dnsmasq.git
 [submodule "environments/production/modules/sshd"]
 	path = environments/production/modules/sshd
-	url = https://h0tbird@github.com/h0tbird/puppet-sshd.git
+	url = https://github.com/h0tbird/puppet-sshd.git
 [submodule "environments/production/modules/supervisord"]
 	path = environments/production/modules/supervisord
-	url = https://h0tbird@github.com/h0tbird/puppet-supervisord.git
+	url = https://github.com/h0tbird/puppet-supervisord.git
