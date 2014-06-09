@@ -1,63 +1,63 @@
-[submodule "modules/stdlib"]
+[submodule "environments/production/modules/stdlib"]
 	path = environments/production/modules/stdlib
 	url = https://github.com/h0tbird/puppet-stdlib.git
-[submodule "modules/concat"]
+[submodule "environments/production/modules/concat"]
 	path = environments/production/modules/concat
 	url = https://github.com/h0tbird/puppet-concat.git
-[submodule "modules/dhcp"]
+[submodule "environments/production/modules/dhcp"]
 	path = environments/production/modules/dhcp
 	url = https://github.com/h0tbird/puppet-dhcp.git
-[submodule "modules/git"]
+[submodule "environments/production/modules/git"]
 	path = environments/production/modules/git
 	url = https://github.com/h0tbird/puppet-git.git
-[submodule "modules/hosts"]
+[submodule "environments/production/modules/hosts"]
 	path = environments/production/modules/hosts
 	url = https://github.com/h0tbird/puppet-hosts.git
-[submodule "modules/motd"]
+[submodule "environments/production/modules/motd"]
 	path = environments/production/modules/motd
 	url = https://github.com/h0tbird/puppet-motd.git
-[submodule "modules/mysql"]
+[submodule "environments/production/modules/mysql"]
 	path = environments/production/modules/mysql
 	url = https://github.com/h0tbird/puppet-mysql.git
-[submodule "modules/ntp"]
+[submodule "environments/production/modules/ntp"]
 	path = environments/production/modules/ntp
 	url = https://github.com/h0tbird/puppet-ntp.git
-[submodule "modules/puppet"]
+[submodule "environments/production/modules/puppet"]
 	path = environments/production/modules/puppet
 	url = https://github.com/h0tbird/puppet-puppet.git
-[submodule "modules/samba"]
+[submodule "environments/production/modules/samba"]
 	path = environments/production/modules/samba
 	url = https://github.com/h0tbird/puppet-samba.git
-[submodule "modules/ssh"]
+[submodule "environments/production/modules/ssh"]
 	path = environments/production/modules/ssh
 	url = https://github.com/h0tbird/puppet-ssh.git
-[submodule "modules/users"]
+[submodule "environments/production/modules/users"]
 	path = environments/production/modules/users
 	url = https://github.com/h0tbird/puppet-users.git
-[submodule "modules/yum"]
+[submodule "environments/production/modules/yum"]
 	path = environments/production/modules/yum
 	url = https://github.com/h0tbird/puppet-yum.git
-[submodule "modules/pppd"]
+[submodule "environments/production/modules/pppd"]
 	path = environments/production/modules/pppd
 	url = https://github.com/h0tbird/puppet-pppd.git
-[submodule "modules/libvirt"]
+[submodule "environments/production/modules/libvirt"]
 	path = environments/production/modules/libvirt
 	url = https://github.com/h0tbird/puppet-libvirt.git
 [submodule "environments/production/modules/kvm"]
 	path = environments/production/modules/kvm
 	url = https://github.com/h0tbird/puppet-kvm.git
-[submodule "modules/koan"]
+[submodule "environments/production/modules/koan"]
 	path = environments/production/modules/koan
 	url = https://github.com/h0tbird/puppet-koan.git
-[submodule "modules/factsdotd"]
+[submodule "environments/production/modules/factsdotd"]
 	path = environments/production/modules/factsdotd
 	url = https://github.com/h0tbird/puppet-factsdotd.git
-[submodule "modules/dnsmasq"]
+[submodule "environments/production/modules/dnsmasq"]
 	path = environments/production/modules/dnsmasq
 	url = https://h0tbird@github.com/h0tbird/puppet-dnsmasq.git
-[submodule "modules/sshd"]
+[submodule "environments/production/modules/sshd"]
 	path = environments/production/modules/sshd
 	url = https://h0tbird@github.com/h0tbird/puppet-sshd.git
-[submodule "modules/supervisord"]
+[submodule "environments/production/modules/supervisord"]
 	path = environments/production/modules/supervisord
 	url = https://h0tbird@github.com/h0tbird/puppet-supervisord.git
