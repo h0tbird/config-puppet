@@ -12,6 +12,6 @@
 :yaml:
     :datadir: '/etc/puppet/hieradata'
 
-:merge_behavior: deeper
+:merge_behavior: native
 
 ...
