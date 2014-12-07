@@ -12,7 +12,7 @@ stage { 'post': require => Stage['main'] }
 Package { allow_virtual => true }
 
 #------------------------------------------------------------------------------
-# Docker builds don't mess with services:
+# Do not mess with services in a docker build:
 #------------------------------------------------------------------------------
 
 if $::docker_build {
@@ -27,7 +27,7 @@ if $::docker_build {
 }
 
 #------------------------------------------------------------------------------
-# Catch-all nodes:
+# Node classifier:
 #------------------------------------------------------------------------------
 
 node /^([a-z]+)\d{2}.demo.lan$/ { include "::r_${1}" }
