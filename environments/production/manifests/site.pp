@@ -9,9 +9,7 @@ stage { 'post': require => Stage['main'] }
 # Enable the Puppet 4 behavior today:
 #------------------------------------------------------------------------------
 
-Package {
-    allow_virtual => true,
-}
+Package { allow_virtual => true }
 
 #------------------------------------------------------------------------------
 # Catch-all nodes:
