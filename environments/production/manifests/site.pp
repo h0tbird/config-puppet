@@ -12,6 +12,21 @@ stage { 'post': require => Stage['main'] }
 Package { allow_virtual => true }
 
 #------------------------------------------------------------------------------
+# Docker builds don't mess with services:
+#------------------------------------------------------------------------------
+
+if $::docker_build {
+  Service <||> {
+    hasrestart => true,
+    hasstatus  => true,
+    restart    => '/bin/true',
+    stop       => '/bin/true',
+    start      => '/bin/true',
+    status     => '/bin/true',
+  }
+}
+
+#------------------------------------------------------------------------------
 # Catch-all nodes:
 #------------------------------------------------------------------------------
 
