@@ -30,4 +30,4 @@ if $::docker_build {
 # Catch-all nodes:
 #------------------------------------------------------------------------------
 
-node /^([a-z]+)\d{2}.demo.lan$/ { include "r_${1}" }
+node /^([a-z]+)\d{2}.demo.lan$/ { include "::r_${1}" }
