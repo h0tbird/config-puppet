@@ -8,7 +8,6 @@
  - "%{::fqdn_1}.%{::fqdn_0}/%{::fqdn_2}/%{::fqdn_3}/data"
  - "%{::fqdn_1}.%{::fqdn_0}/%{::fqdn_2}/data"
  - "%{::fqdn_1}.%{::fqdn_0}/data"
- - common
 
 :yaml:
  :datadir: '/etc/puppet/environments/%{::environment}/hieradata'
